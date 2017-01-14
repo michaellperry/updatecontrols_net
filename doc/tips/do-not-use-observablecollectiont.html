@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/tips/do-not-use-observablecollectiont by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Do not use ObservableCollection&lt;T&gt; | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="../tips.html" />
+<link rel="up" href="../tips.html" />
+<link rel="next" href="selectionmodel.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-tips-do-not-use-observablecollectiont section-tips">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Do not use ObservableCollection&lt;T&gt;</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-19" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Wed, 11/04/2009 - 11:06        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Update Controls not only implements INotifyPropertyChanged for you, it also makes all of your collections observable. When you use Update Controls, you should not also use ObservableCollection&lt;T&gt;. Use a regular List&lt;T&gt; instead.</p>
+<p>Define a property of type List&lt;T&gt; in your data model. Select this property and hit Ctrl+D, G. This code will be generated for you:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> <span style="color: #2b91af">ContactList</span>
+{
+    <span style="color: blue">private</span> <span style="color: #2b91af">List</span>&lt;<span style="color: #2b91af">Person</span>&gt; _people = <span style="color: blue">new</span> <span style="color: #2b91af">List</span>&lt;<span style="color: #2b91af">Person</span>&gt;();
+
+    <span style="color: blue">#region</span> <span style="color: #2b91af">Independent</span> properties
+    <span style="color: green">// Generated by Update Controls --------------------------------</span>
+    <span style="color: blue">private</span> <span style="color: #2b91af">Independent</span> _indPeople = <span style="color: blue">new</span> <span style="color: #2b91af">Independent</span>();
+
+    <span style="color: blue">public</span> <span style="color: #2b91af">Person</span> NewPerson()
+    {
+        _indPeople.OnSet();
+        <span style="color: #2b91af">Person</span> person = <span style="color: blue">new</span> <span style="color: #2b91af">Person</span>();
+        _people.Add(person);
+        <span style="color: blue">return</span> person;
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">void</span> DeletePerson(<span style="color: #2b91af">Person</span> person)
+    {
+        _indPeople.OnSet();
+        _people.Remove(person);
+    }
+
+    <span style="color: blue">public</span> <span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">Person</span>&gt; People
+    {
+        <span style="color: blue">get</span> { _indPeople.OnGet(); <span style="color: blue">return</span> _people; }
+    }
+    <span style="color: green">// End generated code --------------------------------</span>
+    <span style="color: blue">#endregion</span>
+}</pre><p>The Independent property is notified every time the collection changes (NewPerson and DeletePerson). It is also notified every time the collection is modified (the People getter). This is all happening in the data model.</p>
+<p>The view model does not store a list. It only has a reference to the data model. Using this reference, it generates a collection of view models on the fly.</p>
+<pre><span style="color: blue">public</span> <span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">PersonViewModel</span>&gt; People
+{
+    <span style="color: blue">get</span>
+    {
+        <span style="color: blue">return</span> _contactList.People
+            .Select(p =&gt; <span style="color: #2b91af">PersonViewModel</span>.Wrap(p, _contactList));
+    }
+}</pre><p>Where PersonViewModel.Wrap looks like this:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">static</span> <span style="color: #2b91af">PersonViewModel</span> Wrap(<span style="color: #2b91af">Person</span> person, <span style="color: #2b91af">ContactList</span> contactList)
+{
+    <span style="color: blue">if</span> (person == <span style="color: blue">null</span>)
+        <span style="color: blue">return</span> <span style="color: blue">null</span>;
+    <span style="color: blue">else</span>
+        <span style="color: blue">return</span> <span style="color: blue">new</span> <span style="color: #2b91af">PersonViewModel</span>(person, contactList);
+}</pre><p>This is much easier than managing ObservableCollections. You don't need an intermediate collection. You just wrap your data objects in a view model on the fly. </p>
+<p>For more information, please see the example of <a href="../examples/linq.html">using Linq to replace ObservableCollection&lt;T&gt;</a>.</p>
+  <div id="book-navigation-12" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="../tips.html" class="page-previous" title="Go to previous page">‹ Tips</a>
+                    <a href="../tips.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="selectionmodel.html" class="page-next" title="Go to next page">Selection Model ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/19.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-585"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="do-not-use-observablecollectiont.html#comment-585" class="active">Efficiency?</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Tue, 03/01/2011 - 14:04.  </div>
+
+  <div class="content">
+    <p>If the list is large, adding or removing a person causes a refresh of the whole list, with new view-models created for every item, is that right? I'm curious if there is a more efficient approach for very large lists... well, actually in my case, I'm considering porting Update Controls to .NET Compact Framework (WinForms). Lists would be only moderately large (up to 1000 items), but refreshing a ListBox from scratch is likely to be quite slow.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/19/585.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-586"></a>
+<div class="comment comment-published even last comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="do-not-use-observablecollectiont.html#comment-586" class="active">Recycling</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Tue, 03/01/2011 - 17:20.  </div>
+
+  <div class="content">
+    <p>Internally, Update Controls is using object recycling. Every PersonViewModel from the prior run is put into a recycle bin before the People property is called. Then it looks for each PersonViewModel that you return in the recycle bin. If it's already there, then it reuses that one.</p>
+<p>What I neglected to say in the article is that you should implement Equals and GetHashCode on PersonViewModel. That will make it possible for the recycle bin to find the matching object. Two PersonViewModel objects are equal if they reference the same Person.</p>
+<p>So, yes, you are creating a new batch of PersonViewModel objects every time the Person property is updated. But the ones that are already bound to the UI are reused. That means that the ListBox items themselves are not destroyed and recreated, which would be the real performance hit. Not to mention, that would reset the scrollbar position.</p>
+<p>I've used Update Controls for lists about that size without a noticeable performance problem. But if you go much larger I'd recommend doing something different. Beyond a couple of thousand you start to run into memory pressure from all of the internal dependency tracking. Memory might be your chief concern on the compact framework.</p>
+<p>Let me know if you decide to take on the port.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/19/586.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div>  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../examples.html">Examples</a></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../tips.html">Tips</a><ul class="menu"><li class="leaf first active-trail"><a href="do-not-use-observablecollectiont.html" class="active">Do not use ObservableCollection&lt;T&gt;</a></li>
+<li class="leaf"><a href="selectionmodel.html">Selection Model</a></li>
+<li class="leaf"><a href="viewmodel_navigationmodel.html">View Model and Navigation Model</a></li>
+<li class="leaf"><a href="viewmodelbase.html">ViewModelBase</a></li>
+<li class="leaf"><a href="../node/23.html">Custom change listeners</a></li>
+<li class="leaf"><a href="list_detail.html">List and detail</a></li>
+<li class="leaf"><a href="mvvm_design_time_data.html">MVVM Design Time Data</a></li>
+<li class="leaf"><a href="view_models_in_f_sharp.html">View Models in F#</a></li>
+<li class="leaf"><a href="data_bind_visual_states.html">Data bind visual states</a></li>
+<li class="leaf last"><a href="common_mistakes_observablecollection.html">Common mistakes while using ObservableCollection</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/tips/do-not-use-observablecollectiont?destination=node%2F19"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-2cb5cabfb83660a91de9415358c5271c" value="form-2cb5cabfb83660a91de9415358c5271c"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/tips/do-not-use-observablecollectiont by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:40 GMT -->
+</html>

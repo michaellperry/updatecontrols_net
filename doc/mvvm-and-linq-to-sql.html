@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/mvvm-and-linq-to-sql by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:51:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Linq to SQL | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="blogapi/rsd" />
+<link rel="prev" href="examples/linq.html" />
+<link rel="up" href="examples.html" />
+<link rel="next" href="examples/multi-threading.html" />
+<link rel="shortcut icon" href="http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-mvvm-and-linq-to-sql section-mvvm-and-linq-to-sql">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="index.html" title="Home" rel="home"><img src="images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="index.html">Home</a> › <a href="blog.html">Blogs</a> › <a href="blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Linq to SQL</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-2" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sat, 10/10/2009 - 12:01        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Download the <a href="sites/default/files/noteworthy.zip">source code</a> and follow along.</p>
+<p>The biggest challenge implementing the MVVM pattern is the View Model responding to changes in the Data Model. Usually, the View Model needs to subscribe to the PropertyChanged events fired by the Data Model, update its internal state, and then fire its own PropertyChanged events for the View. That's the hard way.</p>
+<p>The easy way is to use <a href="../index.html">Update Controls</a>. With Update Controls, you just decorate the Data Model and wrap the View Model. The library takes care of everything in between.</p>
+<p><strong>Decorate a Linq to SQL data model</strong> <br />You decorate the data model by adding <a href="../documentation/classDocumentation/vb/UpdateControls.Independent.html">Independent</a> sentries to every property. Whenever the property is accessed, call OnGet(). Whenever it is modified, call OnSet(). To decorate a Linq to SQL data model, we just need to inject these calls into the generated code. Unfortunately, the Linq to SQL code generator does not give you a way to easily tweak its output.</p>
+<p>Damien Guard has solved that problem. His open source project <a href="http://l2st4.codeplex.com/">LINQ to SQL templates for T4</a> is incredibly easy to set up and start using. It drops straight into Visual Studio and replaces the build-in code generator with one that you control. With just a few edits to his provided T4 template, I replaced INotifyPropertyChanged with Independent sentries.</p>
+<p>I added a sentry for each single-valued property, and called OnGet() inside of the getter and OnSet() in the setter. I also added a sentry for each collection. They require OnGet() in the getter, and OnSet() when something is added or removed. Finally, I added a sentry per table, to take care of the top-level queries. For these, I call OnSet() on any insert, update, and delete. The final T4 template is in the example source code.</p>
+<p><strong>Wrap the view model for WPF</strong> <br />Wrapping the view model for the view is a one-liner.</p>
+<pre><span style="color: blue">public</span> Window1()
+{
+    InitializeComponent();
+
+    <span style="color: green">// Create a data model and a navigation model.</span>
+    _blog = <span style="color: blue">new</span> Blog();
+    BlogNavigationModel navigationModel = <span style="color: blue">new</span> BlogNavigationModel();
+
+    <span style="color: green">// Put them both in a view model, then wrap it for the view.</span>
+    <span style="color: blue">this</span>.DataContext = <strong>ForView.Wrap</strong>(<span style="color: blue">new</span> BlogViewModel(_blog, navigationModel));
+}</pre><p>We create a view model based on the decorated data model and a similarly decorated navigation model (more on that later). Then we let Update Controls wrap it up before we give it to the view.</p>
+<p><strong>View model per scope</strong> <br /><a href="sites/default/files/images/UpdateControlsandLinqtoSQL_DBC6/Noteworthy.png"><img style="border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" border="0" alt="Noteworthy" align="right" src="sites/default/files/images/UpdateControlsandLinqtoSQL_DBC6/Noteworthy_thumb.png" width="209" height="244" /></a>The example application -- Noteworthy -- is a blog editor. Different parts of the view focus on different granularities of data. The main view (shown in red) focuses on the blog as a whole. The article list items and detail pane (shown in blue) focus on a single article. And the tag list items (shown in green) focus on a single tag.</p>
+<p>We define one view model class for each of these three scopes. Each one takes constructor parameters to put itself in context. So the BlogViewModel takes a Blog, the ArticleViewModel takes a Blog and an Article, and the TagViewModel takes a Blog and a Tag.</p>
+<p>The DataContext property of a WPF control determines where it begins for data binding. If you don't set it, the control inherits it from its parent. If the control is an item in a list, then it is automatically set to an element of the ItemsSource. Finally, you can data bind to a property of its parent scope. Noteworthy uses all three techniques.</p>
+<p><strong>Property per control attribute</strong> <br />WPF data binding connects control attributes to object properties. So within each view model, we define a property for each attribute of a control. The view model exists to serve of the view, so this one-to-one mapping is to be expected. The view model is an isolation layer designed to keep these view-specific concerns out of your data model.</p>
+<p><strong>Navigation model per user context</strong> <br />The user of your application has a conceptual model of how controls should work together. Noteworthy is a single window program, so they expect all of the controls on that window to interact appropriately. If it had multiple child windows all within a parent, they would expect each window to be its own context, but participate within the context of the main window. And if it were a composite application, they would expect all of the components to work together.</p>
+<p>Where the user draws their conceptual boundary, we create a navigation model. A navigation model records the user's point-of-view as they navigate through the application. It keeps track of their selection and temporary input.</p>
+<p>All of the state in the navigation model is transient. Nothing is written to the database. Persistent state belongs in the data model. This keeps the view model completely stateless. The view model has only behavior, which depends upon the data model and the navigation model.</p>
+<p>Because the navigation model is transient, we just write fields, select them, and hit Ctrl+D, G to generate the properties. For example, here's the property that records the selected article. The part that I wrote by hand is highlighted:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> BlogNavigationModel
+{
+<strong>    <span style="color: blue">private</span> Article _selectedArticle;
+</strong>
+    <span style="color: blue">#region</span> Independent properties
+    <span style="color: green">// Generated by Update Controls --------------------------------</span>
+    <span style="color: blue">private</span> Independent _indSelectedArticle = <span style="color: blue">new</span> Independent();
+
+    <span style="color: gray">/// &lt;summary&gt;</span>
+    <span style="color: gray">/// The article for which to display details.</span>
+    <span style="color: gray">/// &lt;/summary&gt;</span>
+    <span style="color: blue">public</span> Article SelectedArticle
+    {
+        <span style="color: blue">get</span> { _indSelectedArticle.OnGet(); <span style="color: blue">return</span> _selectedArticle; }
+        <span style="color: blue">set</span> { _indSelectedArticle.OnSet(); _selectedArticle = value; }
+    }
+    <span style="color: green">// End generated code --------------------------------</span>
+    <span style="color: blue">#endregion</span>
+}</pre><p>The properties of the navigation model are always data model types, never view model types. The view model depends upon the navigation model, not vice-versa.</p>
+<p><strong>Explore on your own</strong> <br />That's just enough to get you started. There are many interesting patterns that came together in the making of Noteworthy. Here are some that you might want to examine on your own:</p>
+<ul>
+<li>The BlogViewModel.Articles property is filtered by the selected tag.
+</li><li>The article detail pane is a Grid within a Grid. The outer grid binds IsEnabled, while the inner grid binds DataContext.
+</li><li>The TagListBoxStyle resource binds the ListBoxItem.IsSelected attribute to the TagViewModel.TagIsSelected property to support multiple selection.
+</li><li>The Blog data model class uses a Dependent sentry to cache Tags.
+</li><li>Every view model setter and command that affects the data model calls SubmitChanges.
+</li><li>The ArticleViewModel.AvailableTags property uses .Except() to get all tags not assigned to the article.
+</li><li>The BlogViewModel.SelectedArticle property wraps the data object from the navigation model in a view model, and then unwraps it on the way back.
+</li><li>The first tag in BlogViewModel.Filters is actually not a tag at all. It is a null to represent the lack of a filter. </li>
+</ul>
+<p>Expect future posts to return to this example and explore these points in more detail.</p>
+  <div id="book-navigation-11" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="examples/linq.html" class="page-previous" title="Go to previous page">‹ Linq</a>
+                    <a href="examples.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="examples/multi-threading.html" class="page-next" title="Go to next page">Multi-threading ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="comment/reply/2.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-684"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="mvvm-and-linq-to-sql.html#comment-684" class="active">Is this still the preferred way?</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Sat, 08/31/2013 - 23:49.  </div>
+
+  <div class="content">
+    <p>Thanks, I love the ease of use of UpdateControls. </p>
+<p>But I hate the confusion created by the documentation, as there seem to be several alternative techniques to do things that have evolved over time, and the documentation does not state when a technique has been superseded.</p>
+<p>For example this example demonstrates the use of Independent sentries, but it seems that the latest preferred method is to use Independent(of T). I would love to see the documentation updated to reflect the current preferred techniques, or at least, a notation indicating when an article gives an outdated technique for doing something, and links to the current preferred technique.</p>
+<p>Now it's not clear to me whether the use of T4 templates is still the preferred method.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="comment/reply/2/684.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-687"></a>
+<div class="comment comment-published even last comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="mvvm-and-linq-to-sql.html#comment-687" class="active">No longer preferred</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Sat, 10/12/2013 - 17:57.  </div>
+
+  <div class="content">
+    <p>You make a good point about obsolete documentation on this site. I have a new site design in the works that gives up-to-date guidance. Until I get that published, please consider the articles under "The Basics" to be the recommended ways of using Update Controls.</p>
+<p>As for this article, Linq to SQL is no longer preferred, so this T4 template is obsolete. I recommend using EF as a repository and mementos. Design you own Independent-based data model separate from the persistence layer.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="comment/reply/2/687.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div>  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="examples.html">Examples</a><ul class="menu"><li class="leaf first"><a href="examples/menus.html">Menus</a></li>
+<li class="collapsed"><a href="examples/treeview/non_recursive.html">TreeView</a></li>
+<li class="leaf"><a href="examples/icommand.html">ICommand</a></li>
+<li class="leaf"><a href="examples/linq.html">Linq</a></li>
+<li class="leaf active-trail"><a href="mvvm-and-linq-to-sql.html" class="active">Linq to SQL</a></li>
+<li class="leaf"><a href="examples/multi-threading.html">Multi-threading</a></li>
+<li class="leaf"><a href="examples/twolists.html">Two lists</a></li>
+<li class="leaf"><a href="examples/vmworkshop/wpf.html">VM Workshop</a></li>
+<li class="leaf"><a href="examples/awesome.html">Awesome application</a></li>
+<li class="leaf"><a href="examples/wp7_odata.html">Windows Phone 7 and OData</a></li>
+<li class="leaf last"><a href="examples/mvc-without-eventing.html">MVC without eventing</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="rss.xml" class="feed-icon"><img src="misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/mvvm-and-linq-to-sql?destination=node%2F2"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-fcfc10b6cb32da6ffc42196519dfc474" value="form-fcfc10b6cb32da6ffc42196519dfc474"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/mvvm-and-linq-to-sql by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:51:39 GMT -->
+</html>

@@ -1,0 +1,40 @@
+/* Page Layout */
+html { text-align:left; margin: 10px auto 0 auto; }
+body { text-align:left; margin: 0 auto 0 auto; width:880px; position: relative; }
+#body {margin: auto 0; padding: 0; background-color:#D8A800; }
+
+#header {height: 80px; color: #3D5906;margin:auto 0;text-align:center; }
+#header h1 { text-align:left; padding-left: 10px; font: 32pt Trebuchet MS, Verdana, Arial; font-style: italic; }
+#header #productimage { padding:1px; margin:0;vertical-align:middle; width:62px; }
+
+#mainmenu { color:#FFF; display:block; margin:0; border-bottom: 5px solid #70C412; text-align:left; height: 35px; margin-left: 0; padding-left: 0; }
+#mainmenu a { text-decoration: none; color:#FFF; background: url(http://updatecontrols.net/images/tabnorm.png) top center no-repeat; width:124px; height: 25px; float: left; font: 10pt Verdana, Arial; text-align:center; padding: 10px 0 0 0; margin-right: -9px; position: relative; z-index: 1; }
+#mainmenu a:hover {background: url(http://updatecontrols.net/images/tabhover.png) top center no-repeat; }
+#mainmenu a#selected {background: url(http://updatecontrols.net/images/tabsel.png) top center no-repeat; z-index: 2; }
+
+#rightwide {float: right; width:170px; color: #FFF; padding:5px; margin-right:8px; text-align:left; }
+#rightwide h1 {font: 14pt Trebuchet MS, Verdana, Arial; font-weight: bold; border-bottom:2px solid #fff;}
+#rightwide p  {font: 10pt Verdana, Arial; font-weight: bold; margin:10px 0 0 10px; }
+
+#footer {font: 8pt Verdana, Arial; color: #000; text-align:center; height: 18px; clear:both; border-top: 5px solid #70C412;background-color:#659CD4; color: #FFF; padding:2px 0; margin-bottom:20px; }
+
+/* Content Section */
+#content { float: left; width: 665px; padding: 10px; text-align: left; background-color:#FFF; padding-bottom:20px; min-height:600px; border-left: 5px solid #70C412; }
+#content h1 {font: 28pt Trebuchet MS, Verdana, Arial; color: #3D5906; margin-bottom:45px; margin-top:5px;}
+#content h2 {font: 16pt Trebuchet MS, Verdana, Arial; color: #3D5906; clear: left; font-weight: bold; border-bottom:2px solid #659CD4}
+#content h3 {font: 14pt Trebuchet MS, Verdana, Arial; color: #3D5906; clear: left;}
+#content p {font: 10pt Verdana, Arial; color: #000; margin:2px 20px 5px;}
+#content ol.footnote {font: 8pt Verdana, Arial;}
+#content ul {font: 12pt Verdana, Arial; color: #000; }
+#content ol {font: 10pt Verdana, Arial; color: #000; margin-left:60px; }
+#content dt {margin-left:10px; font: 10pt Verdana, Arial; font-weight: bold; text-decoration: underline; }
+#content dd {padding:0; margin:0 0 0 20px; font: 10pt Verdana, Arial; }
+#content #flashcontent {text-align: center;}
+#content #figure {float:right; margin: 2px;}
+
+#content pre {/*\*/ overflow: auto !important; /* */ overflow: scroll; width: 605px; padding: 20px; margin: 10px; border: 2px solid #659CD4; font: 10pt Courier New, Courier, monospace; color: #000;}
+#content pre #keyword {color: #00F;}
+#content pre #string {color: #A22;}
+#content pre #type {color: #38A;}
+#content pre #comment {color: #080;}
+#content pre #region {color: #888; border: 1px solid #888; padding: -1px;}

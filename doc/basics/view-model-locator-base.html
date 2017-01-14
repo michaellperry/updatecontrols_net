@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/basics/view-model-locator-base by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:50:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ViewModelLocatorBase | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="view-model-locator.html" />
+<link rel="up" href="../basics.html" />
+<link rel="next" href="make-command.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-basics-view-model-locator-base section-basics">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">ViewModelLocatorBase</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-49" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Fri, 12/21/2012 - 19:29        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>One of the more popular patterns for associating a view with it’s view model is the View Model Locator pattern. This is a special case of the Service Locator pattern, specifically tailored to XAML and MVVM. Update Controls supports this pattern with the ViewModelLocatorBase class.</p>
+<p><a href="../sites/default/files/ViewModelLocatorBase_F6FE/image.png"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: right; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" align="right" src="../sites/default/files/ViewModelLocatorBase_F6FE/image_thumb.png" width="446" height="299" /></a>The View Model Locator pattern is view-first. When a view appears, it uses the view model locator to find its view model. Since the default navigation structure of most XAML stacks is view-first as well, the view model locator pattern is a natural choice.</p>
+<p>A XAML application creates an instance of a view model locator and adds it to its resource dictionary. Then, it creates the first view. The view uses the view model locator to find its view model and sets its data context. When it comes time to navigate to a new view, the child view goes through the same process.</p>
+<h3>ViewModelLocator</h3>
+<p>The ViewModelLocator class has a property for each view model. Since it creates the view models, it also needs references to the model so it can call the constructors. These references are likely to include a selection model – an object responsible for keeping track of which item the user has selected. This comes in handy when the user can select something from the main view model, and then navigate to the child view. The selected item is passed into the constructor of the child view model.</p>
+<pre class="code"><span style="background: white; color: blue">public class </span><span style="background: white; color: #2b91af">ViewModelLocator </span><span style="background: white; color: black">: </span><span style="background: white; color: #2b91af">ViewModelLocatorBase
+</span><span style="background: white; color: black">{
+    </span><span style="background: white; color: blue">private </span><span style="background: white; color: #2b91af">Document </span><span style="background: white; color: black">_document;
+    </span><span style="background: white; color: blue">private </span><span style="background: white; color: #2b91af">Selection </span><span style="background: white; color: black">_selection;
+
+    </span><span style="background: white; color: blue">public </span><span style="background: white; color: black">ViewModelLocator()
+    {
+        _document = LoadDocument();
+        _selection = </span><span style="background: white; color: blue">new </span><span style="background: white; color: #2b91af">Selection</span><span style="background: white; color: black">();
+    }
+
+    </span><span style="background: white; color: blue">public object </span><span style="background: white; color: black">Main
+    {
+        </span><span style="background: white; color: blue">get </span><span style="background: white; color: black">{ </span><span style="background: white; color: blue">return </span><span style="background: white; color: black">ViewModel(() =&gt; </span><span style="background: white; color: blue">new </span><span style="background: white; color: #2b91af">MainViewModel</span><span style="background: white; color: black">(<br />            _document, _selection)); }
+    }
+
+    </span><span style="background: white; color: blue">public object </span><span style="background: white; color: black">Child
+    {
+        </span><span style="background: white; color: blue">get
+        </span><span style="background: white; color: black">{
+            </span><span style="background: white; color: blue">return </span><span style="background: white; color: black">ViewModel(() =&gt; _selection.SelectedItem == </span><span style="background: white; color: blue">null
+                </span><span style="background: white; color: black">? </span><span style="background: white; color: blue">null
+                </span><span style="background: white; color: black">: </span><span style="background: white; color: blue">new </span><span style="background: white; color: #2b91af">ChildViewModel</span><span style="background: white; color: black">(_selection.SelectedItem));
+        }
+    }
+
+    </span><span style="background: white; color: blue">private </span><span style="background: white; color: #2b91af">Document </span><span style="background: white; color: black">LoadDocument()
+    {
+        </span><span style="background: white; color: green">// TODO: Load your document here.
+        </span><span style="background: white; color: #2b91af">Document </span><span style="background: white; color: black">document = </span><span style="background: white; color: blue">new </span><span style="background: white; color: #2b91af">Document</span><span style="background: white; color: black">();
+        </span><span style="background: white; color: blue">return </span><span style="background: white; color: black">document;
+    }
+}
+</span></pre><p>The ViewModelLocatorBase class in Update Controls provides the ViewModel method. This method takes a lambda expression that creates the view model. Update Controls will cache the view model, and make sure that the constructor is called again if the parameters change. For example, when the user selects a different item, Update Controls will construct a new child view model.</p>
+<h3>App.xaml</h3>
+<p>The application adds an instance of the view model locator to the resource dictionary. It references the namespace, and gives the object a key. This lets views find the locator.</p>
+<pre class="code"><span style="background: white; color: blue">&lt;</span><span style="background: white; color: #a31515">Application
+    </span><span style="background: white; color: red">x</span><span style="background: white; color: blue">:</span><span style="background: white; color: red">Class</span><span style="background: white; color: blue">=&quot;MyCoolApp.App&quot;
+</span><span style="background: white; color: blue">    </span><span style="background: white; color: red">xmlns</span><span style="background: white; color: blue">:</span><span style="background: white; color: red">vm</span><span style="background: white; color: blue">=&quot;clr-namespace:MyCoolApp.ViewModels&quot;&gt;
+
+    </span><span style="background: white; color: green">&lt;!--Application Resources--&gt;
+    </span><span style="background: white; color: blue">&lt;</span><span style="background: white; color: #a31515">Application.Resources</span><span style="background: white; color: blue">&gt;
+        &lt;</span><span style="background: white; color: #a31515">vm</span><span style="background: white; color: blue">:</span><span style="background: white; color: #a31515">ViewModelLocator </span><span style="background: white; color: red">x</span><span style="background: white; color: blue">:</span><span style="background: white; color: red">Key</span><span style="background: white; color: blue">=&quot;Locator&quot;/&gt;
+</span><span style="background: white; color: blue">    &lt;/</span><span style="background: white; color: #a31515">Application.Resources</span><span style="background: white; color: blue">&gt;
+</span><span style="background: white; color: blue">&lt;/</span><span style="background: white; color: #a31515">Application</span><span style="background: white; color: blue">&gt;</span></pre><p>There will be other things in the resource dictionary, including perhaps merged dictionaries. Just put the view model locator right inside the Application.Resources element.</p>
+<h3>DataContext</h3>
+<p>Each view sets its data context by binding to a property of the view model locator. It sets the binding source to the view model locator as a static resource.</p>
+<pre class="code"><span style="background: white; color: blue">&lt;</span><span style="background: white; color: #a31515">phone</span><span style="background: white; color: blue">:</span><span style="background: white; color: #a31515">PhoneApplicationPage
+    </span><span style="background: white; color: red">x</span><span style="background: white; color: blue">:</span><span style="background: white; color: red">Class</span><span style="background: white; color: blue">=&quot;MyCoolApp.MainPage&quot;
+</span><span style="background: white; color: blue">    </span><span style="background: white; color: red">DataContext</span><span style="background: white; color: blue">=&quot;{</span><span style="background: white; color: #a31515">Binding </span><span style="background: white; color: red">Main</span><span style="background: white; color: blue">, </span><span style="background: white; color: red">Source</span><span style="background: white; color: blue">={</span><span style="background: white; color: #a31515">StaticResource </span><span style="background: white; color: red">Locator</span><span style="background: white; color: blue">}}&quot;&gt;
+
+</span><span style="background: white; color: blue">&lt;/</span><span style="background: white; color: #a31515">phone</span><span style="background: white; color: blue">:</span><span style="background: white; color: #a31515">PhoneApplicationPage</span><span style="background: white; color: blue">&gt;</span></pre><p>With this pattern, the view model locator is a singleton. Each view accesses a property of that single object to get its view model. The base class provided by Update Controls makes sure that a new view model is created if any of its constructor parameters change. This lets you set state in one view, and then depend upon that state as you navigate to another view. It’s a natural and straight-forward way of structuring your XAML applications. </p>
+  <div id="book-navigation-43" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="view-model-locator.html" class="page-previous" title="Go to previous page">‹ MVVM</a>
+                    <a href="../basics.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="make-command.html" class="page-next" title="Go to next page">MakeCommand ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/49.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../basics.html">The Basics</a><ul class="menu"><li class="leaf first"><a href="independent.html">Independent&lt;T&gt;</a></li>
+<li class="leaf"><a href="independent-list.html">IndependentList&lt;T&gt;</a></li>
+<li class="leaf"><a href="view-model-locator.html">MVVM</a></li>
+<li class="leaf active-trail"><a href="view-model-locator-base.html" class="active">ViewModelLocatorBase</a></li>
+<li class="leaf"><a href="make-command.html">MakeCommand</a></li>
+<li class="leaf"><a href="for-view-wrap.html">ForView.Wrap()</a></li>
+<li class="leaf last"><a href="for-view-unwrap.html">ForView.Unwrap()</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../examples.html">Examples</a></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/basics/view-model-locator-base?destination=node%2F49"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-e35fd15dc38aaa6cc99dd48a78e571ce" value="form-e35fd15dc38aaa6cc99dd48a78e571ce"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/basics/view-model-locator-base by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:50:59 GMT -->
+</html>

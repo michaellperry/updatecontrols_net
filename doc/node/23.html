@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/node/23 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Custom change listeners | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="../tips/viewmodelbase.html" />
+<link rel="up" href="../tips.html" />
+<link rel="next" href="../tips/list_detail.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-node-23 section-node">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Custom change listeners</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-23" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sun, 08/29/2010 - 21:43        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>A user asked.</p>
+<blockquote><p>When I use a viewmodel as a datacontext everything just works. Now I want to add a listener to the viewmodel of my own design, but am stumped.&#160; Do you have any suggestions? How do I hook up custom change listeners?</p>
+</blockquote>
+<p>It all depends upon what you want to do with the notification. If you want to use that notification to update something else, I’d recommend using a Dependent instead of an event.</p>
+<h2>Updating a dependent</h2>
+<p>Where Independent has OnGet() and OnSet(), Dependent has only OnGet(). You can't directly set a dependent field. It's value is determined by an update method. You pass the update method to the constructor.</p>
+<p>Here is an example dependent field.</p>
+<pre><span style="color: blue">private</span> <span style="color: blue">class</span> PersonViewModel
+{
+    <span style="color: blue">private</span> Person _person;
+
+    <span style="color: blue">private</span> <span style="color: blue">string</span> _fullName;
+    <span style="color: blue">private</span> Dependent _depFullName;
+
+    <span style="color: blue">public</span> PersonViewModel(Person person)
+    {
+        _person = person;
+        _depFullName = <span style="color: blue">new</span> Dependent(UpdateFullName);
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> FullName
+    {
+        <span style="color: blue">get</span> { _depFullName.OnGet(); <span style="color: blue">return</span> _fullName; }
+    }
+
+    <span style="color: blue">private</span> <span style="color: blue">void</span> UpdateFullName()
+    {
+        _fullName = <span style="color: blue">string</span>.Format(<span style="color: maroon">&quot;{0}, {1}&quot;</span>, _person.LastName, _person.FirstName);
+    }
+}</pre><p>The UpdateFullName method is called only when the full name is out-of-date. If you access FullName again without changing the person’s name, the method is not called a second time.</p>
+<p>The advantage of Dependent over events is dependency management. If you used events, you would have to know which events to subscribe to. Dependent, on the other hand, discovers its dependencies. This is why you use Update Controls instead of INotifyPropertyChanged in the first place.</p>
+<h2>Firing an event</h2>
+<p>But suppose that you need to notify something else for a different reason. Maybe you need to send a message to an external system. In this case, you can hook the Invalidated event of the Dependent. Add the hook to the constructor, like this:</p>
+<pre><span style="color: blue">public</span> PersonViewModel(Person person)
+{
+    _person = person;
+    _depFullName = <span style="color: blue">new</span> Dependent(UpdateFullName);
+    _depFullName.Invalidated += <span style="color: blue">delegate</span>
+    {
+        Dispatcher.CurrentDispatcher.BeginInvoke(() =&gt;
+        {
+            <span style="color: blue">if</span> (FullNameChanged != <span style="color: blue">null</span>)
+                FullNameChanged();
+        });
+    };
+}</pre><p>The Invalidated event is fired whenever the Dependent becomes out-of-date. One of the Independent fields upon which it depends has just changed.</p>
+<p>It is very important that your Invalidated handler does not try to synchronously get the updated value. The Independent field may not have its new value, yet. And even if it did, there may be additional changes coming. That is why the above example fires the FullNameChanged event asynchronously.</p>
+<p>By the way, the code above is exactly how UpdateControls.XAML implements INotifyPropertyChanged.</p>
+<p>Remember that Update Controls replaces imperative events with declarative dependency discovery. If you can avoid firing events, your application will be less brittle. But if you really need events, you can get them.</p>
+  <div id="book-navigation-12" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="../tips/viewmodelbase.html" class="page-previous" title="Go to previous page">‹ ViewModelBase</a>
+                    <a href="../tips.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="../tips/list_detail.html" class="page-next" title="Go to next page">List and detail ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/23.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-583"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="23.html#comment-583" class="active">Specific example involving collections</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Thu, 02/24/2011 - 23:41.  </div>
+
+  <div class="content">
+    <p>I have an</p>
+<p>EntityModel {<br />
+  string name;<br />
+  double x;<br />
+  double y;<br />
+}</p>
+<p>WorldModel {<br />
+  Entities;  // a collection of EntityModel<br />
+}</p>
+<p>WorldView contains a 3D rendering engine whose scene graph I need to insert into and remove from whenever the underlying Entities collection changes.</p>
+<p>How would I achieve this?</p>
+<p>Actual code:<br />
+<a href="https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/Strive.Client/Strive.Client.Model/EntityModel.cs" title="https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/Strive.Client/Strive.Client.Model/EntityModel.cs">https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/S...</a><br />
+<a href="https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/Strive.Client/Strive.Client.ViewModel/WorldViewModel.cs" title="https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/Strive.Client/Strive.Client.ViewModel/WorldViewModel.cs">https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/S...</a><br />
+<a href="https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/Strive.Client/Strive.Client.NeoAxisView/World.cs" title="https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/Strive.Client/Strive.Client.NeoAxisView/World.cs">https://github.com/timothypratley/Strive.NET/blob/master/Source/Strive/S...</a></p>
+<p>Thanks for a great library :)</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/23/583.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-646"></a>
+<div class="comment comment-published even comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="23.html#comment-646" class="active">3D rendering supports</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Thu, 01/19/2012 - 08:01.  </div>
+
+  <div class="content">
+    <p>Are you searching for <a href="http://www.dotlogics.com/3Drenderings.php">3D Renderings</a> engine?</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/23/646.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<a id="comment-584"></a>
+<div class="comment comment-published odd comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="23.html#comment-584" class="active">Modify the scene graph in the update method</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Fri, 02/25/2011 - 17:19.  </div>
+
+  <div class="content">
+    <p>This sounds like the second situation above: you are using a Dependent to effect a change in an external system.</p>
+<p>You can have a Dependent in your WorldViewModel called _depSceneGraph. The update method of this Dependent (the method you pass to the constructor) will need to walk the entities. Call it UpdateSceneGraph. So in your WorldViewModel constructor you initialize:</p>
+<p>_depSceneGraph = new Dependent(UpdateSceneGraph);</p>
+<p>UpdateSceneGraph takes no parameters and returns void. In it, you walk through each EntityModel in WorldModel. Create the representative object in the Direct3D scene graph. To start with, just destroy all objects in the scene graph and rebuild everything from scratch. Once you get this working, you can optimize by using the RecycleBin. I'll post more on that later.</p>
+<p>Then you'll need to trigger UpdateSceneGraph. You'll do this by hooking the Invalidated event. Remember that you can't trigger it immediately within the Invalidated event, since that will cause a dependency cycle. Instead, dispatch a call for later. For example:</p>
+<p>    _depSceneGraph.Invalidated += delegate<br />
+    {<br />
+        Dispatcher.CurrentDispatcher.BeginInvoke(() =><br />
+        {<br />
+            _depSceneGraph.OnGet();<br />
+        });<br />
+    };</p>
+<p>Finally, you'll need to prime the pump. After you hook this event, call OnGet() directly:</p>
+<p>_depSceneGraph.OnGet();</p>
+<p>That will cause the scene graph to be updated after any change to the Entities collection or any EntityModel object that it contains.</p>
+<p>Hope this helps.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/23/584.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-589"></a>
+<div class="comment comment-published even comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="23.html#comment-589" class="active">Ok I got that part working in</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Thu, 03/03/2011 - 17:01.  </div>
+
+  <div class="content">
+    <p>Ok I got that part working in a slightly different way; The scene graph only exists in my View class so in the ViewModel I fire another event that the View listens to and rebuilds the entire scene graph.  discard doesn't really do much except allow the dependency to be found.  Interested to hear more about RecycleBin. :)</p>
+<p><code><br />
+        public event EventHandler WorldChanged;<br />
+        private readonly Dependent _depWorldModel;<br />
+        void UpdateWorldModel()<br />
+        {<br />
+            var discard = WorldModel.Values;<br />
+            var eh = WorldChanged;<br />
+            if (eh != null)<br />
+                eh(this, new EventArgs());<br />
+        }</code></p>
+<p>...<br />
+            _depWorldModel = new Dependent(UpdateWorldModel);<br />
+            _depWorldModel.Invalidated += () =&gt;<br />
+                Dispatcher.CurrentDispatcher.BeginInvoke((Action)_depWorldModel.OnGet);<br />
+            _depWorldModel.OnGet();</p>
+<p></p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/23/589.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-590"></a>
+<div class="comment comment-published odd last comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="23.html#comment-590" class="active">RecycleBin article posted</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Thu, 03/03/2011 - 18:15.  </div>
+
+  <div class="content">
+    <p>I posted an article about the RecycleBin at <a href="../advanced/object-recycling.html" title="http://updatecontrols.net/doc/advanced/object-recycling">http://updatecontrols.net/doc/advanced/object-recycling</a>. Let me know if this does the job for you.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/23/590.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div></div></div>  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../examples.html">Examples</a></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../tips.html">Tips</a><ul class="menu"><li class="leaf first"><a href="../tips/do-not-use-observablecollectiont.html">Do not use ObservableCollection&lt;T&gt;</a></li>
+<li class="leaf"><a href="../tips/selectionmodel.html">Selection Model</a></li>
+<li class="leaf"><a href="../tips/viewmodel_navigationmodel.html">View Model and Navigation Model</a></li>
+<li class="leaf"><a href="../tips/viewmodelbase.html">ViewModelBase</a></li>
+<li class="leaf active-trail"><a href="23.html" class="active">Custom change listeners</a></li>
+<li class="leaf"><a href="../tips/list_detail.html">List and detail</a></li>
+<li class="leaf"><a href="../tips/mvvm_design_time_data.html">MVVM Design Time Data</a></li>
+<li class="leaf"><a href="../tips/view_models_in_f_sharp.html">View Models in F#</a></li>
+<li class="leaf"><a href="../tips/data_bind_visual_states.html">Data bind visual states</a></li>
+<li class="leaf last"><a href="../tips/common_mistakes_observablecollection.html">Common mistakes while using ObservableCollection</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/node/23?destination=node%2F23"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-caf10ccc595619f0a1466d94b09db73a" value="form-caf10ccc595619f0a1466d94b09db73a"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/node/23 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:45 GMT -->
+</html>

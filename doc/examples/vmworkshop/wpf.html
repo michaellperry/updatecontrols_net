@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/examples/vmworkshop/wpf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>VM Workshop | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../blogapi/rsd" />
+<link rel="prev" href="../twolists.html" />
+<link rel="up" href="../../examples.html" />
+<link rel="next" href="../awesome.html" />
+<link rel="shortcut icon" href="../../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-examples-vmworkshop-wpf section-examples">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../../index.html" title="Home" rel="home"><img src="../../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../../index.html">Home</a> › <a href="../../blog.html">Blogs</a> › <a href="../../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">VM Workshop</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-20" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Thu, 11/05/2009 - 01:20        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Craig Shoemaker has created a reference application for the MVVM pattern called <a href="http://polymorphicpodcast.com/vmworkshop/">VM Workshop</a>. The idea behind a <strong>reference application</strong> is to have one application written with different technologies so that they can be compared with one another. Each incarnation of the reference application is called a <strong>reference implementation</strong>. Craig has created six such reference implementations to demonstrate different UI technologies: Silverlight, WPF, Webforms, Winforms, ASP.NET MVC, and Ajax.</p>
+<p>To support this impressive effort, I humbly contribute the Update Controls reference implementations. Let me start with the WPF implementation. <a href="../../sites/default/files/VMWorkshopUC.zip">Download the source</a> and follow along.</p>
+<p><strong>Independent sentries</strong>     <br />I started with Craig’s WPF reference implementation, then modified code as necessary to demonstrate the Update Controls way. The first change was to add Independent sentries to the data model:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> Product 
+{ 
+    <span style="color: green">/* Primary key */</span> 
+    <span style="color: blue">public</span> <span style="color: blue">int</span> ProductId { <span style="color: blue">get</span>; <span style="color: blue">set</span>; } 
+
+    <span style="color: green">/* Data members */</span> 
+    <span style="color: blue">private</span> <span style="color: blue">string</span> _title; 
+    <span style="color: blue">private</span> <span style="color: blue">string</span> _description; 
+    <span style="color: blue">private</span> <span style="color: blue">int</span> _quantityOnHand; 
+    <span style="color: blue">private</span> <span style="color: blue">double</span> _price; 
+    <span style="color: blue">private</span> DateTime _releaseDate; 
+
+    <span style="color: blue">#region</span> Independent properties 
+    <span style="color: green">// Generated by Update Controls -------------------------------- </span>
+    <span style="color: blue">private</span> Independent _indTitle = <span style="color: blue">new</span> Independent(); 
+    <span style="color: blue">private</span> Independent _indDescription = <span style="color: blue">new</span> Independent(); 
+    <span style="color: blue">private</span> Independent _indQuantityOnHand = <span style="color: blue">new</span> Independent(); 
+    <span style="color: blue">private</span> Independent _indPrice = <span style="color: blue">new</span> Independent(); 
+    <span style="color: blue">private</span> Independent _indReleaseDate = <span style="color: blue">new</span> Independent(); 
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> Title 
+    { 
+        <span style="color: blue">get</span> { _indTitle.OnGet(); <span style="color: blue">return</span> _title; } 
+        <span style="color: blue">set</span> { _indTitle.OnSet(); _title = value; } 
+    } 
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> Description 
+    { 
+        <span style="color: blue">get</span> { _indDescription.OnGet(); <span style="color: blue">return</span> _description; } 
+        <span style="color: blue">set</span> { _indDescription.OnSet(); _description = value; } 
+    } 
+
+    <span style="color: blue">public</span> <span style="color: blue">int</span> QuantityOnHand 
+    { 
+        <span style="color: blue">get</span> { _indQuantityOnHand.OnGet(); <span style="color: blue">return</span> _quantityOnHand; } 
+        <span style="color: blue">set</span> { _indQuantityOnHand.OnSet(); _quantityOnHand = value; } 
+    } 
+
+    <span style="color: blue">public</span> <span style="color: blue">double</span> Price 
+    { 
+        <span style="color: blue">get</span> { _indPrice.OnGet(); <span style="color: blue">return</span> _price; } 
+        <span style="color: blue">set</span> { _indPrice.OnSet(); _price = value; } 
+    } 
+
+    <span style="color: blue">public</span> DateTime ReleaseDate 
+    { 
+        <span style="color: blue">get</span> { _indReleaseDate.OnGet(); <span style="color: blue">return</span> _releaseDate; } 
+        <span style="color: blue">set</span> { _indReleaseDate.OnSet(); _releaseDate = value; } 
+    } 
+    <span style="color: green">// End generated code -------------------------------- </span>
+    <span style="color: blue">#endregion</span> 
+
+    <span style="color: green">/* Audit members */</span> 
+    <span style="color: blue">public</span> DateTime CreatedOn { <span style="color: blue">get</span>; <span style="color: blue">set</span>; } 
+    <span style="color: blue">public</span> <span style="color: blue">string</span> CreatedBy { <span style="color: blue">get</span>; <span style="color: blue">set</span>; } 
+    <span style="color: blue">public</span> DateTime ModifiedOn { <span style="color: blue">get</span>; <span style="color: blue">set</span>; } 
+    <span style="color: blue">public</span> <span style="color: blue">string</span> ModifiedBy { <span style="color: blue">get</span>; <span style="color: blue">set</span>; } 
+    <span style="color: blue">public</span> <span style="color: blue">bool</span> IsDeleted { <span style="color: blue">get</span>; <span style="color: blue">set</span>; } 
+}</pre><p>Only the properties that the user can change are guarded with Independent sentries. The ID and the audit members are not under the user’s control.</p>
+<p><strong>Don’t store state in the View Model</strong> </p>
+<p>Next the View Model got a complete overhaul. Craig’s View Model stores state, which he keeps in sync with the data model through well-orchestrated code. The Update Controls way, however, is to store only a reference to the data model. When the View Model needs data, it asks for it. That way there is no synchronization to orchestrate.</p>
+<p>Take, for example, the way that Craig orchestrates the products list:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> DemoViewModel : INotifyPropertyChanged 
+{ 
+    <span style="color: green">// Events </span>
+    <span style="color: blue">public</span> <span style="color: blue">event</span> PropertyChangedEventHandler PropertyChanged; 
+
+    <span style="color: green">// Private fields </span>
+    <span style="color: blue">private</span> IList&lt;ProductListView&gt; _products; 
+    <span style="color: blue">private</span> IProductRepository _repository; 
+
+    <span style="color: green">// Public properties </span>
+    <span style="color: blue">public</span> IList&lt;ProductListView&gt; Products 
+    { 
+        <span style="color: blue">get</span>  
+        { 
+            <span style="color: blue">if</span> (<span style="color: blue">this</span>._products == <span style="color: blue">null</span>) 
+            { 
+                <span style="color: blue">this</span>._products = <span style="color: blue">this</span>.GetProducts(); 
+            } 
+            <span style="color: blue">return</span> <span style="color: blue">this</span>._products;  
+        } 
+        <span style="color: blue">set</span> 
+        { 
+            <span style="color: blue">if</span> (<span style="color: blue">this</span>._products != value) 
+            { 
+                <span style="color: blue">this</span>._products = value; 
+                <span style="color: blue">this</span>.RaisePropertyChangedEvent(<span style="color: maroon">&quot;Products&quot;</span>); 
+            } 
+        } 
+    } 
+
+    <span style="color: green">// Constructor </span>
+    <span style="color: blue">public</span> DemoViewModel(IProductRepository repository) 
+    { 
+        <span style="color: blue">this</span>._repository = repository; 
+    } 
+
+    <span style="color: green">// Utilities </span>
+    <span style="color: blue">private</span> IList&lt;ProductListView&gt; GetProducts() 
+    { 
+        var products = <span style="color: blue">this</span>._repository.GetAll(); 
+        <span style="color: blue">return</span> Mapper.Map&lt;IList&lt;Product&gt;, IList&lt;ProductListView&gt;&gt;(products); 
+    } 
+
+    <span style="color: blue">protected</span> <span style="color: blue">virtual</span> <span style="color: blue">void</span> RaisePropertyChangedEvent(<span style="color: blue">params</span> <span style="color: blue">string</span>[] propertyNames) 
+    { 
+        <span style="color: blue">if</span> (<span style="color: blue">this</span>.PropertyChanged != <span style="color: blue">null</span>) 
+        { 
+            <span style="color: blue">foreach</span> (<span style="color: blue">string</span> name <span style="color: blue">in</span> propertyNames) 
+            { 
+                <span style="color: blue">this</span>.PropertyChanged(<span style="color: blue">this</span>, <span style="color: blue">new</span> PropertyChangedEventArgs(name)); 
+            } 
+        } 
+    } 
+}</pre><p>He keeps a list of products in the View Model, which he loads from the repository and writes back to the repository at just the right times. He uses Automapper to copy the state of a Product into a ProductListView. When the Product changes, he has to copy that state again (a feature which he has not yet added at the time of writing).</p>
+<p>Compare this to the Update Controls way:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> DemoViewModel 
+{ 
+    <span style="color: green">// Private fields </span>
+    <span style="color: blue">private</span> IProductRepository _repository; 
+
+    <span style="color: green">// Public properties </span>
+    <span style="color: blue">public</span> IEnumerable&lt;ProductViewModel&gt; Products 
+    { 
+        <span style="color: blue">get</span>  
+        { 
+            <span style="color: blue">return</span> _repository.GetAll() 
+                .Select(p =&gt; <span style="color: blue">new</span> ProductViewModel(p)); 
+        } 
+    } 
+
+    <span style="color: green">// Constructor </span>
+    <span style="color: blue">public</span> DemoViewModel(IProductRepository repository) 
+    { 
+        <span style="color: blue">this</span>._repository = repository; 
+    } 
+}</pre><p>When the View Model needs the list of products, it just goes to the repository and gets it. And it doesn’t copy each product into another data structure. It just wraps each product in a View Model of its own. These Product View Models similarly hold no state. They just delegate to the Product data model.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> ProductViewModel 
+{ 
+    <span style="color: blue">private</span> Product _product; 
+
+    <span style="color: blue">public</span> ProductViewModel(Product product) 
+    { 
+        _product = product; 
+    } 
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> Title 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _product.Title; } 
+        <span style="color: blue">set</span> { _product.Title = value; } 
+    } 
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> Description 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _product.Description; } 
+        <span style="color: blue">set</span> { _product.Description = value; } 
+    } 
+
+    <span style="color: blue">public</span> <span style="color: blue">int</span> QuantityOnHand 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _product.QuantityOnHand; } 
+        <span style="color: blue">set</span> { _product.QuantityOnHand = value; } 
+    } 
+
+    <span style="color: blue">public</span> <span style="color: blue">double</span> Price 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _product.Price; } 
+        <span style="color: blue">set</span> { _product.Price = value; } 
+    } 
+
+    <span style="color: blue">public</span> DateTime ReleaseDate 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _product.ReleaseDate; } 
+        <span style="color: blue">set</span> { _product.ReleaseDate = value; } 
+    } 
+
+    <span style="color: blue">public</span> Product Product 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _product; } 
+    } 
+}</pre><p>The advantage of this method is that there is only one source of data: the data model. There are no intermediate copies to accidentally get out of sync. The purpose of the View Model is not to cache intermediate data. It is there to transform the data for consumption by the view.</p>
+<p><strong>Add a Navigation Model</strong> </p>
+<p>Craig’s View Model has additional state to keep track of user navigation. He stores the selected product, and provides a method for use in code behind to access it.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> DemoViewModel : INotifyPropertyChanged 
+{  
+    <span style="color: green">// Private fields  </span>
+    <span style="color: blue">private</span> ProductEditView _selectedProduct;  
+
+    <span style="color: green">// Public properties  </span>
+    <span style="color: blue">public</span> ProductEditView SelectedProduct 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> <span style="color: blue">this</span>._selectedProduct; } 
+        <span style="color: blue">set</span> 
+        { 
+            <span style="color: blue">if</span> (<span style="color: blue">this</span>._selectedProduct != value) 
+            { 
+                <span style="color: blue">this</span>._selectedProduct = value; 
+                <span style="color: blue">this</span>.RaisePropertyChangedEvent(<span style="color: maroon">&quot;SelectedProduct&quot;</span>); 
+            } 
+        } 
+    }  
+
+    <span style="color: green">// Public API methods  </span>
+    <span style="color: blue">public</span> <span style="color: blue">void</span> GetSelectedProduct(<span style="color: blue">int</span> productId) 
+    { 
+        Product product = <span style="color: blue">this</span>._repository.GetProductById(productId); 
+        <span style="color: blue">this</span>.SelectedProduct = ProductEditView.ToProductEditView(product); 
+
+        <span style="color: blue">this</span>.EditFormVisibility = Visibility.Visible; 
+        <span style="color: blue">this</span>.UpdateMessageVisibility = Visibility.Collapsed; 
+    } 
+}</pre><p>The Update Controls way, on the other hand, is to move this state into a Navigation Model. Both the data grid and the edit panel data bind to the same property, so no code behind is required.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> DemoViewModel 
+{ 
+    <span style="color: green">// Private fields </span>
+    <span style="color: blue">private</span> DemoNavigationModel _navigation = <span style="color: blue">new</span> DemoNavigationModel(); 
+
+    <span style="color: green">// Public properties </span>
+    <span style="color: blue">public</span> ProductViewModel SelectedProduct 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _navigation.SelectedProduct == <span style="color: blue">null</span> ? <span style="color: blue">null</span> : <span style="color: blue">new</span> ProductViewModel(_navigation.SelectedProduct); } 
+        <span style="color: blue">set</span> { _navigation.SelectedProduct = value == <span style="color: blue">null</span> ? <span style="color: blue">null</span> : value.Product; } 
+    } 
+}</pre><p>The Navigation Model guards this property with Independent sentries, since it is under the user’s control.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> DemoNavigationModel 
+{ 
+    <span style="color: blue">private</span> Product _selectedProduct; 
+
+    <span style="color: blue">#region</span> Independent properties 
+    <span style="color: green">// Generated by Update Controls -------------------------------- </span>
+    <span style="color: blue">private</span> Independent _indSelectedProduct = <span style="color: blue">new</span> Independent(); 
+
+    <span style="color: blue">public</span> Product SelectedProduct 
+    { 
+        <span style="color: blue">get</span> { _indSelectedProduct.OnGet(); <span style="color: blue">return</span> _selectedProduct; } 
+        <span style="color: blue">set</span> { _indSelectedProduct.OnSet(); _selectedProduct = value; ProductIsUpdated = <span style="color: maroon">false</span>; } 
+    } 
+    <span style="color: green">// End generated code -------------------------------- </span>
+    <span style="color: blue">#endregion</span> 
+}</pre><p><strong>Change the view through Styles and DataTriggers</strong> </p>
+<p>One final change was to the way that visibility is controlled. The edit panel should only be visible when a product is selected, and a message should be displayed when a product is saved. Craig implemented these features by data binding the Visibility property of these controls to a couple of View Model properties:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> DemoViewModel : INotifyPropertyChanged 
+{  
+    <span style="color: green">// Private fields  </span>
+    <span style="color: blue">private</span> Visibility _editFormVisibility = Visibility.Collapsed; 
+    <span style="color: blue">private</span> Visibility _updateMessageVisibility = Visibility.Collapsed; 
+
+    <span style="color: green">// Public properties </span>
+    <span style="color: blue">public</span> Visibility EditFormVisibility 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> <span style="color: blue">this</span>._editFormVisibility; } 
+        <span style="color: blue">set</span> 
+        { 
+            <span style="color: blue">if</span> (<span style="color: blue">this</span>._editFormVisibility != value) 
+            { 
+                <span style="color: blue">this</span>._editFormVisibility = value; 
+                <span style="color: blue">this</span>.RaisePropertyChangedEvent(<span style="color: maroon">&quot;EditFormVisibility&quot;</span>); 
+            } 
+        } 
+    } 
+
+    <span style="color: blue">public</span> Visibility UpdateMessageVisibility 
+    { 
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> <span style="color: blue">this</span>._updateMessageVisibility; } 
+        <span style="color: blue">set</span> 
+        { 
+            <span style="color: blue">if</span> (<span style="color: blue">this</span>._updateMessageVisibility != value) 
+            { 
+                <span style="color: blue">this</span>._updateMessageVisibility = value; 
+                <span style="color: blue">this</span>.RaisePropertyChangedEvent(<span style="color: maroon">&quot;UpdateMessageVisibility&quot;</span>); 
+            } 
+        } 
+    } 
+}</pre><p>He sets these properties within the View Model at the appropriate times to show and hide the controls. He binds the Visibility of the controls directly to these properties.</p>
+<pre><span style="color: blue">&lt;</span><span style="color: maroon">Grid</span> <span style="color: red">x:Name</span>=&quot;<span style="color: blue">editGrid</span>&quot; <span style="color: red">Margin</span>=&quot;<span style="color: blue">5</span>&quot; <span style="color: red">Visibility</span>=&quot;<span style="color: blue">{Binding EditFormVisibility}</span>&quot;<span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">Grid</span><span style="color: blue">&gt;</span></pre><p>An alternative is to use Styles to set properties of controls. A DataTrigger sets the control property based on the value of a View Model property.</p>
+<pre><span style="color: blue">&lt;</span><span style="color: maroon">Window.Resources</span><span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">Style</span> <span style="color: red">x:Key</span>=&quot;<span style="color: blue">ProductGridStyle</span>&quot; <span style="color: red">TargetType</span>=&quot;<span style="color: blue">Grid</span>&quot;<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">Style.Triggers</span><span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span><span style="color: maroon">DataTrigger</span> <span style="color: red">Binding</span>=&quot;<span style="color: blue">{Binding SelectedProduct}</span>&quot; <span style="color: red">Value</span>=&quot;<span style="color: blue">{x:Null}</span>&quot;<span style="color: blue">&gt;</span>
+                <span style="color: blue">&lt;</span><span style="color: maroon">Setter</span> <span style="color: red">Property</span>=&quot;<span style="color: blue">Visibility</span>&quot; <span style="color: red">Value</span>=&quot;<span style="color: blue">Collapsed</span>&quot;/<span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span>/<span style="color: maroon">DataTrigger</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span>/<span style="color: maroon">Style.Triggers</span><span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span>/<span style="color: maroon">Style</span><span style="color: blue">&gt;</span>
+    
+    <span style="color: blue">&lt;</span><span style="color: maroon">Style</span> <span style="color: red">x:Key</span>=&quot;<span style="color: blue">UpdateMessageStyle</span>&quot; <span style="color: red">TargetType</span>=&quot;<span style="color: blue">TextBlock</span>&quot;<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">Style.Triggers</span><span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span><span style="color: maroon">DataTrigger</span> <span style="color: red">Binding</span>=&quot;<span style="color: blue">{Binding IsUpdateMessageVisible}</span>&quot; <span style="color: red">Value</span>=&quot;<span style="color: blue">False</span>&quot;<span style="color: blue">&gt;</span>
+                <span style="color: blue">&lt;</span><span style="color: maroon">Setter</span> <span style="color: red">Property</span>=&quot;<span style="color: blue">Visibility</span>&quot; <span style="color: red">Value</span>=&quot;<span style="color: blue">Collapsed</span>&quot;/<span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span>/<span style="color: maroon">DataTrigger</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span>/<span style="color: maroon">Style.Triggers</span><span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span>/<span style="color: maroon">Style</span><span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">Window.Resources</span><span style="color: blue">&gt;</span>
+
+<span style="color: blue">&lt;</span><span style="color: maroon">Grid</span> <span style="color: red">x:Name</span>=&quot;<span style="color: blue">editGrid</span>&quot; <span style="color: red">Margin</span>=&quot;<span style="color: blue">5</span>&quot; <span style="color: red">Style</span>=&quot;<span style="color: blue">{StaticResource ProductGridStyle}</span>&quot;<span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">Grid</span><span style="color: blue">&gt;</span>
+
+<span style="color: blue">&lt;</span><span style="color: maroon">TextBlock</span> <span style="color: red">Style</span>=&quot;<span style="color: blue">{StaticResource UpdateMessageStyle}</span>&quot; <span style="color: red">Text</span>=&quot;<span style="color: blue">Your changes are saved.</span>&quot; /<span style="color: blue">&gt;</span></pre><p>The advantage of this technique is that the View Model does not contain WPF-specific data types. You get better code/markup separation. A designer could even use these triggers to begin animations, and the code would not have to change.</p>
+<p><strong>Conclusion</strong> </p>
+<p>The Update Controls way is quite a bit different from the usual way of implementing the View Model pattern. Update Controls works best when the View Model stores no state, when the user’s selection is moved into a separate Navigation Model, and when DataTriggers control view properties and animations. I owe a dept of gratitude once again to Craig Shoemaker, this time for creating this reference application. By comparing these implementations side-by-side, you can decide whether this style of programming is right for you. If you can get used to the differences, I think you’ll find that the Update Controls code is easier to maintain over the long term.</p>
+  <div id="book-navigation-11" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="../twolists.html" class="page-previous" title="Go to previous page">‹ Two lists</a>
+                    <a href="../../examples.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="../awesome.html" class="page-next" title="Go to next page">Awesome application ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../../comment/reply/20.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../../examples.html">Examples</a><ul class="menu"><li class="leaf first"><a href="../menus.html">Menus</a></li>
+<li class="collapsed"><a href="../treeview/non_recursive.html">TreeView</a></li>
+<li class="leaf"><a href="../icommand.html">ICommand</a></li>
+<li class="leaf"><a href="../linq.html">Linq</a></li>
+<li class="leaf"><a href="../../mvvm-and-linq-to-sql.html">Linq to SQL</a></li>
+<li class="leaf"><a href="../multi-threading.html">Multi-threading</a></li>
+<li class="leaf"><a href="../twolists.html">Two lists</a></li>
+<li class="leaf active-trail"><a href="wpf.html" class="active">VM Workshop</a></li>
+<li class="leaf"><a href="../awesome.html">Awesome application</a></li>
+<li class="leaf"><a href="../wp7_odata.html">Windows Phone 7 and OData</a></li>
+<li class="leaf last"><a href="../mvc-without-eventing.html">MVC without eventing</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../../rss.xml" class="feed-icon"><img src="../../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/examples/vmworkshop/wpf?destination=node%2F20"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-9f0265c15c574a1159d6836c30f2161f" value="form-9f0265c15c574a1159d6836c30f2161f"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/examples/vmworkshop/wpf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:32 GMT -->
+</html>

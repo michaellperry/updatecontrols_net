@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base="http://updatecontrols.net/doc"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+ <title>MichaelLPerry&#039;s blog</title>
+ <link>http://updatecontrols.net/doc/blog/1</link>
+ <description></description>
+ <language>en</language>
+<item>
+ <title>ViewModelLocatorBase</title>
+ <link>http://updatecontrols.net/doc/basics/view-model-locator-base</link>
+ <description>&lt;p&gt;One of the more popular patterns for associating a view with it’s view model is the View Model Locator pattern. This is a special case of the Service Locator pattern, specifically tailored to XAML and MVVM. Update Controls supports this pattern with the ViewModelLocatorBase class.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://updatecontrols.net/doc/sites/default/files/ViewModelLocatorBase_F6FE/image.png&quot;&gt;&lt;img title=&quot;image&quot; style=&quot;border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; float: right; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px&quot; border=&quot;0&quot; alt=&quot;image&quot; align=&quot;right&quot; src=&quot;http://updatecontrols.net/doc/sites/default/files/ViewModelLocatorBase_F6FE/image_thumb.png&quot; width=&quot;446&quot; height=&quot;299&quot; /&gt;&lt;/a&gt;The View Model Locator pattern is view-first. When a view appears, it uses the view model locator to find its view model. Since the default navigation structure of most XAML stacks is view-first as well, the view model locator pattern is a natural choice.&lt;/p&gt;
+&lt;p&gt;A XAML application creates an instance of a view model locator and adds it to its resource dictionary. Then, it creates the first view. The view uses the view model locator to find its view model and sets its data context. When it comes time to navigate to a new view, the child view goes through the same process.&lt;/p&gt;
+&lt;h3&gt;ViewModelLocator&lt;/h3&gt;
+&lt;p&gt;The ViewModelLocator class has a property for each view model. Since it creates the view models, it also needs references to the model so it can call the constructors. These references are likely to include a selection model – an object responsible for keeping track of which item the user has selected. This comes in handy when the user can select something from the main view model, and then navigate to the child view. The selected item is passed into the constructor of the child view model.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;ViewModelLocator &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;ViewModelLocatorBase
+&lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;{
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;Document &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;_document;
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;Selection &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;_selection;
+
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;ViewModelLocator()
+    {
+        _document = LoadDocument();
+        _selection = &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;Selection&lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;();
+    }
+
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;public object &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;Main
+    {
+        &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;get &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;{ &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;return &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;ViewModel(() =&amp;gt; &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;MainViewModel&lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;(&lt;br /&gt;            _document, _selection)); }
+    }
+
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;public object &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;Child
+    {
+        &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;get
+        &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;{
+            &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;return &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;ViewModel(() =&amp;gt; _selection.SelectedItem == &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;null
+                &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;? &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;null
+                &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;: &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;ChildViewModel&lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;(_selection.SelectedItem));
+        }
+    }
+
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;Document &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;LoadDocument()
+    {
+        &lt;/span&gt;&lt;span style=&quot;background: white; color: green&quot;&gt;// TODO: Load your document here.
+        &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;Document &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;document = &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;background: white; color: #2b91af&quot;&gt;Document&lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;();
+        &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;return &lt;/span&gt;&lt;span style=&quot;background: white; color: black&quot;&gt;document;
+    }
+}
+&lt;/span&gt;&lt;/pre&gt;&lt;p&gt;The ViewModelLocatorBase class in Update Controls provides the ViewModel method. This method takes a lambda expression that creates the view model. Update Controls will cache the view model, and make sure that the constructor is called again if the parameters change. For example, when the user selects a different item, Update Controls will construct a new child view model.&lt;/p&gt;
+&lt;h3&gt;App.xaml&lt;/h3&gt;
+&lt;p&gt;The application adds an instance of the view model locator to the resource dictionary. It references the namespace, and gives the object a key. This lets views find the locator.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;Application
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;x&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;Class&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;=&amp;quot;MyCoolApp.App&amp;quot;
+&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;    &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;xmlns&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;vm&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;=&amp;quot;clr-namespace:MyCoolApp.ViewModels&amp;quot;&amp;gt;
+
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: green&quot;&gt;&amp;lt;!--Application Resources--&amp;gt;
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;Application.Resources&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;gt;
+        &amp;lt;&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;vm&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;ViewModelLocator &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;x&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;Key&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;=&amp;quot;Locator&amp;quot;/&amp;gt;
+&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;    &amp;lt;/&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;Application.Resources&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;Application&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/pre&gt;&lt;p&gt;There will be other things in the resource dictionary, including perhaps merged dictionaries. Just put the view model locator right inside the Application.Resources element.&lt;/p&gt;
+&lt;h3&gt;DataContext&lt;/h3&gt;
+&lt;p&gt;Each view sets its data context by binding to a property of the view model locator. It sets the binding source to the view model locator as a static resource.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;phone&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;PhoneApplicationPage
+    &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;x&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;Class&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;=&amp;quot;MyCoolApp.MainPage&amp;quot;
+&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;    &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;DataContext&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;=&amp;quot;{&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;Binding &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;Main&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;, &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;Source&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;={&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;StaticResource &lt;/span&gt;&lt;span style=&quot;background: white; color: red&quot;&gt;Locator&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;}}&amp;quot;&amp;gt;
+
+&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;phone&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;background: white; color: #a31515&quot;&gt;PhoneApplicationPage&lt;/span&gt;&lt;span style=&quot;background: white; color: blue&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/pre&gt;&lt;p&gt;With this pattern, the view model locator is a singleton. Each view accesses a property of that single object to get its view model. The base class provided by Update Controls makes sure that a new view model is created if any of its constructor parameters change. This lets you set state in one view, and then depend upon that state as you navigate to another view. It’s a natural and straight-forward way of structuring your XAML applications. &lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics/view-model-locator-base#comments</comments>
+ <pubDate>Sat, 22 Dec 2012 00:29:58 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">49 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>MakeCommand</title>
+ <link>http://updatecontrols.net/doc/basics/make-command</link>
+ <description>&lt;p&gt;You can handle button-click events in the view model. Expose a property of type ICommand. Update Controls will implement the ICommand interface for you. Use the MakeCommand factory, and pass a delegate into the “Do” method.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;ICommand &lt;/span&gt;AddPerson
+{
+    &lt;span style=&quot;color: blue&quot;&gt;get
+    &lt;/span&gt;{
+        &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;MakeCommand
+            &lt;/span&gt;.Do(&lt;span style=&quot;color: blue&quot;&gt;delegate
+            &lt;/span&gt;{
+                _selection.SelectedPerson = _document.NewPerson();
+            });
+    }
+}&lt;/pre&gt;&lt;p&gt;Some commands are not always enabled. Express the conditions under which your command is enabled by passing a lambda expression to the “When” method.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;ICommand &lt;/span&gt;DeletePerson
+{
+    &lt;span style=&quot;color: blue&quot;&gt;get
+    &lt;/span&gt;{
+        &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;MakeCommand
+            &lt;/span&gt;.When(() =&amp;gt; _selection.SelectedPerson != &lt;span style=&quot;color: blue&quot;&gt;null&lt;/span&gt;)
+            .Do(&lt;span style=&quot;color: blue&quot;&gt;delegate
+            &lt;/span&gt;{
+                _document.DeletePerson(_selection.SelectedPerson);
+            });
+    }
+}&lt;/pre&gt;&lt;p&gt;Data bind the property to the button’s Command. When the condition changes, the button will be enabled or disabled. And when the user clicks the button, if the condition is met, it will call the delegate in your view model.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics/make-command#comments</comments>
+ <pubDate>Wed, 03 Oct 2012 16:09:55 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">48 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>ForView.Unwrap()</title>
+ <link>http://updatecontrols.net/doc/basics/for-view-unwrap</link>
+ <description>&lt;p&gt;In the code behind of your view, the DataContext and all of the other bound objects that you will encounter are wrapped. This occurs whether you used the ViewModelLocatorBase class, returned them from the property of a wrapped object, or wrapped them yourself with ForView.Wrap(). To access the view model within the wrapper, you need to call ForView.Unwrap().&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;private void &lt;/span&gt;ListBox_SelectionChanged(
+    &lt;span style=&quot;color: blue&quot;&gt;object &lt;/span&gt;sender, &lt;span style=&quot;color: #2b91af&quot;&gt;SelectionChangedEventArgs &lt;/span&gt;e)
+{
+    &lt;span style=&quot;color: blue&quot;&gt;foreach &lt;/span&gt;(&lt;span style=&quot;color: blue&quot;&gt;object &lt;/span&gt;selected &lt;span style=&quot;color: blue&quot;&gt;in &lt;/span&gt;e.AddedItems)
+    {
+        &lt;span style=&quot;color: #2b91af&quot;&gt;PersonViewModel &lt;/span&gt;viewModel =
+            &lt;span style=&quot;color: #2b91af&quot;&gt;ForView&lt;/span&gt;.Unwrap&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;PersonViewModel&lt;/span&gt;&amp;gt;(selected);
+        &lt;span style=&quot;color: blue&quot;&gt;if &lt;/span&gt;(viewModel != &lt;span style=&quot;color: blue&quot;&gt;null&lt;/span&gt;)
+            viewModel.Select();
+    }
+}&lt;/pre&gt;&lt;p&gt;You should always check the result. If you get back a null, then the wrapped object might not have been of the expected type.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics/for-view-unwrap#comments</comments>
+ <pubDate>Wed, 03 Oct 2012 15:46:59 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">47 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>IndependentList&lt;T&gt;</title>
+ <link>http://updatecontrols.net/doc/basics/independent-list</link>
+ <description>&lt;p&gt;Independent&amp;lt;T&amp;gt; is used for single values. To track dependencies on collections, use IndependentList&amp;lt;T&amp;gt;. Use this as a field whenever you want to track changes to a collection.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Document
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;IndependentList&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;&amp;gt; _people = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;IndependentList&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;&amp;gt;();
+}&lt;/pre&gt;&lt;p&gt;Expose the field as a read-only property of type IEnumerable&amp;lt;T&amp;gt;. Usually, you want your class to be in charge of what gets added to the list. IEnumerable&amp;lt;T&amp;gt; lets other classes enumerate the elements of the list, but not modify it.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;IEnumerable&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;&amp;gt; People
+{
+    &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_people; }
+}&lt;/pre&gt;&lt;p&gt;IndependentList&amp;lt;T&amp;gt; supports all of the methods of List&amp;lt;T&amp;gt;. You can Add, Insert, Remove, etc. just as you are used to.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person &lt;/span&gt;NewPerson()
+{
+    &lt;span style=&quot;color: #2b91af&quot;&gt;Person &lt;/span&gt;person = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;();
+    _people.Add(person);
+    &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;person;
+}
+
+&lt;span style=&quot;color: blue&quot;&gt;public void &lt;/span&gt;DeletePerson(&lt;span style=&quot;color: #2b91af&quot;&gt;Person &lt;/span&gt;person)
+{
+    _people.Remove(person);
+}&lt;/pre&gt;&lt;p&gt;Any dependent properties that reference the list, even through the IEnumerable&amp;lt;T&amp;gt; interface, will take a dependency upon its contents. They will be updated when something is added to or removed from the list.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics/independent-list#comments</comments>
+ <pubDate>Wed, 03 Oct 2012 15:32:36 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">46 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>ForView.Wrap()</title>
+ <link>http://updatecontrols.net/doc/basics/for-view-wrap</link>
+ <description>&lt;p&gt;Update Controls will fire PropertyChanged events when values change. It does so through a wrapper that it puts around objects before giving them to the view. There are three ways to get this wrapper. First, if you use the &lt;a href=&quot;http://updatecontrols.net/doc/basics/view-model-locator-base&quot;&gt;ViewModelLocatorBase&lt;/a&gt; class, then the ViewModel method creates the wrapper. Second, any object you return from a view model will itself be wrapped. And third, if you are setting the DataContext in code, call the ForView.Wrap() method before assigning to the DataContext.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;private void &lt;/span&gt;UserControl_Loaded(&lt;span style=&quot;color: blue&quot;&gt;object &lt;/span&gt;sender, &lt;span style=&quot;color: #2b91af&quot;&gt;RoutedEventArgs &lt;/span&gt;e)
+{
+    &lt;span style=&quot;color: #2b91af&quot;&gt;Person &lt;/span&gt;model = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;();
+    &lt;span style=&quot;color: #2b91af&quot;&gt;PersonViewModel &lt;/span&gt;viewModel = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;PersonViewModel&lt;/span&gt;(model);
+    &lt;span style=&quot;color: blue&quot;&gt;this&lt;/span&gt;.DataContext = &lt;span style=&quot;color: #2b91af&quot;&gt;ForView&lt;/span&gt;.Wrap(viewModel);
+}&lt;/pre&gt;&lt;p&gt;The wrapper will track the dependencies in each of the properties. It will fire PropertyChanged whenever a change occurs that impacts one of the dependent properties.&lt;/p&gt;
+&lt;p&gt;Any object that you return from the property of a wrapped object will itself be wrapped. There is, however, one exception. If your object implements INotifyPropertyChanged, then the wrapper is not created. Update Controls assumes that you are handling property change notification yourself, and therefore gets out of the way.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics/for-view-wrap#comments</comments>
+ <pubDate>Wed, 03 Oct 2012 15:14:54 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">45 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>Independent&lt;T&gt;</title>
+ <link>http://updatecontrols.net/doc/basics/independent</link>
+ <description>&lt;p&gt;Update Controls tracks dependencies within your application. The things that it depends upon are Independents. Independent&amp;lt;T&amp;gt; is used as a field whenever you want Update Controls to track changes.&lt;/p&gt;
+&lt;p&gt;Declare the Independent&amp;lt;T&amp;gt; as a private field. You can replace T with a simple type like “int” or “string”. Or you can replace it with an object type, like “Person”.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt; _firstName = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt;();
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt; _lastName = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt;();
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;&amp;gt; _spouse = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;&amp;gt;();
+}&lt;/pre&gt;&lt;p&gt;Always initialize the field to a new Independent&amp;lt;T&amp;gt;. Forgetting this step will lead to null reference exceptions.&lt;/p&gt;
+&lt;p&gt;Expose the properties as the raw type T. The getter can return the Independent&amp;lt;T&amp;gt;, and it will be automatically converted to the raw type. But the setter has to assign to the Value property of the field.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt; _firstName = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt;();
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt; _lastName = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt;();
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;&amp;gt; _spouse = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person&lt;/span&gt;&amp;gt;();
+
+    &lt;span style=&quot;color: blue&quot;&gt;public string &lt;/span&gt;FirstName
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_firstName; }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _firstName.Value = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public string &lt;/span&gt;LastName
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_lastName; }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _lastName.Value = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Person &lt;/span&gt;Spouse
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_spouse; }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _spouse.Value = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+}&lt;/pre&gt;&lt;p&gt;If you need to initialize the value of the field, pass the initial value to the Independent&amp;lt;T&amp;gt; constructor.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics/independent#comments</comments>
+ <pubDate>Wed, 03 Oct 2012 14:54:36 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">44 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>The Basics</title>
+ <link>http://updatecontrols.net/doc/basics</link>
+ <description>&lt;p&gt;This set of articles walks you through the most common scenarios of using Update Controls in a XAML-based application. These basics are applicable to WPF, Silverlight, Windows Phone, and Win RT development.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics#comments</comments>
+ <pubDate>Wed, 03 Oct 2012 14:37:05 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">43 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>MVVM</title>
+ <link>http://updatecontrols.net/doc/basics/view-model-locator</link>
+ <description>&lt;p&gt;A common pattern in XAML applications is Model-View-ViewModel (or MVVM). Update Controls supports this pattern.&lt;/p&gt;
+&lt;p&gt;To quick-start your application, add the UpdateControls.App package using NuGet. If you don’t yet have NuGet installed, you can get it from &lt;a href=&quot;http://nuget.org&quot;&gt;nuget.org&lt;/a&gt;. This package brings in the core UpdateControls package, and sets up the following structure:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Models
+&lt;ul&gt;
+&lt;li&gt;data models &lt;/li&gt;
+&lt;li&gt;selection models &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ViewModels
+&lt;ul&gt;
+&lt;li&gt;top-level view models &lt;/li&gt;
+&lt;li&gt;headers &lt;/li&gt;
+&lt;li&gt;view model locator &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Models&lt;/h3&gt;
+&lt;p&gt;Data models are objects that you persist in your application. They will be saved to the database or local storage. These model objects represent the real-world concepts that your application is about.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Item
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt; _name = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt;();
+
+    &lt;span style=&quot;color: blue&quot;&gt;public string &lt;/span&gt;Name
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_name; }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _name.Value = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+}&lt;/pre&gt;&lt;p&gt;Selection models record the user’s point-of-view as they navigate through the system. These hold references to the model objects that the user selects in lists, and opens in secondary windows. They also hold any temporary data, like entries into text boxes, that haven’t been saved to the model, yet.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Selection
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Item&lt;/span&gt;&amp;gt; _selectedItem = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;Item&lt;/span&gt;&amp;gt;();
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Item &lt;/span&gt;SelectedItem
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_selectedItem; }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _selectedItem.Value = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+}&lt;/pre&gt;&lt;p&gt;Both data models and selection models use Independent&amp;lt;T&amp;gt; and IndependentList&amp;lt;T&amp;gt; fields. This lets Update Controls track dependencies upon model objects.&lt;/p&gt;
+&lt;h3&gt;View Models&lt;/h3&gt;
+&lt;p&gt;View models are simple classes that hold references to models. They expose properties for the purpose of data binding. These properties are implemented as pass-through methods, getting and setting data from the models.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;ItemViewModel
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private readonly &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Item &lt;/span&gt;_item;
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;ItemViewModel(&lt;span style=&quot;color: #2b91af&quot;&gt;Item &lt;/span&gt;Item)
+    {
+        _item = Item;
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public string &lt;/span&gt;Name
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_item.Name; }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _item.Name = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+}&lt;/pre&gt;&lt;p&gt;The pass-through methods don’t have to be direct one-to-one accessors. In fact, they rarely are. It is far more common to alter the values on the way in and out. Here are some common types of alterations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Return a default value if it hasn’t been set in the model. &lt;/li&gt;
+&lt;li&gt;Combine two or more model properties to display an aggregate. &lt;/li&gt;
+&lt;li&gt;Project child model objects into child view models. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That last one is very important. View models don’t return models. They return other view models. You never want your view to data bind directly against a model object. It should always have a view model in between.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;MainViewModel
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private readonly &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Document &lt;/span&gt;_document;
+    &lt;span style=&quot;color: blue&quot;&gt;private readonly &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Selection &lt;/span&gt;_selection;
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;MainViewModel(&lt;span style=&quot;color: #2b91af&quot;&gt;Document &lt;/span&gt;document, &lt;span style=&quot;color: #2b91af&quot;&gt;Selection &lt;/span&gt;selection)
+    {
+        _document = document;
+        _selection = selection;
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;IEnumerable&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: #2b91af&quot;&gt;ItemHeader&lt;/span&gt;&amp;gt; Items
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get
+        &lt;/span&gt;{
+            &lt;span style=&quot;color: blue&quot;&gt;return
+                from &lt;/span&gt;item &lt;span style=&quot;color: blue&quot;&gt;in &lt;/span&gt;_document.Items
+                &lt;span style=&quot;color: blue&quot;&gt;select new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;ItemHeader&lt;/span&gt;(item);
+        }
+    }
+}&lt;/pre&gt;&lt;p&gt;In addition to the top-level view models, you will often have headers. These are small view models created for the purpose of populating a list. The properties of a header are usually read-only, so you don’t create setters for them.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;ItemHeader
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private readonly &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Item &lt;/span&gt;_item;
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;ItemHeader(&lt;span style=&quot;color: #2b91af&quot;&gt;Item &lt;/span&gt;Item)
+    {
+        _item = Item;
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Item &lt;/span&gt;Item
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_item; }
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public string &lt;/span&gt;Name
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_item.Name ?? &lt;span style=&quot;color: #a31515&quot;&gt;&amp;quot;&amp;lt;New Item&amp;gt;&amp;quot;&lt;/span&gt;; }
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public override bool &lt;/span&gt;Equals(&lt;span style=&quot;color: blue&quot;&gt;object &lt;/span&gt;obj)
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;if &lt;/span&gt;(obj == &lt;span style=&quot;color: blue&quot;&gt;this&lt;/span&gt;)
+            &lt;span style=&quot;color: blue&quot;&gt;return true&lt;/span&gt;;
+        &lt;span style=&quot;color: #2b91af&quot;&gt;ItemHeader &lt;/span&gt;that = obj &lt;span style=&quot;color: blue&quot;&gt;as &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;ItemHeader&lt;/span&gt;;
+        &lt;span style=&quot;color: blue&quot;&gt;if &lt;/span&gt;(that == &lt;span style=&quot;color: blue&quot;&gt;null&lt;/span&gt;)
+            &lt;span style=&quot;color: blue&quot;&gt;return false&lt;/span&gt;;
+        &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Object&lt;/span&gt;.Equals(&lt;span style=&quot;color: blue&quot;&gt;this&lt;/span&gt;._item, that._item);
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public override int &lt;/span&gt;GetHashCode()
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_item.GetHashCode();
+    }
+}&lt;/pre&gt;&lt;p&gt;A header always has to implement Equals and GetHashCode. These methods should compare two headers to see if they represent the same object. This allows Update Controls to preserve the selection and scroll position of a list even as the items in the list are changing. It also assists with binding the SelectedItem property. The SelectedItem should be equal to one element in the ItemsSource.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/basics/view-model-locator#comments</comments>
+ <pubDate>Tue, 02 Oct 2012 22:17:18 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">42 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>What&#039;s the merit of Update Controls over PostSharp or Notify Property Weaver</title>
+ <link>http://updatecontrols.net/doc/node/41</link>
+ <description>&lt;p&gt;I received this question from Justin 袁 直.&lt;/p&gt;
+&lt;h3&gt;Justin writes&lt;/h3&gt;
+&lt;p&gt;Hello Michael&lt;/p&gt;
+&lt;p&gt;I&#039;ve seen many ways of automatically implementing INotifyPropertyChange in Nuget, e.g. PostSharp.NotifyPropertyChanged or Notify Property Weaver. I see these methods also detects dependency relationships and fires propertychanged notification wisely.&lt;/p&gt;
+&lt;p&gt;Unlike applying an attribute, your method includes extra code in the Model class. So would you be so kind as to tell me what&#039;s the merit of your framework over the others?&lt;/p&gt;
+&lt;p&gt;Thank you very much&lt;/p&gt;
+&lt;h3&gt;I respond&lt;/h3&gt;
+&lt;p&gt;Great question.&lt;/p&gt;
+&lt;p&gt;The difference between Update Controls and the other libraries you mention is that Update Controls does its dependency analysis at run time. Notify Property Weaver and PostSharp both do this analysis at compile time.&lt;/p&gt;
+&lt;p&gt;Run-time dependency analysis has the advantage of detecting more cases. For example, if a view model calls a method through an interface, and that method references a property, compile-time analysis wouldn&#039;t detect it. Run-time analysis will.&lt;/p&gt;
+&lt;p&gt;Furthermore, as dependencies change, run-time analysis can adapt. Consider a view model property &amp;quot;if (&lt;strong&gt;a&lt;/strong&gt;) return &lt;strong&gt;b&lt;/strong&gt; else return &lt;strong&gt;c&lt;/strong&gt;&amp;quot;. While &lt;strong&gt;a&lt;/strong&gt; is true, the property depends upon &lt;strong&gt;b&lt;/strong&gt;. When it changes to false, the dependency switches to &lt;strong&gt;c&lt;/strong&gt;. Compile-time analysis would lead to a dependency upon &lt;strong&gt;b&lt;/strong&gt; and &lt;strong&gt;c&lt;/strong&gt; at all times.&lt;/p&gt;
+&lt;p&gt;On the other hand, compile-time analysis has some advantages. It is easier to declare properties using attributes rather than writing code. And run-time analysis incurs some overhead in both time and memory.&lt;/p&gt;
+&lt;p&gt;I&#039;ve found that the benefits of run-time analysis outweigh the drawbacks. But please use the technique that makes the most sense for your scenario.&lt;/p&gt;
+&lt;p&gt;Thank you.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/node/41#comments</comments>
+ <pubDate>Mon, 30 Jul 2012 14:50:37 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">41 at http://updatecontrols.net/doc</guid>
+</item>
+<item>
+ <title>Dependency-based validation</title>
+ <link>http://updatecontrols.net/doc/validation</link>
+ <description>&lt;p&gt;Windows Forms has a validation framework built in. WPF defined a new one. Silverlight refined it further. With every platform taking a slightly different approach to validation, it tends to get rather confusing.&lt;/p&gt;
+&lt;p&gt;Further confusing the issue is the fact that WPF actually has three options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ValidatesOnExceptions &lt;/li&gt;
+&lt;li&gt;IDataErrorInfo (ValidatesOnDataErrors) &lt;/li&gt;
+&lt;li&gt;Data annotations &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you set ValidatesOnExceptions=True within your WPF {Binding}, you will get validation behavior when the setter throws an exception. If you implement IDataErrorInfo in your view model and set ValidatesOnDataErrors=True, then the view model decides when validation errors occur. And if you set data annotations on your view model properties (and put a bit of arcane code in your setters), then the attributes declaratively attach validation rules.&lt;/p&gt;
+&lt;p&gt;I recommend against ValidatesOnExceptions and data annotations, both for the same reason. If you throw an exception in the setter (which occurs in either option), then the user’s input is kept in the control. It never makes it to the view model where it can be stored. Indeed, the goal is &lt;em&gt;not&lt;/em&gt; to store invalid data, but if you don’t store it temporarily, you can’t use it. It just stays in the TextBox or other control until the user fixes it. Your code doesn’t have access to that state, and therefore can’t help the user to resolve the issue. All the while, the control is in a different state than the view model, which makes me very nervous.&lt;/p&gt;
+&lt;p&gt;So that leaves IDataErrorInfo. In Silverlight, we now have it’s predecessor INotifyDataErrorInfo. Let’s see how to use this interface with Update Controls.&lt;/p&gt;
+&lt;div style=&quot;padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px&quot; id=&quot;scid:8eb9d37f-1541-4f29-b6f4-1eea890d4876:e5de4f8d-6f55-4597-8e0b-6177b3fc89be&quot; class=&quot;wlWriterEditableSmartContent&quot;&gt;
+&lt;div&gt;&lt;a href=&quot;http://updatecontrols.net/doc/sites/default/files/665308f1a19b_13792/ValidationExample.zip&quot; target=&quot;_self&quot;&gt;ValidationExample.zip&lt;/a&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;h3&gt;&lt;/h3&gt;
+&lt;h3&gt;Single responsibility and validation&lt;/h3&gt;
+&lt;p&gt;XAML validation takes place at the DataContext, which in MVVM is the ViewModel. But logically speaking, validation is a domain concept and therefore belongs in the Model. As a responsibility segregation pattern, MVVM is very sensitive to which side of the fence you choose.&lt;/p&gt;
+&lt;p&gt;Most MVVM implementations put state in the ViewModel. This gives you a place to store user input before it is validated, thus keeping the Model clean. An Update Controls app, however, does not put state in the ViewModel, since other ViewModels could depend upon it. On the plus side, you don&#039;t need a message bus to keep ViewModels in sync. On the minus side, you don&#039;t have a quarantine area for validation.&lt;/p&gt;
+&lt;p&gt;The result is that Update Controls guides you to a pattern in which you allow invalid data into the Model, and then present validation errors through the ViewModel. Don’t throw validation errors on input: take the invalid data into the model. Then let the model expose validation through dependent properties. This has the advantage of keeping the presentation responsibilities in the ViewModel, and the domain responsibilities in the Model. It has the disadvantage, however, of letting the Model get dirty. I find the tradeoff acceptable.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;MyModel
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private static &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Regex &lt;/span&gt;ValidPhoneNumber = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Regex&lt;/span&gt;(&lt;span style=&quot;color: #a31515&quot;&gt;@&amp;quot;\([0-9]{3}\) [0-9]{3}-[0-9]{4}&amp;quot;&lt;/span&gt;);
+
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt; _phoneNumber = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Independent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;string&lt;/span&gt;&amp;gt;(&lt;span style=&quot;color: #a31515&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;);
+
+    &lt;span style=&quot;color: blue&quot;&gt;public string &lt;/span&gt;PhoneNumber
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_phoneNumber; }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _phoneNumber.Value = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public bool &lt;/span&gt;PhoneNumberIsValid
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;ValidPhoneNumber.IsMatch(_phoneNumber); }
+    }
+}&lt;/pre&gt;&lt;p&gt;This model has a PhoneNumber property, which can be set to any string. This property is backed by an Independent field so that Update Controls can track dependencies. The PhoneNumberIsValid property depends upon the phone number. When the phone number matches a regular expression, the validation property is true.&lt;/p&gt;
+&lt;h3&gt;Dependent validation&lt;/h3&gt;
+&lt;p&gt;Update Controls is a dependency tracking library. Validation errors displayed to the user are dependent upon the state of the model. One way to express a dependency is with the Dependent&amp;lt;T&amp;gt; field. Let’s set up a dependent boolean based on the phone number validity.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public class &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;MyViewModel &lt;/span&gt;: &lt;span style=&quot;color: #2b91af&quot;&gt;ViewModelBase&lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;
+&lt;/span&gt;{
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;MyModel &lt;/span&gt;_model;
+    &lt;span style=&quot;color: blue&quot;&gt;private &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Dependent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;bool&lt;/span&gt;&amp;gt; _phoneNumberInvalid;
+
+    &lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;MyViewModel(&lt;span style=&quot;color: #2b91af&quot;&gt;MyModel &lt;/span&gt;model)
+    {
+        _model = model;
+
+        &lt;span style=&quot;color: green&quot;&gt;// Create a dependent boolean that is true when the phone number is invalid.
+        &lt;/span&gt;_phoneNumberInvalid = &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;Dependent&lt;/span&gt;&amp;lt;&lt;span style=&quot;color: blue&quot;&gt;bool&lt;/span&gt;&amp;gt;(() =&amp;gt; !_model.PhoneNumberIsValid);
+    }
+
+    &lt;span style=&quot;color: blue&quot;&gt;public string &lt;/span&gt;PhoneNumber
+    {
+        &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;Get(() =&amp;gt; _model.PhoneNumber); }
+        &lt;span style=&quot;color: blue&quot;&gt;set &lt;/span&gt;{ _model.PhoneNumber = &lt;span style=&quot;color: blue&quot;&gt;value&lt;/span&gt;; }
+    }
+}&lt;/pre&gt;&lt;p&gt;The _phoneNumberInvalid field depends upon the PhoneNumberIsValid model, because that’s what the lambda expression references. When PhoneNumberIsValid changes (based on a change in PhoneNumber), the dependent goes out-of-date. We can hook this event to bring the dependent back up-to-date. We can’t force the update immediately, because things are still changing. Instead, we use the Dispatcher to schedule an update when the current user input event is finished.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: green&quot;&gt;// When the dependent goes out-of-date, bring it back up-to-date at the next opportunity.
+&lt;/span&gt;_phoneNumberInvalid.DependentSentry.Invalidated += &lt;span style=&quot;color: blue&quot;&gt;delegate
+&lt;/span&gt;{
+    &lt;span style=&quot;color: #2b91af&quot;&gt;Deployment&lt;/span&gt;.Current.Dispatcher.BeginInvoke(&lt;span style=&quot;color: blue&quot;&gt;delegate
+    &lt;/span&gt;{
+        &lt;span style=&quot;color: green&quot;&gt;// Get the new value of the dependent. This brings it up-to-date.
+        &lt;/span&gt;&lt;span style=&quot;color: blue&quot;&gt;bool &lt;/span&gt;phoneNumberIsInvalid = _phoneNumberInvalid;
+    });
+};&lt;/pre&gt;&lt;p&gt;A Dependent field begins its life out-of-date, so we have to force an update immediately upon construction. We can take this opportunity to save the initial state in a field.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: green&quot;&gt;// Get the initial value of the dependent. This brings it up-to-date.
+&lt;/span&gt;_phoneNumberWasInvalid = _phoneNumberInvalid;&lt;/pre&gt;&lt;p&gt;Now we have all the hooks we need to implement INotifyDataErrorInfo. When the phone number validation state changes, we fire the ErrorsChanged event.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: green&quot;&gt;// When the dependent goes out-of-date, bring it back up-to-date at the next opportunity.
+&lt;/span&gt;_phoneNumberInvalid.DependentSentry.Invalidated += &lt;span style=&quot;color: blue&quot;&gt;delegate
+&lt;/span&gt;{
+    &lt;span style=&quot;color: #2b91af&quot;&gt;Deployment&lt;/span&gt;.Current.Dispatcher.BeginInvoke(&lt;span style=&quot;color: blue&quot;&gt;delegate
+    &lt;/span&gt;{
+        &lt;span style=&quot;color: green&quot;&gt;// Get the new value of the dependent. This brings it up-to-date.
+        &lt;/span&gt;&lt;span style=&quot;color: blue&quot;&gt;bool &lt;/span&gt;phoneNumberIsInvalid = _phoneNumberInvalid;
+
+        &lt;span style=&quot;color: green&quot;&gt;&lt;strong&gt;// Fire the event if the status has changed.&lt;/strong&gt;
+        &lt;/span&gt;&lt;strong&gt;&lt;span style=&quot;color: blue&quot;&gt;if &lt;/span&gt;(phoneNumberIsInvalid != _phoneNumberWasInvalid &amp;amp;&amp;amp; ErrorsChanged != &lt;span style=&quot;color: blue&quot;&gt;null&lt;/span&gt;)&lt;/strong&gt;
+            &lt;strong&gt;ErrorsChanged(&lt;span style=&quot;color: blue&quot;&gt;this&lt;/span&gt;, &lt;span style=&quot;color: blue&quot;&gt;new &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;DataErrorsChangedEventArgs&lt;/span&gt;(&lt;span style=&quot;color: #a31515&quot;&gt;&amp;quot;PhoneNumber&amp;quot;&lt;/span&gt;));&lt;/strong&gt;
+
+        &lt;strong&gt;_phoneNumberWasInvalid = phoneNumberIsInvalid;
+&lt;/strong&gt;    });
+};&lt;/pre&gt;&lt;p&gt;We finish the interface out with the GetErrors and HasErrors methods.&lt;/p&gt;
+&lt;pre class=&quot;code&quot;&gt;&lt;span style=&quot;color: blue&quot;&gt;public &lt;/span&gt;&lt;span style=&quot;color: #2b91af&quot;&gt;IEnumerable &lt;/span&gt;GetErrors(&lt;span style=&quot;color: blue&quot;&gt;string &lt;/span&gt;propertyName)
+{
+    &lt;span style=&quot;color: blue&quot;&gt;if &lt;/span&gt;(propertyName == &lt;span style=&quot;color: #a31515&quot;&gt;&amp;quot;PhoneNumber&amp;quot;&lt;/span&gt;)
+        &lt;span style=&quot;color: blue&quot;&gt;if &lt;/span&gt;(_phoneNumberInvalid)
+            &lt;span style=&quot;color: blue&quot;&gt;yield return &lt;/span&gt;&lt;span style=&quot;color: #a31515&quot;&gt;&amp;quot;Please enter (###) ###-####&amp;quot;&lt;/span&gt;;
+}
+
+&lt;span style=&quot;color: blue&quot;&gt;public bool &lt;/span&gt;HasErrors
+{
+    &lt;span style=&quot;color: blue&quot;&gt;get &lt;/span&gt;{ &lt;span style=&quot;color: blue&quot;&gt;return &lt;/span&gt;_phoneNumberInvalid; }
+}&lt;/pre&gt;&lt;p&gt;Validation is the responsibility of the Model. Presentation of errors is a ViewModel responsibility. Like all ViewModel behavior in MVVM, error presentation depends upon the model. We just have to be explicit about it.&lt;/p&gt;
+&lt;p&gt;From this code, I can see the beginnings of a reusable validation framework within Update Controls. ForView.Wrap could perform all of the steps that we did here. It would just need help determining validation errors for each property. Perhaps a Caliburn-like convention-over-configuration pattern is in order. Please leave a comment if you agree, disagree, or are willing to contribute to the project.&lt;/p&gt;
+</description>
+ <comments>http://updatecontrols.net/doc/validation#comments</comments>
+ <pubDate>Wed, 21 Sep 2011 04:31:02 +0000</pubDate>
+ <dc:creator>MichaelLPerry</dc:creator>
+ <guid isPermaLink="false">40 at http://updatecontrols.net/doc</guid>
+</item>
+</channel>
+</rss>

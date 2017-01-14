@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/advanced/fields-and-collections by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Fields and collections using generics | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="dependent-properties.html" />
+<link rel="up" href="../advanced.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-advanced-fields-and-collections section-advanced">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Fields and collections using generics</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-36" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Wed, 03/16/2011 - 16:33        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Thanks to code contributions from David Piepgrass and Timothy Pratley, there is a new way to declare fields and collections in Update Controls. No longer do you have to declare sentries. No longer do you have to use the Ctrl+D, G code generator. Now you can use generics.</p>
+<p>UpdateControls.Fields</p>
+<ul>
+<li>Independent&lt;T&gt; </li>
+<li>Dependent&lt;T&gt; </li>
+</ul>
+<p>UpdateControls.Collections</p>
+<ul>
+<li>IndependentList&lt;T&gt; </li>
+<li>IndependentDictionary&lt;Key, Value&gt; </li>
+<li>DependentList&lt;T&gt; </li>
+</ul>
+<h3>Independent fields</h3>
+<p>Models contain independent fields. User actions change these fields. Declare an independent field using Independent&lt;T&gt;.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">Agent
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt; _name = <span style="color: blue">new </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt;();
+
+    <span style="color: blue">public string </span>Name
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_name; }
+        <span style="color: blue">set </span>{ _name.Value = <span style="color: blue">value</span>; }
+    }
+}</pre><p>The property exposes the field as the native type. Independent&lt;T&gt; is implicitly convertable to T, so the getter returns it directly. The opposite is not true, however, so the setter needs to assign to the Value property.</p>
+<h3>Independent collections</h3>
+<p>The Independent&lt;T&gt; class is useful only for single-valued fields. Do not try to combine it with a collection class. Instead, use IndependentList&lt;T&gt; or IndependentDictionary&lt;Key, Value&gt;.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">Agency
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">IndependentList</span>&lt;<span style="color: #2b91af">Agent</span>&gt; _agents = <span style="color: blue">new </span><span style="color: #2b91af">IndependentList</span>&lt;<span style="color: #2b91af">Agent</span>&gt;();
+    <span style="color: blue">private </span><span style="color: #2b91af">IndependentDictionary</span>&lt;<span style="color: #2b91af">Case</span>, <span style="color: #2b91af">Agent</span>&gt; _leadByCase = <span style="color: blue">new </span><span style="color: #2b91af">IndependentDictionary</span>&lt;<span style="color: #2b91af">Case</span>,<span style="color: #2b91af">Agent</span>&gt;();
+
+    <span style="color: blue">public </span><span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">Agent</span>&gt; Agents
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_agents; }
+    }
+
+    <span style="color: blue">public void </span>AddAgent(<span style="color: #2b91af">Agent </span>agent)
+    {
+        _agents.Add(agent);
+    }
+
+    <span style="color: blue">public void </span>RemoveAgent(<span style="color: #2b91af">Agent </span>agent)
+    {
+        _agents.Remove(agent);
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">Agent </span>GetLeadForCase(<span style="color: #2b91af">Case </span>c)
+    {
+        <span style="color: blue">return </span>_leadByCase[c];
+    }
+
+    <span style="color: blue">public void </span>SetLeadForCase(<span style="color: #2b91af">Case </span>c, <span style="color: #2b91af">Agent </span>lead)
+    {
+        _leadByCase[c] = lead;
+    }
+}</pre><p>These two classes are used the same as regular List&lt;T&gt; and Dictionary&lt;Key, Value&gt;. The only difference is that they participate in dependency tracking.</p>
+<h3>Dependent fields</h3>
+<p>Whereas a model contains independents, a view model contains dependents. User input does not directly change dependents. Instead, dependents are calculated. Update Controls automatically turns all view model properties into dependents, but you still might want to use Dependent&lt;T&gt; to cache expensive calculations.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">AgentViewModel
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Agent </span>_agent;
+
+    <span style="color: blue">private </span><span style="color: #2b91af">Dependent</span>&lt;<span style="color: blue">int</span>&gt; _totalCasesSolved;
+
+    <span style="color: blue">public </span>AgentViewModel(<span style="color: #2b91af">Agent </span>agent)
+    {
+        _agent = agent;
+
+        _totalCasesSolved = <span style="color: blue">new </span><span style="color: #2b91af">Dependent</span>&lt;<span style="color: blue">int</span>&gt;(() =&gt; _agent.Cases.Count(c =&gt; c.IsSolved));
+    }
+
+    <span style="color: blue">public int </span>TotalCasesSolved
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_totalCasesSolved; }
+    }
+}</pre><p>The constructor takes a lambda expression that calculates the dependent value. It is cached in the field. Dependent&lt;T&gt; is implicitly convertable to T, so the property returns it directly. When the independent is changed, the dependent is recalculated. You cannot set the Value of a dependent.</p>
+<h3>Dependent collections</h3>
+<p>Rather than caching one single value, a view model can also cache a collection of objects. When doing so, use DependentList&lt;T&gt;.</p>
+<pre class="code"><span style="color: blue">class </span><span style="color: #2b91af">AgencyViewModel
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Agency </span>_agency;
+
+    <span style="color: blue">private </span><span style="color: #2b91af">DependentList</span>&lt;<span style="color: #2b91af">AgentViewModel</span>&gt; _agentViewModels;
+
+    <span style="color: blue">public </span>AgencyViewModel(<span style="color: #2b91af">Agency </span>agency)
+    {
+        _agency = agency;
+
+        _agentViewModels = <span style="color: blue">new </span><span style="color: #2b91af">DependentList</span>&lt;<span style="color: #2b91af">AgentViewModel</span>&gt;(() =&gt;
+            <span style="color: blue">from </span>a <span style="color: blue">in </span>_agency.Agents
+            <span style="color: blue">select new </span><span style="color: #2b91af">AgentViewModel</span>(a)
+        );
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">AgentViewModel</span>&gt; AgentViewModels
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_agentViewModels; }
+    }
+}</pre><p>The constructor takes a lambda which produces a collection. Typically, it will do so with a linq expression. The field caches the generated collection, and the property returns it as IEnumerable&lt;T&gt;.</p>
+<p>DependentList&lt;T&gt; uses <a href="object-recycling.html">object recycling</a> to reuse elements of the collection. If an object was already in the collection and it is returned from the linq query, then the existing object is reused. So if it in turn has dependent fields or collections, those dependents are not recalculated. To support object recycling, the elements of the collection must implement Equals, GetHashCode, and Dispose.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">AgentViewModel </span>: <span style="color: #2b91af">IDisposable
+</span>{
+    ...
+    <span style="color: blue">public override bool </span>Equals(<span style="color: blue">object </span>obj)
+    {
+        <span style="color: blue">if </span>(obj == <span style="color: blue">this</span>)
+            <span style="color: blue">return true</span>;
+        <span style="color: #2b91af">AgentViewModel </span>that = obj <span style="color: blue">as </span><span style="color: #2b91af">AgentViewModel</span>;
+        <span style="color: blue">if </span>(that == <span style="color: blue">null</span>)
+            <span style="color: blue">return false</span>;
+        <span style="color: blue">return this</span>._agent == that._agent;
+    }
+
+    <span style="color: blue">public override int </span>GetHashCode()
+    {
+        <span style="color: blue">return </span>_agent.GetHashCode();
+    }
+
+    <span style="color: blue">public void </span>Dispose()
+    {
+    }
+}</pre><p>The Dispose method will be called for objects removed from the dependent collection, so you can use it to manage any extra resources required to represent the collection in an external system. If you have no such resources, leave the body of Dispose blank.</p>
+<p>These new generics should make it easier to declare independent fields and collections in the model, and dependent fields and collections in the view model. With them, no plug in or generated code is required.</p>
+  <div id="book-navigation-32" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="dependent-properties.html" class="page-previous" title="Go to previous page">‹ Dependent properties</a>
+                    <a href="../advanced.html" class="page-up" title="Go to parent page">up</a>
+                </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/36.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-614"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-614" class="active">Data Virtualization with IndependentList&lt;T&gt;</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Mon, 08/08/2011 - 15:36.  </div>
+
+  <div class="content">
+    <p>Hi, Im trying UpdateControls and it was going very good so far, but now Im facing problems using IndependentList<T> with a lot of data and I want to virtualize it into a datagrid.<br />
+VirtualizingStackPanel.IsVirtualizing property seens to be not working in this model.<br />
+Could you please give me some tips about the better way to do that?</t></p>
+<p>Great work with UpdateControls.</p>
+<p>Regards.<br />
+Murilo</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/614.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-615"></a>
+<div class="comment comment-published even comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-615" class="active">Data virtualization not implemented</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Tue, 08/09/2011 - 08:55.  </div>
+
+  <div class="content">
+    <p>Data virtualization is a great technique for displaying large collections of data from a database, web service, or some other time-consuming source. Unfortunately, it is not implemented in Update Controls.</p>
+<p>Update Controls does all of its dependency tracking in memory. When you bind the view model to the view, it needs to already have loaded all of the backing data. Update Controls does not hook into your data access layer or service agent, so it can't go back and load more data as needed.</p>
+<p>My advice would be to use traditional data binding for large collections, especially those backed by a database query or web service call. Use Update Controls once the user has narrowed their focus down to a set of objects that fit comfortably in memory.</p>
+<p>Alternatively, you could change your user interface paradigm so that you don't present scrolling lists of data to the user. Use search or browse patterns instead of lists. That way your code can decide when to pull a logical set of data from the database, and the results will always fit in memory. Don't take this alternative just to work around the memory-bound limitations of Update Controls, however. Do it if it makes more sense for your users.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/615.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-616"></a>
+<div class="comment comment-published odd comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-616" class="active">I did it, but now Im having another problem.</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Fri, 08/19/2011 - 10:44.  </div>
+
+  <div class="content">
+    <p>Hi, Michael.</p>
+<p>Thanks for your reply, It clarifies a lot what I was doing wrong.</p>
+<p>Now I have an IndependentList that is been constantly updated by another thread and in my presentation class I have a DependentList that is calculated by this IndependentList.</p>
+<p>Ok, that was a good approach, but all is going fine and the list is been updated on screen until something happens and it stops to be refreshed.</p>
+<p>I'll post my example here. Could you please tell me what I'm doing wrong again?</p>
+<p>public class PresentationClass<br />
+{</p>
+<p>	private DependentList<Entity> m_depListEntity;<br />
+	private Dependent<int> m_depItemsToBeDisplayed;</int></entity></p>
+<p>	private NavigationClass m_objNavigation;<br />
+  private WindowModel m_objWindowModel;</p>
+<p>	public PresentationClass(WindowModel p_objWindowModel, NavigationClass p_objNavigation) {</p>
+<p>		m_objWindowModel = p_objWindowModel;<br />
+		m_objNavigation = p_objNavigation;</p>
+<p>		m_depListEntity = new DependentList<Entity>(<br />
+			() => UpdateListEntity()<br />
+		);<br />
+		m_depItemsToBeDisplayed = new Dependent<int>(() => CalculateItemsToBeDisplayed());<br />
+	}</int></entity></p>
+<p>	public NavigationClass Navigation<br />
+	{<br />
+		get { return m_objNavigation; }<br />
+	}</p>
+<p>	private IEnumerable<Entity> UpdateListEntity()<br />
+	{<br />
+		return Navigation.SelectedSource != null ? Navigation.SelectedSource.MyEntityList.Take(m_depItemsToBeDisplayed) : new List<Entity>();<br />
+	}</entity></entity></p>
+<p>	private int CalculateItemsToBeDisplayed() {<br />
+		//I'll show only the itens to fill the window heigth. My datagrid is not scrolling.<br />
+		//m_objWindowModel.Height is an Independent property of m_objWindowModel.<br />
+		int result = Math.Max(3,Convert.ToInt32(m_objWindowModel.Height / 16) + 3);<br />
+		return result;<br />
+	}</p>
+<p>	public IEnumerable<Entity> ListEntity<br />
+	{<br />
+		get	{ return m_depListEntity;	}<br />
+	}</entity></p>
+<p>}</p>
+<p>public class NavigationClass<br />
+{<br />
+	public NavigationClass()<br />
+	{<br />
+	}<br />
+	private Independent<Source> m_objSelectedSource = new Independent<Source>();</source></source></p>
+<p>	public Source SelectedSource<br />
+	{<br />
+			get { return m_objSelectedSource; }<br />
+			set { m_objSelectedSource.Value = value; }<br />
+	}<br />
+}</p>
+<p>public class Source<br />
+{</p>
+<p>	private IndependentList<Entity> m_objMyEntityList = new IndependentList<Entity>();</entity></entity></p>
+<p>	public IEnumerable<Entity> MyEntityList<br />
+	{<br />
+			get { return m_objMyEntityList; }<br />
+	}</entity></p>
+<p>	//This method is used to provide access to another thread to modify this list;<br />
+	public IList<Entity> MyEntityList<br />
+	{<br />
+			get { return m_objMyEntityList; }<br />
+	}</entity></p>
+<p>}</p>
+<p>In my XAML the DataContext is a UpdateControls Wrapper of my PresendationClass instance.</p>
+<p>	<DataGrid ItemsSource="{Binding ListEntity}" /></datagrid></p>
+<p>I don't know why it stops to be refreshed and there are no exceptions been throwing.</p>
+<p>Please, help me.</p>
+<p>Best Regards.<br />
+Thanks in advance.</p>
+<p>ps.: In the IndependentList and DependentList source code I changed the following methods to prevent "Collection was modified exception":</p>
+<p>		public IEnumerator<T> GetEnumerator()<br />
+		{<br />
+			_indList.OnGet();<br />
+      for (int i = 0; i &lt; _list.Count; i++)<br />
+          yield return _list[i];<br />
+			//return _list.GetEnumerator();<br />
+		}</t></p>
+<p>		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()<br />
+		{<br />
+			_indList.OnGet();<br />
+      for (int i = 0; i &lt; _list.Count; i++)<br />
+          yield return _list[i];<br />
+			//return ((System.Collections.IEnumerable)_list).GetEnumerator();<br />
+		}</p>
+<p>Murilo</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/616.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-617"></a>
+<div class="comment comment-published even comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-617" class="active">Finally</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Fri, 08/19/2011 - 15:11.  </div>
+
+  <div class="content">
+    <p>Hi, Michael.</p>
+<p>Finally I did it.<br />
+I just removed the DependetList and put the calculate content on the property binded to my datagrid.</p>
+<p>public IEnumerable MyEntityList<br />
+{<br />
+get { return Navigation.SelectedSource != null ? Navigation.SelectedSource.MyEntityList.Take(m_depItemsToBeDisplayed) : new List(); }<br />
+}</p>
+<p>It solved my problem, but Im confused about when I should use a DEPENDENT object and why it stoped to refresh like it was losing its precedents to be refreshed.</p>
+<p>Regards.</p>
+<p>Murilo</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/617.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-618"></a>
+<div class="comment comment-published odd comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-618" class="active">Multithreaded Independents</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Sat, 08/20/2011 - 12:41.  </div>
+
+  <div class="content">
+    <p>Sorry for the delay in getting back with you. I was out at DevLink in Chatanooga. Great conference.</p>
+<p>I think the problem is that you don't have a lock(this) around the IndependentList. Whenever you are updating an Independent from a background thread, you need to lock around every read and write.</p>
+<p>I think you were just getting lucky that the only problem was that it stopped updating. At worst, not locking around a shared resource can corrupt the list or throw an exception.</p>
+<p>Give this a try and let me know if it works.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/618.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div></div></div></div><a id="comment-602"></a>
+<div class="comment comment-published even comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-602" class="active">DependentList requiring IDisposable</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Thu, 03/24/2011 - 14:57.  </div>
+
+  <div class="content">
+    <p>I was surprised to learn that DependentList&lt;T> requires T to implement IDisposable. I looked at DependentList's source code, and I couldn't find a call to Dispose()... then I realized that it's actually a constraint of RecycleBin. I actually wanted to use DependentList for filtering--not for transforming the Model to a ViewModel, but just filtering a list without changing its type. I'm guess I should use Dependent&lt;List&lt;T&gt;&gt; for this purpose instead. Hmm...</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/602.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-603"></a>
+<div class="comment comment-published odd comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-603" class="active">Non-IDisposable version checked in</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Fri, 03/25/2011 - 07:46.  </div>
+
+  <div class="content">
+    <p>Dependent&lt;List&lt;T&gt;&gt; would work fine for filtering, since it contains objects that were already created. I wouldn't recommend it for collections that you fill with new objects, since it circumvents object recycling, which could be a noticeable performance hit.</p>
+<p>I checked in a change that removes the IDisposable constraint from DependentList and RecycleBin. I just haven't released this one, yet. If you'd like to test it, please get the latest.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/603.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-604"></a>
+<div class="comment comment-published even comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-604" class="active">Performance hit?</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Fri, 03/25/2011 - 13:17.  </div>
+
+  <div class="content">
+    <p>Assuming a list of "trivial" ViewModels (stateless wrappers around model objects), what would cause the performance hit over and above what's already there? After all, even with a RecycleBin, the overhead still exists of creating a new series of ViewModels, and a new series of ListBoxItem/DependentListViewItem. In the case of WinForms at least (as that's what I'm using), the list control (ListBox or ListView) is cleared and refilled "from scratch" for every change.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/604.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-605"></a>
+<div class="comment comment-published odd last comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="fields-and-collections.html#comment-605" class="active">RecycleBin performance</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Sat, 03/26/2011 - 09:17.  </div>
+
+  <div class="content">
+    <p>The performance hit that I refer to when circumventing RecycleBin is related to updating its dependents. If you use a RecycleBin to manage a collection of objects, and those objects use Dependent&lt;T&gt; or Dependent to manage dependent properties, then those dependent properties are not recalculated. If you don't use RecycleBin, then they are.</p>
+<p>In you example, you have a trivial view model, so it doesn't manage its own dependent properties. Furthermore, you aren't creating the objects while updating the collection: they are provided by another owner. So you would not see any performance gain by using RecycleBin (or any hit by circumventing it).</p>
+<p>In the case of ListBox and ListView, I could have used RecycleBin to manage the contents of the list more efficiently. Instead of clearing and rebuilding the Items collection, I could have determined the fewest number of Inserts and Removes required to get the desired results. This is a patterns I've started using in WPF to manage ObservableCollections, but I never applied it to WinForms. Please let me know if you find any performance issues here, and we can work on improving this code.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/36/605.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div></div></div>  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../examples.html">Examples</a></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../advanced.html">Advanced Topics</a><ul class="menu"><li class="leaf first"><a href="how-does-it-work.html">How does it work?</a></li>
+<li class="leaf"><a href="object-recycling.html">Object Recycling</a></li>
+<li class="leaf"><a href="dependent-properties.html">Dependent properties</a></li>
+<li class="leaf last active-trail"><a href="fields-and-collections.html" class="active">Fields and collections using generics</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/advanced/fields-and-collections?destination=node%2F36"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-2f8ff0a17eca12ed155adc3c727cb449" value="form-2f8ff0a17eca12ed155adc3c727cb449"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/advanced/fields-and-collections by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:55:07 GMT -->
+</html>

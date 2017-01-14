@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/advanced/object-recycling by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Object Recycling | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="how-does-it-work.html" />
+<link rel="up" href="../advanced.html" />
+<link rel="next" href="dependent-properties.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-advanced-object-recycling section-advanced">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Object Recycling</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-33" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Tue, 03/01/2011 - 21:25        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>It is common in Update Controls to use linq to specify a list of view models. For example:</p>
+<pre><span style="color: blue">public</span> <span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">ContactViewModel</span>&gt; <span style="color: #2b91af">Contacts</span>
+{
+    <span style="color: blue">get</span>
+    {
+        <span style="color: blue">return</span>
+            <span style="color: blue">from</span> c <span style="color: blue">in</span> _addressBook.Contacts
+            <span style="color: blue">select</span> <span style="color: blue">new</span> <span style="color: #2b91af">ContactViewModel</span>(c);
+    }
+}</pre><p>As you might imagine, this code runs every time a contact is added or deleted. Each time, it rebuilds the entire list. How is this not a performance problem?</p>
+<h3>The recycle bin</h3>
+<p>Internally, Update Controls uses object recycling. It will reuse objects from one run to the next. It does so by adding objects to a RecycleBin&lt;T&gt;. Then it extracts from that recycle bin as it processes new objects.</p>
+<pre><span style="color: blue">using</span> (var bin = <span style="color: blue">new</span> <span style="color: #2b91af">RecycleBin</span>&lt;<span style="color: #2b91af">ContactViewModel</span>&gt;())
+{
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> oldContact <span style="color: blue">in</span> _contacts)
+        bin.AddObject(oldContact);
+    _contacts.Clear();
+
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> newContact <span style="color: blue">in</span> _viewModel.Contacts)
+        _contacts.Add(bin.Extract(newContact));
+}</pre><p>All of the old objects are added to the recycle bin. Then the original collection is cleared. New objects are extracted through the recycle bin before being added back into the collection. If the object is already in the recycle bin, the old one is returned. If not, the new one is used.</p>
+<h3>Equals and GetHashCode</h3>
+<p>The recycle bin uses the Equals and GetHashCode methods to find existing objects. So for this to have the desired effect, we have to implement these methods in ContactViewModel:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">override</span> <span style="color: blue">bool</span> <span style="color: #2b91af">Equals</span>(<span style="color: blue">object</span> obj)
+{
+    <span style="color: blue">if</span> (obj == <span style="color: blue">this</span>)
+        <span style="color: blue">return</span> <span style="color: maroon">true</span>;
+    <span style="color: #2b91af">ContactViewModel</span> that = obj <span style="color: blue">as</span> <span style="color: #2b91af">ContactViewModel</span>;
+    <span style="color: blue">if</span> (that == <span style="color: blue">null</span>)
+        <span style="color: blue">return</span> <span style="color: maroon">false</span>;
+    <span style="color: blue">return</span> _contact.Equals(that._contact);
+}
+
+<span style="color: blue">public</span> <span style="color: blue">override</span> <span style="color: blue">int</span> <span style="color: #2b91af">GetHashCode</span>()
+{
+    <span style="color: blue">return</span> _contact.GetHashCode();
+}</pre><p>So even though we create a new list of ContactViewModels on every update, we reuse the old ones for the Contacts that were not added or removed.</p>
+<p>The main advantage of object recycling is that dependent properties are preserved. None of the ContactViewModel properties need to be recalculated on the recycled objects. If ContactViewModel has any children, then those are preserved as well. This can be a significant savings for deep hierarchies.</p>
+<h3>Managing external resources</h3>
+<p>Another advantage of object recycling is that it can be used to manage an external resource. Suppose we want to represent each contact with a 3D object in a DirectX scene graph. We’ll add the following methods to ContactViewModel:</p>
+<pre><span style="color: blue">private</span> <span style="color: #2b91af">Mesh</span> _mesh;
+<span style="color: blue">private</span> <span style="color: #2b91af">SceneGraph</span> _sceneGraph;
+
+<span style="color: blue">public</span> <span style="color: blue">void</span> <span style="color: #2b91af">EnsureInSceneGraph</span>(<span style="color: #2b91af">SceneGraph</span> sceneGraph)
+{
+    <span style="color: blue">if</span> (_mesh == <span style="color: blue">null</span>)
+    {
+        _mesh = <span style="color: blue">new</span> <span style="color: #2b91af">Mesh</span>();
+        _sceneGraph = sceneGraph;
+        _sceneGraph.Add(_mesh);
+    }
+}
+
+<span style="color: blue">public</span> <span style="color: blue">void</span> <span style="color: #2b91af">Dispose</span>()
+{
+    <span style="color: blue">if</span> (_mesh != <span style="color: blue">null</span>)
+    {
+        _sceneGraph.Remove(_mesh);
+    }
+}</pre><p>We call these methods while updating the collection.</p>
+<pre><span style="color: blue">using</span> (var bin = <span style="color: blue">new</span> <span style="color: #2b91af">RecycleBin</span>&lt;<span style="color: #2b91af">ContactViewModel</span>&gt;())
+{
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> oldContact <span style="color: blue">in</span> _contacts)
+        bin.AddObject(oldContact);
+    _contacts.Clear();
+
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> newContact <span style="color: blue">in</span> _viewModel.Contacts)
+    {
+        <span style="color: #2b91af">ContactViewModel</span> extracted = bin.Extract(newContact);
+        extracted.EnsureInSceneGraph(_sceneGraph);
+        _contacts.Add(extracted);
+    }
+}</pre><p>As we extract objects from the recycle bin, we ensure that the mesh is in the scene graph. If the object was already there, then nothing happens. If this is a new object, then the mesh is created.</p>
+<p>When we leave the using block, the recycle bin is disposed. This in turn disposes all objects that were not removed from the recycle bin. An object is left over if it used to be in the collection, but it was removed. So we remove the mesh in the Dispose method.</p>
+<p>Update Controls uses object recycling to improve performance and manage external resources. Be sure to implement Equals and GetHashCode to work well with it. And if you need some extra performance, or you need to manage your own external resources, you can use the same technique.</p>
+  <div id="book-navigation-32" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="how-does-it-work.html" class="page-previous" title="Go to previous page">‹ How does it work?</a>
+                    <a href="../advanced.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="dependent-properties.html" class="page-next" title="Go to next page">Dependent properties ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/33.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-593"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="object-recycling.html#comment-593" class="active">Alternative to code generation</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Mon, 03/14/2011 - 20:19.  </div>
+
+  <div class="content">
+    <p>After installing Update Controls, I couldn't find the helper-thingie that generates properties for private fields in Visual Studio 2008. But that's okay. I am allergic to code generators anyway. So I came up with an alternative:</p>
+<pre>   public class Independent&lt;T&gt;
+   {
+      public Independent() { }
+      public Independent(T initialValue) { _value = initialValue; }
+
+      public readonly Independent IndependentSentry = new Independent();
+
+      protected T _value;
+      public T Value
+      {
+         get { IndependentSentry.OnGet(); return _value; }
+         set { IndependentSentry.OnSet(); _value = value; }
+      }
+      
+      public static implicit operator T(Independent&lt;T&gt; i)
+             { return i.Value; }
+   }
+
+   public class Dependent&lt;T&gt;
+   {
+      public Dependent(Func&lt;T&gt; computeValue)
+      {
+         _computeValue = computeValue;
+         DependentSentry = new Dependent(() =&gt; _value = _computeValue());
+      }
+
+      public readonly Dependent DependentSentry;
+      Func&lt;T&gt; _computeValue;
+
+      T _value;
+      public T Value
+      {
+         get { DependentSentry.OnGet(); return _value; }
+      }
+
+      public static implicit operator T(Dependent&lt;T&gt; d) { return d.Value; }
+   }
+</pre><p>With these classes defined, I can define sentry-backed properties like so:</p>
+<pre>   private Independent&lt;string&gt; _name = new Independent&lt;string&gt;();
+   private Independent&lt;DateTime&gt; _date = new Independent&lt;DateTime&gt;();
+
+   public string Name
+   {
+      get { return _name; }
+      set { _name.Value = value; }
+   }
+   public DateTime Date
+   {
+      get { return _date; }
+      set { _date.Value = value; }
+   }
+</pre><p>Sure, I still have to write the properties by hand, but I'm used to that, and it's still less work than implementing INotifyPropertyChanged.</p>
+<p>I could "cheat" to make the code shorter:</p>
+<pre>   public Independent&lt;string&gt; Name { get; private set; }
+   public Independent&lt;DateTime&gt; Date { get; private set; }
+   public Model()
+   {
+      Name = new Independent&lt;string&gt;();
+      Date = new Independent&lt;DateTime&gt;();
+   }
+</pre><p>Unfortunately, this would often force callers to access the Independent&lt;T&gt;.Value property themselves, so this solution seems messier overall.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/33/593.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-596"></a>
+<div class="comment comment-published even comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="object-recycling.html#comment-596" class="active">I&#039;d like to include your patch</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Tue, 03/15/2011 - 10:17.  </div>
+
+  <div class="content">
+    <p>I've decided that I should add your classes to the core library. Could you please post your name so I can credit you?</p>
+<p>Thanks.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/33/596.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<a id="comment-594"></a>
+<div class="comment comment-published odd comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="object-recycling.html#comment-594" class="active">Intriguing</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Mon, 03/14/2011 - 23:08.  </div>
+
+  <div class="content">
+    <p>I've rejected using generics like that in the past, but it certainly does clean things up. I might just add it to the library after all.</p>
+<p>My biggest concern is that someone might accidentally do something like Independent&lt;List&lt;Child&gt;&gt; and be surprised when it doesn't work. But then again, I just recently added IndependentList&lt;Child&gt;, so I guess the danger is reduced.</p>
+<p>Let me mull that over.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/33/594.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-597"></a>
+<div class="comment comment-published even last comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="object-recycling.html#comment-597" class="active">David Piepgrass</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Tue, 03/15/2011 - 11:15.  </div>
+
+  <div class="content">
+    <p>...is my name. </p>
+<p>Dependent&lt;List&lt;T&gt;&gt; works okay (as long as it's treated as read-only outside the updater)... I tried replacing the list of Blog._tags in Noteworthy demo with Dependent&lt;List&lt;Tag&gt;&gt;, and this works fine. </p>
+<p>But if you use Independent&lt;List&lt;T&gt;&gt;, adding/removing an item in the list causes OnGet() to be called when it should be OnSet(). You could do an assert in the Independent&lt;T&gt; constructor to make sure that T doesn't implement ICollection&lt;*&gt; (well, I'm not sure how to check that... some sort of reflection madness). Then again, ICollection should be fine if the collection IsReadOnly. Also, IEnumerable is not a problem, e.g. System.String implements it.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/33/597.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div></div>  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../examples.html">Examples</a></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../advanced.html">Advanced Topics</a><ul class="menu"><li class="leaf first"><a href="how-does-it-work.html">How does it work?</a></li>
+<li class="leaf active-trail"><a href="object-recycling.html" class="active">Object Recycling</a></li>
+<li class="leaf"><a href="dependent-properties.html">Dependent properties</a></li>
+<li class="leaf last"><a href="fields-and-collections.html">Fields and collections using generics</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/advanced/object-recycling?destination=node%2F33"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-cbe581d8fd1fe6928d90ec4b5ae8355d" value="form-cbe581d8fd1fe6928d90ec4b5ae8355d"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/advanced/object-recycling by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:58 GMT -->
+</html>

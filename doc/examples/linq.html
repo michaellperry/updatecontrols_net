@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/examples/linq by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Linq | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="icommand.html" />
+<link rel="up" href="../examples.html" />
+<link rel="next" href="../mvvm-and-linq-to-sql.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-examples-linq section-examples">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Linq</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-15" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sat, 10/10/2009 - 22:26        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>One of the most talked about classes in WPF is <a href="http://msdn.microsoft.com/en-us/library/ms748365.aspx">ObservableCollection&lt;T&gt;</a>. This is a collection class that notifies listeners whenever something is added or removed. Examples abound of using an <a href="http://www.codeproject.com/KB/WPF/binding_in_linq-sql.aspx?display=Print">ObservableCollection&lt;Person&gt;</a> within the data model of an application. Add a person to the data model, and the view is updated.</p>
+<p>But a problem with ObservableCollection&lt;T&gt; appears when you want to filter, map, or otherwise modify the collection on the way to the view. The desired way to accomplish this is to write a Linq query. But that turns the ObservableCollection&lt;T&gt; into an IEnumerable&lt;T&gt;. While the original source collection is observable, the query is not.</p>
+<p><strong>Filtered collections are not observable</strong><br />In the following example, one list box is bound to People, while another is bound to PeopleStartingWithP. The first list is updated, but the second is not.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> AddressBook
+{
+    <span style="color: blue">private</span> ObservableCollection&lt;Person&gt; _people = <span style="color: blue">new</span> ObservableCollection&lt;Person&gt;();
+
+    <span style="color: blue">public</span> ObservableCollection&lt;Person&gt; People
+    {
+        get { <span style="color: blue">return</span> _people; }
+    }
+
+    <span style="color: blue">public</span> IEnumerable&lt;Person&gt; PeopleStartingWithP
+    {
+        get { <span style="color: blue">return</span> _people.Where(p =&gt; p.Name.StartsWith(<span style="color: maroon">"P"</span>)); }
+    }
+
+    <span style="color: blue">private</span> Random _random = <span style="color: blue">new</span> Random();
+    <span style="color: blue">public</span> <span style="color: blue">void</span> NewPerson()
+    {
+        _people.Add(<span style="color: blue">new</span> Person() { Name = <span style="color: maroon">"Person "</span> + _random.Next(<span style="color: maroon">100</span>) });
+    }
+}
+</pre><pre><span style="color: blue">&lt;</span><span style="color: maroon">Window</span> <span style="color: red">x:Class</span>="<span style="color: blue">AddressBook.Window1</span>"
+    <span style="color: red">xmlns</span>="<span style="color: blue">http://schemas.microsoft.com/winfx/2006/xaml/presentation</span>"
+    <span style="color: red">xmlns:x</span>="<span style="color: blue">http://schemas.microsoft.com/winfx/2006/xaml</span>"
+    <span style="color: red">Title</span>="<span style="color: blue">Window1</span>" <span style="color: red">Height</span>="<span style="color: blue">300</span>" <span style="color: red">Width</span>="<span style="color: blue">300</span>"<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">StackPanel</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">ListBox</span> <span style="color: red">ItemsSource</span>="<span style="color: blue">{Binding People}</span>"<span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span><span style="color: maroon">ListBox.ItemTemplate</span><span style="color: blue">&gt;</span>
+                <span style="color: blue">&lt;</span><span style="color: maroon">DataTemplate</span><span style="color: blue">&gt;</span>
+                    <span style="color: blue">&lt;</span><span style="color: maroon">TextBlock</span> <span style="color: red">Text</span>="<span style="color: blue">{Binding Name}</span>"/<span style="color: blue">&gt;</span>
+                <span style="color: blue">&lt;</span>/<span style="color: maroon">DataTemplate</span><span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span>/<span style="color: maroon">ListBox.ItemTemplate</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span>/<span style="color: maroon">ListBox</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">ListBox</span> <font color="#ff0000">Name</font>="<font color="#0000ff">FilteredList</font>" <span style="color: red">ItemsSource</span>="<span style="color: blue">{Binding PeopleStartingWithP}</span>"<span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span><span style="color: maroon">ListBox.ItemTemplate</span><span style="color: blue">&gt;</span>
+                <span style="color: blue">&lt;</span><span style="color: maroon">DataTemplate</span><span style="color: blue">&gt;</span>
+                    <span style="color: blue">&lt;</span><span style="color: maroon">TextBlock</span> <span style="color: red">Text</span>="<span style="color: blue">{Binding Name}</span>"/<span style="color: blue">&gt;</span>
+                <span style="color: blue">&lt;</span>/<span style="color: maroon">DataTemplate</span><span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span>/<span style="color: maroon">ListBox.ItemTemplate</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span>/<span style="color: maroon">ListBox</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">Button</span> <span style="color: red">Content</span>="<span style="color: blue">New Person</span>" <span style="color: red">Click</span>="<span style="color: blue">NewPerson_Click</span>"/<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span>/<span style="color: maroon">StackPanel</span><span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">Window</span><span style="color: blue">&gt;</span>
+</pre><pre><span style="color: blue">public</span> partial <span style="color: blue">class</span> Window1 : Window
+{
+    <span style="color: blue">private</span> AddressBook _addressBook = <span style="color: blue">new</span> AddressBook();
+
+    <span style="color: blue">public</span> Window1()
+    {
+        InitializeComponent();
+        DataContext = _addressBook;
+    }
+
+    <span style="color: blue">private</span> <span style="color: blue">void</span> NewPerson_Click(object sender, RoutedEventArgs e)
+    {
+        _addressBook.NewPerson();
+    }
+}
+</pre><p>One commonly used solution to this problem is to programmatically set either the DataContext or ItemsSource to force the list to be updated. This works, but it completely defeats the purpose of using ObservableCollection&lt;T&gt;.</p>
+<pre><span style="color: blue">private</span> <span style="color: blue">void</span> NewPerson_Click(object sender, RoutedEventArgs e)
+{
+    _addressBook.NewPerson();
+    <strong>FilteredList.ItemsSource = _addressBook.PeopleStartingWithP;</strong>
+}
+</pre><p>Writing code that reaches back into the XAML and sets properties is backwards. This is the way things were done in Winforms. XAML is meant to be declarative. The markup should declare its own ItemsSource, and not rely on code to set it.</p>
+<p><strong>Query parameters are not observable</strong><br />Another problem with this approach occurs when the filter in the Linq query references other data. For example, if we want the user to choose their own first letter, the list should update when a new letter is chosen.</p>
+<p>The following code makes this work by implementing INotifyPropertyChanged and firing an event when FirstLetter is changed.</p>
+<pre><span style="color: blue">private</span> string _firstLetter = string.Empty;
+
+<span style="color: blue">public</span> string FirstLetter
+{
+    get { <span style="color: blue">return</span> _firstLetter; }
+    set { _firstLetter = value; FirePropertyChanged(<span style="color: maroon"><strong>"PeopleStartingWithFirstLetter"</strong></span>); }
+}
+
+<span style="color: blue">public</span> IEnumerable&lt;Person&gt; PeopleStartingWithFirstLetter
+{
+    get
+    {
+        <span style="color: blue">if</span> (_firstLetter == string.Empty)
+            <span style="color: blue">return</span> _people;
+        <span style="color: blue">else</span>
+            <span style="color: blue">return</span> _people.Where(p =&gt; p.Name.StartsWith(_firstLetter));
+    }
+}
+
+<span style="color: blue">private</span> <span style="color: blue">void</span> FirePropertyChanged(string propertyName)
+{
+    <span style="color: blue">if</span> (PropertyChanged != <span style="color: blue">null</span>)
+        PropertyChanged(<span style="color: blue">this</span>, <span style="color: blue">new</span> PropertyChangedEventArgs(propertyName));
+}
+</pre><p>Do you see the problem? I've highlighted it for you. FirstLetter fires an event indicating that PeopleStartingWithFirstLetter has changed. That's not the property that was changed! That's the property that was <em>affected</em> by the change. FirstLetter is independent -- the user can change it. PeopleStartingWithFirstLetter is dependent -- it only responds to change. We've created a reverse dependency where FirstLetter knows about PeopleStartingWithFirstLetter. Again, this code is backwards.</p>
+<p><strong>Here's my solution</strong><br />Update Controls makes data binding through linq queries a breeze. It doesn't require ObservableCollection&lt;T&gt;. It responds to changes to the source collection even if it is a plain-vanilla List&lt;T&gt;. And it even responds when the query parameters are changed. And it does all this without INotifyPropertyChanged or any backwards event registration code. Here's what the class looks like using Update Controls:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> AddressBook
+{
+    <span style="color: blue">private</span> IndependentList&lt;Person&gt; _people =
+        <span style="color: blue">new</span> IndependentList&lt;Person&gt;();
+    <span style="color: blue">private</span> Independent&lt;<span style="color: blue">string</span>&gt; _firstLetter =
+        <span style="color: blue">new</span> Independent&lt;<span style="color: blue">string</span>&gt;();
+
+    <span style="color: blue">public</span> IEnumerable&lt;Person&gt; People
+    {
+        get { <span style="color: blue">return</span> _people; }
+    }
+
+    <span style="color: blue">public</span> string FirstLetter
+    {
+        get { <span style="color: blue">return</span> _firstLetter.Value; }
+        set { _firstLetter.Value = value; }
+    }
+
+    <span style="color: blue">public</span> IEnumerable&lt;Person&gt; PeopleStartingWithFirstLetter
+    {
+        get
+        {
+            <span style="color: blue">if</span> (FirstLetter == string.Empty)
+                <span style="color: blue">return</span> _people;
+            <span style="color: blue">else</span>
+                <span style="color: blue">return</span> _people.Where(p =&gt; p.Name.StartsWith(FirstLetter));
+        }
+    }
+
+    <span style="color: blue">private</span> Random _random = <span style="color: blue">new</span> Random();
+    <span style="color: blue">public</span> <span style="color: blue">void</span> NewPerson()
+    {
+        _people.Add(<span style="color: blue">new</span> Person() { Name = <span style="color: maroon">"Person "</span> + _random.Next(<span style="color: maroon">100</span>) });
+    }
+}
+</pre><p>For a more in-depth example, please see the latest <a href="http://updatecontrols.net/videos/Linq/Linq.html">video</a> and download the <a href="http://adventuresinsoftware.com/blog/wp-content/uploads/2009/03/quickwriter.zip">source code</a>.</p>
+  <div id="book-navigation-11" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="icommand.html" class="page-previous" title="Go to previous page">‹ ICommand</a>
+                    <a href="../examples.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="../mvvm-and-linq-to-sql.html" class="page-next" title="Go to next page">Linq to SQL ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/15.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../examples.html">Examples</a><ul class="menu"><li class="leaf first"><a href="menus.html">Menus</a></li>
+<li class="collapsed"><a href="treeview/non_recursive.html">TreeView</a></li>
+<li class="leaf"><a href="icommand.html">ICommand</a></li>
+<li class="leaf active-trail"><a href="linq.html" class="active">Linq</a></li>
+<li class="leaf"><a href="../mvvm-and-linq-to-sql.html">Linq to SQL</a></li>
+<li class="leaf"><a href="multi-threading.html">Multi-threading</a></li>
+<li class="leaf"><a href="twolists.html">Two lists</a></li>
+<li class="leaf"><a href="vmworkshop/wpf.html">VM Workshop</a></li>
+<li class="leaf"><a href="awesome.html">Awesome application</a></li>
+<li class="leaf"><a href="wp7_odata.html">Windows Phone 7 and OData</a></li>
+<li class="leaf last"><a href="mvc-without-eventing.html">MVC without eventing</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/examples/linq?destination=node%2F15"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-8a3d46f4b4180294ac420b50d0095f9a" value="form-8a3d46f4b4180294ac420b50d0095f9a"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/examples/linq by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:30 GMT -->
+</html>

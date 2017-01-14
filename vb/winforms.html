@@ -1,0 +1,260 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Tranitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  
+<!-- Mirrored from updatecontrols.net/vb/winforms.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:55:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <title>Update Controls .NET - Winforms</title>
+  <link rel="stylesheet" href="../uc.css" type="text/css" media="screen" />
+  
+</head>
+<body>
+<div id="header">
+	<h1><span id="productimage"><img src="http://updatecontrols.net/images/logosmall.jpg" align=left></span> Update Controls .NET
+	<select onchange="window.open('/' + this.options[this.selectedIndex].value + '/winforms.shtml', '_self')"><option value="vb" selected="selected">VB</option><option value="cs">C#</option></select>
+	</h1>
+</div>
+<div id="mainmenu">
+	<a href="index.html">WPF</a>
+	<a href="silverlight.html">Silverlight</a>
+	<a id="selected" href="winforms.html">Winforms</a>
+	<a href="download.html">Download</a>
+	<a href="../doc/index.html">Documentation</a>
+	<a href="videos.html">Videos</a>
+	<a href="contact.html">Contact Us</a>
+</div>
+<div id="body">
+
+   <script type="text/javascript" src="../flashobject.js"></script>
+   <script type="text/javascript">
+      <!-- To load a movie other then the first one listed in the xml file you can specify a movie=# arguement. -->
+      <!-- For example, to load the third movie you would do the following: MyProjectName.html?movie=3 -->
+      // <![CDATA[
+      var args = new Object();
+      var query = location.search.substring(1);
+      // Get query string
+      var pairs = query.split( "," );
+      // Break at comma
+      for ( var i = 0; i < pairs.length; i++ )
+      {
+         var pos = pairs[i].indexOf('=');
+         if( pos == -1 )
+         {
+            continue; // Look for "name=value"
+         }
+         var argname = pairs[i].substring( 0, pos ); // If not found, skip
+         var value = pairs[i].substring( pos + 1 ); // Extract the name
+         args[argname] = unescape( value ); // Extract the value
+      }
+      // ]]>
+   </script>
+
+	<style type="text/css">
+	   #noexpressUpdate
+	   {
+	      margin: 0 auto;
+			font-family:Arial, Helvetica, sans-serif;
+			font-size: x-small;
+			color: #003300;
+			text-align: left;
+			background-image: url(http://updatecontrols.net/images/screenshot.jpg);
+			background-repeat: no-repeat;
+			width: 586px;
+			height: 276px;
+			padding: 0px;
+	   }
+	</style>
+	<div id="rightwide">
+		<h1>Next Steps</h1>
+        <p><a href="download.html">Download</a> the library.</p>
+        <p>View more detailed <a href="../doc/index.html">Documentation</a>.</p>
+        <p>Learn techniques by watching <a href="videos.html">Videos</a>.</p>
+	</div>
+    <div id="content">
+		<h2>Introduction</h2>
+		<p>These controls keep themselves up-to-date <strong>automatically</strong>. Create visually stunning, highly interactive
+		Windows forms. Update Controls simplify UI programming. And the new tab control features <strong>inertia</strong>.</p>
+      <div id="flashcontent">
+			<div id="noexpressUpdate">
+				<!-- <p><img src="/images/screenshot.jpg" /></p> -->
+		    </div>
+	   </div>
+      <script type="text/javascript">
+		  // <![CDATA[
+         var fo = new FlashObject( "../UpdateControlsMain_controller.swf", "../UpdateControlsMain_controller.swf", "604", "663", "7", "#FFFFFF", false, "best" );
+         fo.addVariable( "csConfigFile", "../UpdateControlsMain_config.xml"  );
+         fo.addVariable( "csColor"     , "FFFFFF"           );
+
+         if( args.movie )
+         {
+            fo.addVariable( "csFilesetBookmark", args.movie );
+         }
+         fo.write("flashcontent");
+         // ]]>
+
+	   </script>
+		<h2>How it Works</h2>
+		<p>With other controls, you set properties like "Text" to put data into the form. When the data changes, you
+		have to set the property again. But with Update Controls, you implement events like "GetText". The controls
+		automatically update themselves when the data changes.</p>
+		<p>The following code is all it takes to attach the First Name text box to the data object:</p>
+		
+		<pre><span id="keyword">Public</span> <span id="keyword">Partial</span> <span id="keyword">Class</span> ContactForm
+    <span id="keyword">Inherits</span> Form
+    <span id="keyword">Private</span> _contact <span id="keyword">As</span> Contact
+
+    <span id="keyword">Public</span> <span id="keyword">Sub</span> <span id="keyword">New</span>(<span id="keyword">ByVal</span> contact <span id="keyword">As</span> Contact)
+        _contact = contact
+        InitializeComponent()
+    <span id="keyword">End</span> <span id="keyword">Sub</span>
+
+    <span id="keyword">Private</span> <span id="keyword">Function</span> firstNameTextBox_GetText() <span id="keyword">As</span> <span id="keyword">String</span>
+        <span id="keyword">Return</span> _contact.FirstName
+    <span id="keyword">End</span> <span id="keyword">Function</span>
+
+    <span id="keyword">Private</span> <span id="keyword">Sub</span> firstNameTextBox_SetText(<span id="keyword">ByVal</span> value <span id="keyword">As</span> <span id="keyword">String</span>)
+        _contact.FirstName = value
+    <span id="keyword">End</span> <span id="keyword">Sub</span>
+<span id="keyword">End</span> <span id="keyword">Class</span>
+</pre>
+		
+		<p>The data is stored in a simple object. We start by defining independent fields and their properties:</p>
+		
+		<pre><span id="keyword">Public</span> <span id="keyword">Class</span> Contact
+    <span id="keyword">Private</span> _firstName <span id="keyword">As</span> <span id="keyword">String</span>
+    <span id="keyword">Private</span> _lastName <span id="keyword">As</span> <span id="keyword">String</span>
+    <span id="keyword">Private</span> _email <span id="keyword">As</span> <span id="keyword">String</span>
+    <span id="keyword">Private</span> _phone <span id="keyword">As</span> <span id="keyword">String</span>
+<span id="keyword">End</span> <span id="keyword">Class</span>
+</pre>
+		
+		<p>Then, we add our own business logic:</p>
+		
+		<pre>    <span id="keyword">Public</span> <span id="keyword">ReadOnly</span> <span id="keyword">Property</span> FullName() <span id="keyword">As</span> <span id="keyword">String</span>
+        <span id="keyword">Get</span>
+            <span id="keyword">If</span> <span id="keyword">String</span>.IsNullOrEmpty(FirstName) <span id="keyword">AndAlso</span> <span id="keyword">String</span>.IsNullOrEmpty(LastName) <span id="keyword">Then</span>
+                <span id="keyword">Return</span> <span id="string">"New Contact"</span>
+            <span id="keyword">Else</span>
+                <span id="keyword">Return</span> <span id="keyword">String</span>.Format(<span id="string">"{0}, {1}"</span>, LastName, FirstName)
+            <span id="keyword">End</span> <span id="keyword">If</span>
+        <span id="keyword">End</span> <span id="keyword">Get</span>
+    <span id="keyword">End</span> <span id="keyword">Property</span></pre>
+		
+		<p>Now our data object is ready for any Update Controls that we want to attach to it. Now or in the future.</p>
+        <h2>Download and Install</h2>
+        <p>Update Controls requires Visual Studio .NET 2008 or later. It adds controls to the Toolbox, and an
+        add-in for generating dynamic properties. Once the installer finishes, open Visual Studio
+        and start working on your first Update Controls application.</p>
+        <h2>The Toolbox</h2>
+        <img id="figure" src="http://updatecontrols.net/images/toolbox.jpg" />
+        <p>Two sections were added to your toolbox. The Update Controls Themes section contains controls
+        that have an appealing refractive three-dimensional look. These controls include ThemedButton,
+        ThemedCheckBox, and ThemedRadioButton. These controls are better-looking versions of their
+        standard counterparts. You also get the ThemedTabDeck, which gives you a tabbed document experience
+        with reordering, closing, tab images, and best of all inertia.
+        Here you will also find the Theme component, which controls the appearance of all controls
+        in this section.</p>
+        <p>The Update Controls section contains the standard Windows controls with update behavior.
+        These controls include UpdateTextBox, UpdateTreeView, and UpdateGrid. Build your forms using
+        these controls instead of the standard Windows controls. To attach them to data, handle Get
+        and Set events instead of setting properties.</p>
+        <h2>The Contact Form</h2>
+        <img id="figure" src="http://updatecontrols.net/images/contactform.jpg" />
+        <p>Start a new project and rename Form1 to ContactForm. Add four standard Labels and four
+        UpdateTextBox controls. You don't need UpdateLabels for this step, since the label text is static.</p>
+        <p>It's a good idea to set the Anchor property on all four UpdateTextBox controls to "Top, Left, Right".
+        This will cause the controls to stretch with the window.</p>
+        <h2>The Contact Class</h2>
+        <p>Add a new class to your project called Contact. You will have to make this class public. Add four
+        private fields to the class:</p>
+        
+        <pre><span id="keyword">Public</span> <span id="keyword">Class</span> Contact
+    <span id="keyword">Private</span> _firstName <span id="keyword">As</span> <span id="keyword">String</span>
+    <span id="keyword">Private</span> _lastName <span id="keyword">As</span> <span id="keyword">String</span>
+    <span id="keyword">Private</span> _email <span id="keyword">As</span> <span id="keyword">String</span>
+    <span id="keyword">Private</span> _phone <span id="keyword">As</span> <span id="keyword">String</span>
+<span id="keyword">End</span> <span id="keyword">Class</span>
+</pre>
+        
+        <p>Now select the four fields and invoke the "Generate Dynamic Properties" command from the "Tools"
+        menu, or just press Ctrl+D, Ctrl+G. The library will generate code for accessing these values.</p>
+        <h2>The Get and Set Events</h2>
+        <p>Go back to the ContactForm, right-click, and select "View Code". The form needs a Contact
+        object to edit, so add a private Contact called "_contact". Add a constructor parameter to initialize
+        this field.</p>
+        
+        <pre><span id="keyword">Public</span> <span id="keyword">Partial</span> <span id="keyword">Class</span> ContactForm
+    <span id="keyword">Inherits</span> Form
+    <span id="keyword">Private</span> _contact <span id="keyword">As</span> Contact
+
+    <span id="keyword">Public</span> <span id="keyword">Sub</span> <span id="keyword">New</span>(<span id="keyword">ByVal</span> contact <span id="keyword">As</span> Contact)
+        _contact = contact
+        InitializeComponent()
+    <span id="keyword">End</span> <span id="keyword">Sub</span>
+<span id="keyword">End</span> <span id="keyword">Class</span>
+</pre>
+        
+        <p>Go back to the designer and select the first name text box. You may want to change its name to
+        "firstNameTextBox" to make the code more readable. In the "Properties" window, click the
+        lightning-bolt "Events" button. Double-click the event GetText, and have the method return
+        _context.FirstName. Go back to the designer and double-click SetText. Have this method
+        set _context.FirstName to the value parameter.</p>
+        
+<pre>    <span id="keyword">Private</span> <span id="keyword">Function</span> firstNameTextBox_GetText() <span id="keyword">As</span> <span id="keyword">String</span>
+        <span id="keyword">Return</span> _contact.FirstName
+    <span id="keyword">End</span> <span id="keyword">Function</span>
+
+    <span id="keyword">Private</span> <span id="keyword">Sub</span> firstNameTextBox_SetText(<span id="keyword">ByVal</span> value <span id="keyword">As</span> <span id="keyword">String</span>)
+        _contact.FirstName = value
+    <span id="keyword">End</span> <span id="keyword">Sub</span></pre>
+        
+        <p>Do the same thing for the other controls, attaching them to the other properties.</p>
+        <h2>The Program</h2>
+        <p>Open the Program class and edit the Main method. The ContactForm takes a Contact object as a
+        constructor parameter, so the Program has to supply it. Create one and pass it into the
+        ContactForm constructor.</p>
+        
+        <pre>        <span id="keyword">Private</span> <span id="keyword">Shared</span> <span id="keyword">Sub</span> Main()
+            Application.EnableVisualStyles()
+            Application.SetCompatibleTextRenderingDefault(<span id="keyword">False</span>)
+            <span id="keyword">Dim</span> contactList <span id="keyword">As</span> <span id="keyword">New</span> ContactList()
+            Application.Run(<span id="keyword">New</span> MainForm(contactList))
+        <span id="keyword">End</span> <span id="keyword">Sub</span></pre>
+        
+        <p>For good measure, let's create a second form that edits the same contact. Add a line before
+        Application.Run to show another one.</p>
+        
+        <pre>        <span id="keyword">Private</span> <span id="keyword">Shared</span> <span id="keyword">Sub</span> Main()
+            Application.EnableVisualStyles()
+            Application.SetCompatibleTextRenderingDefault(<span id="keyword">False</span>)
+            <span id="keyword">Dim</span> contactList <span id="keyword">As</span> <span id="keyword">New</span> ContactList()
+            (<span id="keyword">New</span> MainForm(contactList)).Show()
+            Application.Run(<span id="keyword">New</span> MainForm(contactList))
+        <span id="keyword">End</span> <span id="keyword">Sub</span></pre>
+        
+        <p>Now run this program and you will see that the two forms are linked to each other through
+        their common Contact object.</p>
+	</div>
+	<div id="footer">
+		&copy; 2009 Mallard Software Designs, Inc.
+	</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-389401-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+
+<!-- Mirrored from updatecontrols.net/vb/winforms.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:55:38 GMT -->
+</html>
+
+

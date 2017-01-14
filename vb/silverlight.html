@@ -1,0 +1,155 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Tranitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  
+<!-- Mirrored from updatecontrols.net/vb/silverlight.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:55:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <title>Update Controls .NET - Silverlight</title>
+  <link rel="stylesheet" href="../uc.css" type="text/css" media="screen" />
+  
+</head>
+<body>
+<div id="header">
+	<h1><span id="productimage"><img src="http://updatecontrols.net/images/logosmall.jpg" align=left></span> Update Controls .NET
+	<select onchange="window.open('/' + this.options[this.selectedIndex].value + '/silverlight.shtml', '_self')"><option value="vb" selected="selected">VB</option><option value="cs">C#</option></select>
+	</h1>
+</div>
+<div id="mainmenu">
+	<a href="index.html">WPF</a>
+	<a id="selected" href="silverlight.html">Silverlight</a>
+	<a href="winforms.html">Winforms</a>
+	<a href="download.html">Download</a>
+	<a href="../doc/index.html">Documentation</a>
+	<a href="videos.html">Videos</a>
+	<a href="contact.html">Contact Us</a>
+</div>
+<div id="body">
+
+	<div id="rightwide">
+		<h1>Source Code</h1>
+		<p>The source code is available on <a href="http://updatecontrols.codeplex.com/">CodePlex</a>.</p>
+		<p>The library is licensed under the <a href="http://www.fsf.org/licensing/licenses/lgpl.html">LGPL</a>.</p>
+	</div>
+	<div id="content">
+    <h2>Web development just got a little bit lighter</h2>
+    <p>Update Controls is data binding without INotifyPropertyChanged.
+    You never have to implement it. And you never have to consume it.
+    And now it works with Silverlight 3.</p>
+
+    <p>Just like with the Winforms and WPF versions, Update Controls
+    Light requires you to identify independent properties. An independent
+    property is one that can be changed. It's value does not depend upon
+    anything else. For example, a Customer's name is independent, as well as
+    their list of invoices. You indicate that these properties are independent
+    by creating an Independent sentry and calling OnGet() and OnSet()
+    whenever they are accessed or changed.</p>
+		
+		<pre><span style="color: blue">Public</span> <span style="color: blue">Class</span> Customer
+    <span style="color: blue">Dim</span> _name <span style="color: blue">As</span> <span style="color: blue">String</span>
+    <span style="color: blue">Dim</span> _invoices <span style="color: blue">As</span> List(Of Invoice)
+
+    <span style="color: blue">Dim</span> _indName <span style="color: blue">As</span> <span style="color: blue">New</span> Independent
+    <span style="color: blue">Dim</span> _indInvoices <span style="color: blue">As</span> <span style="color: blue">New</span> Independent
+
+    <span style="color: blue">Public</span> <span style="color: blue">Property</span> Name() <span style="color: blue">As</span> <span style="color: blue">String</span>
+        <span style="color: blue">Get</span>
+            _indName.OnGet()
+            <span style="color: blue">Return</span> _name
+        <span style="color: blue">End</span> <span style="color: blue">Get</span>
+        <span style="color: blue">Set</span>(<span style="color: blue">ByVal</span> value <span style="color: blue">As</span> <span style="color: blue">String</span>)
+            _indName.OnSet()
+            _name = value
+        <span style="color: blue">End</span> <span style="color: blue">Set</span>
+    <span style="color: blue">End</span> <span style="color: blue">Property</span>
+
+    <span style="color: blue">Public</span> <span style="color: blue">ReadOnly</span> <span style="color: blue">Property</span> Invoices() <span style="color: blue">As</span> IEnumerable(Of Invoice)
+        <span style="color: blue">Get</span>
+            _indInvoices.OnGet()
+            <span style="color: blue">Return</span> _invoices
+        <span style="color: blue">End</span> <span style="color: blue">Get</span>
+    <span style="color: blue">End</span> <span style="color: blue">Property</span>
+
+    <span style="color: blue">Public</span> <span style="color: blue">Function</span> NewInvoice(<span style="color: blue">ByVal</span> number <span style="color: blue">As</span> <span style="color: blue">String</span>) <span style="color: blue">As</span> Invoice
+        _indInvoices.OnSet()
+        <span style="color: blue">Dim</span> invoice <span style="color: blue">As</span> <span style="color: blue">New</span> Invoice(number)
+        _invoices.Add(invoice)
+        <span style="color: blue">Return</span> invoice
+    <span style="color: blue">End</span> <span style="color: blue">Function</span>
+<span style="color: blue">End</span> <span style="color: blue">Class</span></pre>
+		
+		
+		<p>Then just before you assign your View Model to the DataContext,
+		wrap it for the View.</p>
+		
+		<pre>DataContext = ForView.Wrap( _
+    <span style=' color: Blue;'>New</span> PaymentViewModel(payment, _
+        <span style=' color: Blue;'>New</span> PaymentNavigationModel))</pre>
+		
+    
+    <p>Properties in the View Model that use independent properties are dependent upon
+    them. Update Controls recognizes those dependencies and fires
+    PropertyChanged events for you.</p>
+
+    <p>Think about that. It isn't just firing PropertyChanged for the
+    properties that you indicate as Independent. It's firing PropertyChanged
+    for all the properties that <em>use</em> those properties.</p>
+
+    <h2>Two lists</h2>
+    <p>Here's an example. This control has two lists: paid invoices and
+    unpaid invoices.</p>
+
+    <div id="silverlightControlHost" style="height: 140px"><object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
+    <param name="source" value="/bin/UpdateControls.Light.Demo.xap"></param>
+    <param name="onError" value="onSilverlightError"></param>
+    <param name="background" value="white"></param>
+    <param name="minRuntimeVersion" value="3.0.40624.0"></param>
+    <param name="autoUpgrade" value="true"></param><a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=3.0.40624.0" style="text-decoration: none"><img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style: none" /></a><a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=3.0.40624.0" style="text-decoration: none"></a><iframe id="_sl_historyFrame" style="border: 0px none ; visibility: hidden; height: 0px; width: 0px"></iframe></object></div>
+
+    <p>In a typical program, you would handle the "Paid" and "Unpaid"
+    buttons by removing selected invoices from one list and adding them
+    to the other. But with Update Controls Light, you just change the data
+    model. The two lists are dependent.</p>
+		
+		<pre><span style=' color: Blue;'>Public</span> <span style=' color: Blue;'>ReadOnly</span> <span style=' color: Blue;'>Property</span> PaidInvoices() <span style=' color: Blue;'>As</span> IEnumerable(Of Invoice)
+    <span style=' color: Blue;'>Get</span>
+        <span style=' color: Blue;'>Return</span> _payment.PaidInvoices
+    <span style=' color: Blue;'>End</span> <span style=' color: Blue;'>Get</span>
+<span style=' color: Blue;'>End</span> <span style=' color: Blue;'>Property</span>
+
+<span style=' color: Blue;'>Public</span> <span style=' color: Blue;'>ReadOnly</span> <span style=' color: Blue;'>Property</span> UnpaidInvoices() <span style=' color: Blue;'>As</span> IEnumerable(Of Invoice)
+    <span style=' color: Blue;'>Get</span>
+        <span style=' color: Blue;'>Return</span> _payment.Customer.Invoices.Except(_payment.PaidInvoices)
+    <span style=' color: Blue;'>End</span> <span style=' color: Blue;'>Get</span>
+<span style=' color: Blue;'>End</span> <span style=' color: Blue;'>Property</span>
+</pre>
+		
+    <p>The body of the UnpaidInvoices property tells the whole story. When
+    you add an invoice to the payment, it no longer appears in
+    UnpaidInvoices. Update Controls Light can see this and fire the right
+    notification events.</p>
+
+    <p>Update Controls makes Silverlight data binding a breeze.</p>
+  </div>
+	<div id="footer">
+		&copy; 2009 Mallard Software Designs, Inc.
+	</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-389401-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+
+<!-- Mirrored from updatecontrols.net/vb/silverlight.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:55:38 GMT -->
+</html>
+
+

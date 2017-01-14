@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/examples/twolists by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Two lists | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="multi-threading.html" />
+<link rel="up" href="../examples.html" />
+<link rel="next" href="vmworkshop/wpf.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-examples-twolists section-examples">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Two lists</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-8" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sat, 10/10/2009 - 12:32        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Now that Silverlight 3 has been released, I have taken the Beta designation off of <a href="http://updatecontrolslight.codeplex.com/">Update Controls Light</a>.</p>
+<p>Update Controls is data binding without INotifyPropertyChanged. You never have to implement it. And you never have to consume it. And now it works with Silverlight 3.</p>
+<p>Just like with the Winforms and WPF versions, Update Controls Light requires you to identify independent properties. An independent property is one that can be changed. It's value does not depend upon anything else. For example, a Customer's name is independent, as well as their list of invoices. You indicate that these properties are independent by creating an Independent sentry and calling OnGet() and OnSet() whenever they are accessed or changed.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> Customer
+{
+    <span style="color: blue">private</span> <span style="color: blue">string</span> _name;
+    <span style="color: blue">private</span> List&lt;Invoice&gt; _invoices = <span style="color: blue">new</span> List&lt;Invoice&gt;();
+
+    <span style="color: blue">private</span> Independent _indName = <span style="color: blue">new</span> Independent();
+    <span style="color: blue">private</span> Independent _indInvoices = <span style="color: blue">new</span> Independent();
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> Name
+    {
+        <span style="color: blue">get</span> { _indName.OnGet(); <span style="color: blue">return</span> _name; }
+        <span style="color: blue">set</span> { _indName.OnSet(); _name = value; }
+    }
+
+    <span style="color: blue">public</span> IEnumerable&lt;Invoice&gt; Invoices
+    {
+        <span style="color: blue">get</span> { _indInvoices.OnGet(); <span style="color: blue">return</span> _invoices; }
+    }
+
+    <span style="color: blue">public</span> Invoice NewInvoice(<span style="color: blue">string</span> number)
+    {
+        _indInvoices.OnSet();
+        Invoice invoice = <span style="color: blue">new</span> Invoice(number);
+        _invoices.Add(invoice);
+        <span style="color: blue">return</span> invoice;
+    }
+}</pre><p>Properties that use those independent properties are dependent upon them. Update Controls recognizes those dependencies and fires PropertyChanged events for you.</p>
+<p>Think about that. It isn't just firing PropertyChanged for the properties that you indicate as Independent. It's firing PropertyChanged for all the properties that <em>use</em> those properties.</p>
+<p><strong>Two lists</strong><br />Here's an example. This control has two lists: paid invoices and unpaid invoices.</p>
+<div id="silverlightControlHost" style="height: 120px;">
+<object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
+<param name="source" value="../sites/default/files/UpdateControls.Light_.Demo_.xap" />
+<param name="onError" value="onSilverlightError" />
+<param name="background" value="white" />
+<param name="minRuntimeVersion" value="3.0.40624.0" />
+
+<param name="autoUpgrade" value="true" /><a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=3.0.40624.0" style="text-decoration: none;"><img src="http://go.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight" style="border-style: none;" /></a><a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=3.0.40624.0" style="text-decoration: none;"></a><iframe id="_sl_historyFrame" style="border: 0px none ; visibility: hidden; height: 0px; width: 0px;"></iframe></object></div>
+<p>In a typical program, you would handle the "Paid" and "Unpaid" buttons by removing selected invoices from one list and adding them to the other. But with Update Controls Light, you just change the data model. The two lists are dependent.</p>
+<pre><span style="color: blue">public</span> IEnumerable&lt;Invoice&gt; PaidInvoices
+{
+    <span style="color: blue">get</span> { <span style="color: blue">return</span> _payment.PaidInvoices; }
+}
+
+<span style="color: blue">public</span> IEnumerable&lt;Invoice&gt; UnpaidInvoices
+{
+    <span style="color: blue">get</span> { <span style="color: blue">return</span> _payment.Customer.Invoices.Except(_payment.PaidInvoices); }
+}</pre><p>The body of the UnpaidInvoices property tells the whole story. When you add an invoice to the payment, it no longer appears in UnpaidInvoices. Update Controls Light can see this and fire the right notification events.</p>
+<p>Dependent properties never have backing storage. They just reference independent properties in their getters and -- if two-way binding is required -- setters.</p>
+  <div id="book-navigation-11" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="multi-threading.html" class="page-previous" title="Go to previous page">‹ Multi-threading</a>
+                    <a href="../examples.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="vmworkshop/wpf.html" class="page-next" title="Go to next page">VM Workshop ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/8.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../examples.html">Examples</a><ul class="menu"><li class="leaf first"><a href="menus.html">Menus</a></li>
+<li class="collapsed"><a href="treeview/non_recursive.html">TreeView</a></li>
+<li class="leaf"><a href="icommand.html">ICommand</a></li>
+<li class="leaf"><a href="linq.html">Linq</a></li>
+<li class="leaf"><a href="../mvvm-and-linq-to-sql.html">Linq to SQL</a></li>
+<li class="leaf"><a href="multi-threading.html">Multi-threading</a></li>
+<li class="leaf active-trail"><a href="twolists.html" class="active">Two lists</a></li>
+<li class="leaf"><a href="vmworkshop/wpf.html">VM Workshop</a></li>
+<li class="leaf"><a href="awesome.html">Awesome application</a></li>
+<li class="leaf"><a href="wp7_odata.html">Windows Phone 7 and OData</a></li>
+<li class="leaf last"><a href="mvc-without-eventing.html">MVC without eventing</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/examples/twolists?destination=node%2F8"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-3144e402dc589b0dc7f7692810bc7ba5" value="form-3144e402dc589b0dc7f7692810bc7ba5"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/examples/twolists by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:32 GMT -->
+</html>

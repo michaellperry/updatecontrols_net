@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/examples/menus by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Menus | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="../examples.html" />
+<link rel="up" href="../examples.html" />
+<link rel="next" href="treeview/non_recursive.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-examples-menus section-examples">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Menus</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-6" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sat, 10/10/2009 - 12:29        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>I had a twitter conversation recently with <a href="http://twitter.com/edward_tanguay">Edward Tanguay</a> about his StackOverflow question on <a href="http://stackoverflow.com/questions/1067903/how-can-i-bind-an-observablecollection-of-viewmodels-to-a-menuitem">binding menus to an Observable Collection</a>. Naturally, I locked on to the ObservableCollection part and didn't get the true gist of his question. I took a step back, reread his question and the provided answers, and finally caught on to the problem. I wish I could upvote Kent Boogaart's answer more than once, because it set me on a trail of discovery.</p>
+<p>This example uses <a href="../../index.html">Update Controls</a>. Download the example source code: <a title="databoundmenus.zip" href="http://adventuresinsoftware.com/blog/wp-content/uploads/2009/07/databoundmenus.zip">databoundmenus.zip</a>.</p>
+<p>There is not just one way to make a WPF menu work. There are several techniques that you have to combine. Much of an application's menu is static. Some of it is context sensitive, and only appears in certain conditions. And in a few places, the menu items are dynamic, like recently opened files or currently open windows. Update Controls can help with all of these things.</p>
+<p><strong>Declarative menu structure</strong><br />For the static menus, you want to declare the structure entirely in XAML. This gives you the greatest design/code separation, and the best tool support. Use <a href="http://adventuresinsoftware.com/blog/?p=297">Command Binding</a> for all menu items.</p>
+<pre><span style="color: blue">&lt;</span><span style="color: maroon">Menu</span> <span style="color: red">DockPanel.Dock</span>="<span style="color: blue">Top</span>"<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_File</span>"<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_New</span>" <span style="color: red">Command</span>="<span style="color: blue">{Binding FileNewCommand}</span>"/<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_Open</span>" <span style="color: red">Command</span>="<span style="color: blue">{Binding FileOpenCommand}</span>"/<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_Save</span>" <span style="color: red">Command</span>="<span style="color: blue">{Binding FileSaveCommand}</span>"/<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_Close</span>" <span style="color: red">Command</span>="<span style="color: blue">{Binding FileCloseCommand}</span>"/<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span>/<span style="color: maroon">MenuItem</span><span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">Menu</span><span style="color: blue">&gt;</span></pre><p><br />Use Update Controls MakeCommand to create all of the bindable ICommand properties. The When clause will enable and disable the menu item.<br /></p>
+<pre><span style="color: blue">public</span> ICommand FileSaveCommand
+{
+    <span style="color: blue">get</span>
+    {
+        <span style="color: green">// We can only save a file when one is open.</span>
+        <span style="color: blue">return</span> MakeCommand
+            .<strong>When</strong>(() =&gt; _dataModel.OpenFileName != <span style="color: blue">null</span>)
+            .Do(() =&gt; _dataModel.LastAction = <span style="color: maroon">"Save"</span>);
+    }
+}</pre><p><br />Some of the menu items are not application actions, but window actions. These can be handled in code-behind.<br /></p>
+<pre><span style="color: blue">&lt;</span><span style="color: maroon">Separator/</span><span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">E_xit</span>" <span style="color: red">Click</span>="<span style="color: blue">Exit_Click</span>"/<span style="color: blue">&gt;</span></pre><p><br /></p>
+<pre><span style="color: blue">private</span> <span style="color: blue">void</span> Exit_Click(<span style="color: blue">object</span> sender, RoutedEventArgs e)
+{
+    Close();
+}</pre><p><br /><strong>Context sensitive menus</strong><br />You want context sensitive menus to appear under certain conditions. WPF has a mechanism for that: the <a href="http://msdn.microsoft.com/en-us/library/system.windows.datatrigger.aspx">DataTrigger</a>. A DataTrigger sets a control property when a data property is equal to a specific value. In this case, we want to set a MenuItem's Visibility property to Hidden when the data property IsFileOpen is False.<br /></p>
+<pre><span style="color: blue">&lt;</span><span style="color: maroon">Window.Resources</span><span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">Style</span> <span style="color: red">x:Key</span>="<span style="color: blue">VisibleWhenFileIsOpen</span>" <span style="color: red">TargetType</span>="<span style="color: blue">MenuItem</span>"<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">Style.Triggers</span><span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span><span style="color: maroon">DataTrigger</span> <span style="color: red">Binding</span>="<span style="color: blue">{Binding IsFileOpen}</span>" <span style="color: red">Value</span>="<span style="color: blue">False</span>"<span style="color: blue">&gt;</span>
+                <span style="color: blue">&lt;</span><span style="color: maroon">Setter</span> <span style="color: red">Property</span>="<span style="color: blue">Visibility</span>" <span style="color: red">Value</span>="<span style="color: blue">Hidden</span>"/<span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span>/<span style="color: maroon">DataTrigger</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span>/<span style="color: maroon">Style.Triggers</span><span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span>/<span style="color: maroon">Style</span><span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">Window.Resources</span><span style="color: blue">&gt;</span></pre><p><br />We apply this style to any menu that is sensitive to this context.<br /></p>
+<pre><span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_Edit</span>" <span style="color: red">Style</span>="<span style="color: blue">{StaticResource VisibleWhenFileIsOpen}</span>"<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">Cu_t</span>"/<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_Copy</span>"/<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_Paste</span>"/<span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">MenuItem</span><span style="color: blue">&gt;</span></pre><p>DataTriggers automatically reset. When the IsFileOpen data property is no longer False, the Visibility control property will go back to the default Visible. There is no need to create another trigger for that rule.</p>
+<p><strong>Dynamic menus</strong><br />For recently opened files or currently open windows, you want each menu item to represent a data object. You want to bind the menu to a list.</p>
+<p>If you bind to the raw data objects, you will have a hard time getting exactly the behavior that you want in the view. XAML is declarative, and is easiest to use when the data is already in the right format. That's where the View Model comes in.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> RecentFileViewModel
+{
+    <span style="color: blue">private</span> <span style="color: blue">int</span> _index;
+    <span style="color: blue">private</span> <span style="color: blue">string</span> _fileName;
+    <span style="color: blue">private</span> IFileHandler _fileHandler;
+
+    <span style="color: blue">public</span> RecentFileViewModel(<span style="color: blue">int</span> index, <span style="color: blue">string</span> fileName, IFileHandler fileHandler)
+    {
+        _index = index;
+        _fileName = fileName;
+        _fileHandler = fileHandler;
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> FileName
+    {
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> <span style="color: blue">string</span>.Format(<span style="color: maroon">"_{0} - {1}"</span>, _index + <span style="color: maroon">1</span>, _fileName); }
+    }
+
+    <span style="color: blue">public</span> ICommand Open
+    {
+        <span style="color: blue">get</span>
+        {
+            <span style="color: blue">return</span> MakeCommand
+                .Do(() =&gt; _fileHandler.Open(_fileName));
+        }
+    }
+}</pre><p>The recent file view model presents the file name in a format suitable for the menu item. It even adds the underscore to turn the 1-based index into a hot key.</p>
+<p>The view model also provides the command to open the file. It doesn't actually perform the operation; it delegates to a file handler and provides the context.</p>
+<p>We provide a list of these view models based on the list of recently opened files.</p>
+<pre><span style="color: blue">public</span> IEnumerable&lt;RecentFileViewModel&gt; RecentFiles
+{
+    <span style="color: blue">get</span>
+    {
+        <span style="color: green">// Create a RecentFileViewModel for each recent file.</span>
+        <span style="color: green">// The view model serves the menu item.</span>
+        <span style="color: blue">return</span> _dataModel.RecentFiles
+            .Select((fileName, index) =&gt;
+                <span style="color: blue">new</span> RecentFileViewModel(index, fileName, <span style="color: blue">this</span>));
+    }
+}</pre><p>Please note that this pattern does not work with ObservableCollection. Once you call .Select() on an ObservableCollection, it is no longer observable. This pattern only works with Update Controls.</p>
+<p>Now we need to bind MenuItems to this collection. My first instinct was to set the ItemTemplate of the parent MenuItem to a DataTemplate containing a child MenuItem. The problem with that is that a DataTemplate controls the <em>content</em> of the child item, not the child item itself. So instead of setting ItemTemplate, you need to set the ItemContainerStyle.</p>
+<pre><span style="color: blue">&lt;</span><span style="color: maroon">MenuItem</span> <span style="color: red">Header</span>="<span style="color: blue">_Recent Files</span>" <span style="color: red">ItemsSource</span>="<span style="color: blue">{Binding RecentFiles}</span>"<span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span><span style="color: maroon">MenuItem.ItemContainerStyle</span><span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span><span style="color: maroon">Style</span><span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span><span style="color: maroon">Setter</span> <span style="color: red">Property</span>="<span style="color: blue">MenuItem.Header</span>" <span style="color: red">Value</span>="<span style="color: blue">{Binding FileName}</span>"/<span style="color: blue">&gt;</span>
+            <span style="color: blue">&lt;</span><span style="color: maroon">Setter</span> <span style="color: red">Property</span>="<span style="color: blue">MenuItem.Command</span>" <span style="color: red">Value</span>="<span style="color: blue">{Binding Open}</span>"/<span style="color: blue">&gt;</span>
+        <span style="color: blue">&lt;</span>/<span style="color: maroon">Style</span><span style="color: blue">&gt;</span>
+    <span style="color: blue">&lt;</span>/<span style="color: maroon">MenuItem.ItemContainerStyle</span><span style="color: blue">&gt;</span>
+<span style="color: blue">&lt;</span>/<span style="color: maroon">MenuItem</span><span style="color: blue">&gt;</span></pre><p><br />A WPF menu should not be defined using just one technique. If you choose something to simple, you won't be able to handle the more interactive requirements. If you choose something too complex, you loose tool support and put too much of your design in code. With this combination of techniques, you can create interactive menus with ease.</p>
+  <div id="book-navigation-11" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="../examples.html" class="page-previous" title="Go to previous page">‹ Examples</a>
+                    <a href="../examples.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="treeview/non_recursive.html" class="page-next" title="Go to next page">TreeView ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/6.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-580"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="menus.html#comment-580" class="active">Same issue</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Thu, 10/21/2010 - 13:37.  </div>
+
+  <div class="content">
+    <p>I am using the MVVM But the Command is not invoking please see the code below..<br />
+Can you please help me out...</p>
+<p><ListView.ContextMenu><br />
+                    <ContextMenu><br />
+ <MenuItem Header="Flag(s)" ItemsSource="{Binding Path=LineItemFlags}"><br />
+                            <MenuItem.ItemContainerStyle></menuitem.itemcontainerstyle></menuitem></contextmenu></listview.contextmenu></p>
+<Style TargetType="{x:Type MenuItem}">
+                                    <Setter Property="Header" Value="{Binding FlagName}" />
+                                    <Setter Property="Command" Value="{Binding AssignFollowupCommand}" />
+                                    <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                  AncestorType={x:Type ContextMenu}}, Path=PlacementTarget}" />
+                                </setter></setter></setter></style><p>                            <br />
+                        </p>
+<p>                    <br />
+</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/6/580.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-581"></a>
+<div class="comment comment-published even last comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="menus.html#comment-581" class="active">Code?</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Mon, 10/25/2010 - 09:49.  </div>
+
+  <div class="content">
+    <p>I think the comment engine deleted your code. Could you post it somewhere and give me a link? <a href="http://codepaste.net/" title="http://codepaste.net/">http://codepaste.net/</a> is a good option.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/6/581.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div>  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../examples.html">Examples</a><ul class="menu"><li class="leaf first active-trail"><a href="menus.html" class="active">Menus</a></li>
+<li class="collapsed"><a href="treeview/non_recursive.html">TreeView</a></li>
+<li class="leaf"><a href="icommand.html">ICommand</a></li>
+<li class="leaf"><a href="linq.html">Linq</a></li>
+<li class="leaf"><a href="../mvvm-and-linq-to-sql.html">Linq to SQL</a></li>
+<li class="leaf"><a href="multi-threading.html">Multi-threading</a></li>
+<li class="leaf"><a href="twolists.html">Two lists</a></li>
+<li class="leaf"><a href="vmworkshop/wpf.html">VM Workshop</a></li>
+<li class="leaf"><a href="awesome.html">Awesome application</a></li>
+<li class="leaf"><a href="wp7_odata.html">Windows Phone 7 and OData</a></li>
+<li class="leaf last"><a href="mvc-without-eventing.html">MVC without eventing</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/examples/menus?destination=node%2F6"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-3a2a1cd5317838c18b676684e054c1e2" value="form-3a2a1cd5317838c18b676684e054c1e2"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/examples/menus by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:25 GMT -->
+</html>

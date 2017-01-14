@@ -1,0 +1,1147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/blog?page=1 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:52:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Blogs | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="blogapi/rsd" />
+<link rel="alternate" type="application/rss+xml" title="RSS - blogs" href="blog/feed" />
+<link rel="shortcut icon" href="http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in one-sidebar sidebar-left page-blog section-blog">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="index.html" title="Home" rel="home"><img src="images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="index.html">Home</a> › </div>                          <h1 class="title">Blogs</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div class="item-list"></div><div id="node-39" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="node/39.html" title="An ObservableCollection or BindingList of View Models">An ObservableCollection or BindingList of View Models</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Tue, 05/03/2011 - 22:50        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>An ObservableCollection&lt;T&gt; will notify a view of insertions, deletions, and replacements. Conversely, a BindingList&lt;T&gt; will accept insertions from a view. To be most useful, these collection types should be data bound to a view. In MVVM, that means that these should be properties of a view model. Moreover, it means that these should be <em>collections of view models</em>.</p>
+<p>View models are projections of model objects. If an Order has a collection of OrderLines, then an OrderViewModel should have a collection of OrderLineViewModels. In this situation, you need to keep a collection of view models synchronized with a collection of models.</p>
+<p>Here are a couple of helper classes that do just that: MappedObservableCollection and MappedBindingList.</p>
+<p>MappedObservableCollection takes a mapping function and a source collection. The map creates a view model for each model object. It will produce an observable collection of view models. If the source is observable (i.e. implements INotifyCollectionChanged), then it will mirror any changes in the source collection to the target collection.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">MappedObservableCollection</span>&lt;TSource, TTarget&gt;
+{
+    <span style="color: blue">private </span><span style="color: #2b91af">Func</span>&lt;TSource, TTarget&gt; _map;
+    <span style="color: blue">private </span><span style="color: #2b91af">IEnumerable</span>&lt;TSource&gt; _sourceCollection;
+    <span style="color: blue">private </span><span style="color: #2b91af">ObservableCollection</span>&lt;TTarget&gt; _targetCollection = <span style="color: blue">new </span><span style="color: #2b91af">ObservableCollection</span>&lt;TTarget&gt;();
+
+    <span style="color: blue">public </span>MappedObservableCollection(<span style="color: #2b91af">Func</span>&lt;TSource, TTarget&gt; map, <span style="color: #2b91af">IEnumerable</span>&lt;TSource&gt; sourceCollection)
+    {
+        _map = map;
+        _sourceCollection = sourceCollection;
+
+        <span style="color: blue">var </span>notifyCollectionChanged = sourceCollection <span style="color: blue">as </span><span style="color: #2b91af">INotifyCollectionChanged</span>;
+        <span style="color: blue">if </span>(notifyCollectionChanged != <span style="color: blue">null</span>)
+            notifyCollectionChanged.CollectionChanged += SourceCollectionChanged;
+        PopulateTargetCollection();
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">ObservableCollection</span>&lt;TTarget&gt; TargetCollection
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_targetCollection; }
+    }
+
+    <span style="color: blue">private void </span>SourceCollectionChanged(<span style="color: blue">object </span>sender, <span style="color: #2b91af">NotifyCollectionChangedEventArgs </span>e)
+    {
+        <span style="color: blue">if </span>(e.Action == <span style="color: #2b91af">NotifyCollectionChangedAction</span>.Add)
+        {
+            <span style="color: green">// Add the corresponding targets.
+            </span><span style="color: blue">int </span>index = e.NewStartingIndex;
+            <span style="color: blue">foreach </span>(TSource item <span style="color: blue">in </span>e.NewItems)
+            {
+                _targetCollection.Insert(index, _map(item));
+                ++index;
+            }
+        }
+        <span style="color: blue">else if </span>(e.Action == <span style="color: #2b91af">NotifyCollectionChangedAction</span>.Remove)
+        {
+            <span style="color: green">// Delete the corresponding targets.
+            </span><span style="color: blue">for </span>(<span style="color: blue">int </span>i = 0; i &lt; e.OldItems.Count; i++)
+            {
+                _targetCollection.RemoveAt(e.OldStartingIndex);
+            }
+        }
+        <span style="color: blue">else if </span>(e.Action == <span style="color: #2b91af">NotifyCollectionChangedAction</span>.Replace)
+        {
+            <span style="color: green">// Replace the corresponding targets.
+            </span><span style="color: blue">for </span>(<span style="color: blue">int </span>i = 0; i &lt; e.OldItems.Count; i++)
+            {
+                _targetCollection[i + e.OldStartingIndex] = _map((TSource)e.NewItems[i + e.NewStartingIndex]);
+            }
+        }
+        <span style="color: blue">else
+        </span>{
+            <span style="color: green">// Just give up and start over.
+            </span>_targetCollection.Clear();
+            PopulateTargetCollection();
+        }
+    }
+
+    <span style="color: blue">private void </span>PopulateTargetCollection()
+    {
+        <span style="color: blue">foreach </span>(TSource item <span style="color: blue">in </span>_sourceCollection)
+        {
+            _targetCollection.Add(_map(item));
+        }
+    }
+}</pre><p>MappedBindingList performs a similar function, but it generates a BindingList&lt;T&gt;. BindingList&lt;T&gt; is useful for DataGrid, which allows the user to add new rows. When the user creates a new row, MappedBindingList calls a factory to get a new model object. Then it maps it into the target collection as a view model.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">MappedBindingList</span>&lt;TSource, TTarget&gt;
+{
+    <span style="color: blue">private </span><span style="color: #2b91af">Func</span>&lt;TSource, TTarget&gt; _map;
+    <span style="color: blue">private </span><span style="color: #2b91af">IEnumerable</span>&lt;TSource&gt; _sourceCollection;
+    <span style="color: blue">private </span><span style="color: #2b91af">BindingList</span>&lt;TTarget&gt; _targetCollection = <span style="color: blue">new </span><span style="color: #2b91af">BindingList</span>&lt;TTarget&gt;();
+    <span style="color: blue">private </span><span style="color: #2b91af">Func</span>&lt;TSource&gt; _factory;
+    
+    <span style="color: blue">public </span>MappedBindingList(<span style="color: #2b91af">IEnumerable</span>&lt;TSource&gt; sourceCollection, <span style="color: #2b91af">Func</span>&lt;TSource, TTarget&gt; map, <span style="color: #2b91af">Func</span>&lt;TSource&gt; factory)
+    {
+        _map = map;
+        _sourceCollection = sourceCollection;
+        _factory = factory;
+
+        _targetCollection.AllowNew = <span style="color: blue">true</span>;
+        _targetCollection.AllowEdit = <span style="color: blue">true</span>;
+        _targetCollection.AllowRemove = <span style="color: blue">true</span>;
+        _targetCollection.AddingNew += TargetCollection_AddingNew;
+
+        <span style="color: blue">var </span>notifyCollectionChanged = sourceCollection <span style="color: blue">as </span><span style="color: #2b91af">INotifyCollectionChanged</span>;
+        <span style="color: blue">if </span>(notifyCollectionChanged != <span style="color: blue">null</span>)
+            notifyCollectionChanged.CollectionChanged += SourceCollectionChanged;
+        PopulateTargetCollection();
+    }
+
+    <span style="color: blue">private void </span>TargetCollection_AddingNew(<span style="color: blue">object </span>sender, <span style="color: #2b91af">AddingNewEventArgs </span>e)
+    {
+        e.NewObject = _map(_factory());
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">BindingList</span>&lt;TTarget&gt; TargetCollection
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_targetCollection; }
+    }
+
+    <span style="color: blue">private void </span>SourceCollectionChanged(<span style="color: blue">object </span>sender, <span style="color: #2b91af">NotifyCollectionChangedEventArgs </span>e)
+    {
+        <span style="color: blue">if </span>(e.Action == <span style="color: #2b91af">NotifyCollectionChangedAction</span>.Add)
+        {
+            <span style="color: green">// Add the corresponding targets.
+            </span><span style="color: blue">int </span>index = e.NewStartingIndex;
+            <span style="color: blue">foreach </span>(TSource item <span style="color: blue">in </span>e.NewItems)
+            {
+                _targetCollection.Insert(index, _map(item));
+                ++index;
+            }
+        }
+        <span style="color: blue">else if </span>(e.Action == <span style="color: #2b91af">NotifyCollectionChangedAction</span>.Remove)
+        {
+            <span style="color: green">// Delete the corresponding targets.
+            </span><span style="color: blue">for </span>(<span style="color: blue">int </span>i = 0; i &lt; e.OldItems.Count; i++)
+            {
+                _targetCollection.RemoveAt(e.OldStartingIndex);
+            }
+        }
+        <span style="color: blue">else if </span>(e.Action == <span style="color: #2b91af">NotifyCollectionChangedAction</span>.Replace)
+        {
+            <span style="color: green">// Replace the corresponding targets.
+            </span><span style="color: blue">for </span>(<span style="color: blue">int </span>i = 0; i &lt; e.OldItems.Count; i++)
+            {
+                _targetCollection[i + e.OldStartingIndex] = _map((TSource)e.NewItems[i + e.NewStartingIndex]);
+            }
+        }
+        <span style="color: blue">else
+        </span>{
+            <span style="color: green">// Just give up and start over.
+            </span>_targetCollection.Clear();
+            PopulateTargetCollection();
+        }
+    }
+
+    <span style="color: blue">private void </span>PopulateTargetCollection()
+    {
+        <span style="color: blue">foreach </span>(TSource item <span style="color: blue">in </span>_sourceCollection)
+        {
+            _targetCollection.Add(_map(item));
+        }
+    }
+}</pre><p>These mapped collections are useful when using a framework like MVVM Light. But if you are using Update Controls, you’ll just want to <a href="examples/linq.html">use linq</a>. It keeps your view model code cleaner, and also updates your collection when filter or sort properties change.</p>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_comments last"><a href="node/39.html#comments" title="Jump to the first comment of this posting.">11 comments</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-38" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="examples/hierarchical_check_boxes.html" title="Hierarchical check boxes">Hierarchical check boxes</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Tue, 04/12/2011 - 10:55        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>A friend asked me to help him solve a problem with check boxes in a tree control. He had a check box on the parent items that indicated whether any of the children were checked. When you check the parent, it checks all of the children. And when you check a child, it checks the parent. His problem was that after the user checks a child, the side-effect of checking the parent caused all children to be checked.</p>
+<p>The solution: eliminate side-effects.</p>
+<h3>Parent checked is dependent</h3>
+<p>The core of the problem was that he was treating the parent checked state as independent. In short, he was storing it in a field. In storing it, he took on the responsibility of updating it in response to events. His events, therefore, had to have side-effects.</p>
+<p>Only store the values that the user can directly change. Calculate the rest.</p>
+<div id="silverlightControlHost">
+<object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="360" height="400">
+ 		  <param name="source" value="	
+/doc/sites/default/files/HierarchicalOptions.xap
+" />
+ 		  <param name="onError" value="onSilverlightError" /> 		  <param name="background" value="white" />
+ 		  <param name="minRuntimeVersion" value="4.0.50826.0" />
+ 		  <param name="autoUpgrade" value="true" />
+ 		  <a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=4.0.50826.0" style="text-decoration:none">
+  			  <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight" style="border-style:none" />
+ 		  </a>
+ 	    </object><p><iframe style="border-right-width: 0px; width: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; visibility: hidden; border-left-width: 0px" id="_sl_historyFrame"><br />
+</iframe>
+</p></div>
+<p>If you have Silverlight installed, you should be seeing a tree of options. These options are grouped together to form a tree. If you check or uncheck a group, then all child options are checked or unchecked. We have two types of options in our data model: groups and leaves.</p>
+<p><a href="sites/default/files/Hierarchicalcheckboxes_98A9/image.png"><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="image" border="0" alt="image" src="sites/default/files/Hierarchicalcheckboxes_98A9/image_thumb.png" width="379" height="493" /></a> </p>
+<p>Only a leaf has a _selected field. This is the only thing that the user can actually change. When the user checks a group, they are actually performing a macro operation: select all leaves. And when the user observes a group node, they are actually observing the aggregate state of all leaves. The group check box is dependent.</p>
+<h3>The view model</h3>
+<p>Every option in the model is associated with an OptionViewModel. This view model has a nullable boolean property that is bound to the check box. To calculate the checked state of an option, it examines all of the leaves. And when the user checks or unchecks the box, it sets all of the leaves.</p>
+<pre class="code"><span style="color: blue">public bool</span>? IsChecked
+{
+    <span style="color: blue">get
+    </span>{
+        <span style="color: blue">bool </span>anySelected = _option.Leaves.Any(leaf =&gt; leaf.Selected);
+        <span style="color: blue">bool </span>anyNotSelected = _option.Leaves.Any(leaf =&gt; !leaf.Selected);
+        <span style="color: blue">return
+            </span>(anySelected &amp;&amp; !anyNotSelected) ? <span style="color: blue">true </span>:
+            (!anySelected &amp;&amp; anyNotSelected) ? <span style="color: blue">false </span>:
+            (<span style="color: blue">bool</span>?)<span style="color: blue">null</span>;
+    }
+    <span style="color: blue">set
+    </span>{
+        <span style="color: blue">foreach </span>(<span style="color: #2b91af">OptionLeaf </span>leaf <span style="color: blue">in </span>_option.Leaves)
+            leaf.Selected = <span style="color: blue">value </span>?? <span style="color: blue">false</span>;
+    }
+}</pre><p>By storing only what the user can directly change, we have eliminated the need for side-effects. We no longer need to handle the event of checking a child in order to impose the side-effect of checking the parent. The parent’s checked state is simply dependent upon the child.</p>
+<h3>INotifyPropertyChanged is a side-effect</h3>
+<p>This example uses Update Controls to manage dependencies. An implementation that does not employ a dependency management library would have to fire PropertyChanged events up the tree. It would be cumbersome to manage these events. They have to be fired on just the right view models, and at just the right time. Firing these events would be a side-effect of storing the user’s selection.</p>
+<p>When performing the macro operation of selecting a group, a naive implementation would fire PropertyChanged as each leaf is modified. This would cause the side-effect of firing PropertyChanged on the parent node multiple times. Update Controls collects these changes and ensures that the parent is updated only once.</p>
+<p>Download the <a href="sites/default/files/Hierarchicalcheckboxes_98A9/HierarchicalOptions.zip" target="_self">source code</a> and try it for yourself.</p>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="comment/reply/38.html#comment-form" title="Add a new comment to this page.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-37" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="tips/common_mistakes_observablecollection.html" title="Common mistakes while using ObservableCollection">Common mistakes while using ObservableCollection</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sun, 03/20/2011 - 00:40        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>ObservableCollection is one of the most useful classes in WPF and Silverlight data binding. Whenever you modify the collection, the view is notified. Unfortunately, it is extremely easy to misuse. These are some of the mistakes I see from beginners and experts alike.</p>
+<h3>Replacing the collection</h3>
+<p>When a view binds to an ObservableCollection, it subscribes to events from that instance. It expects to be notified when items are added, removed, or replaced within that instance of the collection. The binding is not to the property of the parent object, but to that specific instance of the collection itself.</p>
+<p>A common mistake is to modify the parent object’s property and replace one ObservableCollection with another. Just about every person who uses ObservableCollections makes this mistake at least once. Even <a href="http://channel9.msdn.com/Events/MIX/MIX09/T79M">Scott Hanselman made this mistake on stage at Mix ‘09</a> (skip to 10:30). The problem is that after you swap out one ObservableCollection for a new one, the view is still bound to the old one.</p>
+<p>A common “fix” for this problem is to fire a PropertyChanged event to notify the view that the collection has been replaced. This causes the view to unbind from the old one and rebind to the new one. In this situation, the view can’t adjust to just the items that were added or removed; it has to rebind the entire list box. Not only is this inefficient, but it also scrolls back to the top of the list rather than preserving the user’s context.</p>
+<p>This fix completely obviates the need for an ObservableCollection in the first place. It wasn’t the collection that changed, it was the property that points to the collection. That property could have pointed to a List, and it would have had the same effect. Which brings us to the next common mistake.</p>
+<h3>Using it for static collections</h3>
+<p>A common misconception is that data binding requires ObservableCollection. This is not true. Data binding works against anything that implements IEnumerable. You can data bind a list box directly to a List, if you want.</p>
+<p>The advantage of ObservableCollection over List is that it implements INotifyCollectionChanged. This interface raises an event whenever the collection is modified by insertion, removal, or replacement. A List does not implement this interface, so anything data bound to it will not be notified when it changes.</p>
+<p>Not all collections change while the user is looking at them. Some collections are fixed. Others are loaded from a database or server once, and then simply displayed. If the collection doesn’t change, don’t make it an ObservableCollection. Just make it a List.</p>
+<h3>Using linq</h3>
+<p>ObservableCollection is imperative. Linq is declarative. The two cannot be used together without extra help.</p>
+<p>Imperative code explicitly acts upon something. When using an ObservableCollection, you explicitly call Add, Remove, and other methods to change the collection. You have to decide exactly when and how to take these actions.</p>
+<p>Declarative code implicitly generates something. When using linq, you declare what a collection will look like, how it will be filtered, mapped, and transformed. You don’t explicitly modify the collection.</p>
+<p>These two paradigms don’t mix. Once you use linq on an ObservableCollection, it is no longer observable. There are open-source projects like <a href="http://bindablelinq.codeplex.com/">Bindable Linq</a> that bridge the gap. But without that extra help, people are often surprised when things don’t work.</p>
+<h3>Using it in the model</h3>
+<p>ObservableCollection is for data binding. In the MVVM pattern, you bind a view to a view model. So it stands to reason that ObservableCollection belongs in the view model. However, many people use it in the model as well.</p>
+<p>Microsoft’s own code generators encourage us to make this mistake. When you add a reference to a WCF service returning a List, the proxy turns that into an ObservableCollection. When you generate classes from an Entity Framework model, you get ObservableCollections. Service calls and persistence belong in the model layer, not the view model layer. The view model needs to massage this data to make it suitable for the view, so it needs to map the model collection into its own ObservableCollection.</p>
+<h3>Modifying the collection on the background thread</h3>
+<p>When an ObservableCollection is modified, it raises an event. Events are handled synchronously. Event handlers respond on the same thread as the modification. The handler completes before the Add or Remove method returns. This means that you can’t modify an ObservableCollection in a background thread.</p>
+<p>Most people who run into this problem realize their mistake quickly. They wrap the code that modifies the collection in a delegate, and invoke it on the UI thread. It is unfortunate that an ObservableCollection cannot be modified in a thread-safe way on a background thread. This fix puts more work than necessary on the UI thread, making it less responsive than it should be.</p>
+<h3>Conclusion</h3>
+<p>ObservableCollection is extremely easy to misuse. Even experts like Scott Hanselman get it wrong. Microsoft’s WCF and EF code generators lead us to incorrect patterns. And even when we try to do the right thing, the synchronous nature of CollectionChanged events get in our way.</p>
+<p>My advice is to skip ObservableCollection altogether. Use Update Controls instead, and just <a href="examples/linq.html">bind to a linq query</a>. If you find that you need to access the collection programmatically, and not just through data binding, then <a href="advanced/fields-and-collections.html">DependentList</a> might be right for you. Update Controls makes it much more difficult to make these common mistakes.</p>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_comments last"><a href="tips/common_mistakes_observablecollection.html#comments" title="Jump to the first comment of this posting.">4 comments</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-36" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="advanced/fields-and-collections.html" title="Fields and collections using generics">Fields and collections using generics</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Wed, 03/16/2011 - 16:33        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Thanks to code contributions from David Piepgrass and Timothy Pratley, there is a new way to declare fields and collections in Update Controls. No longer do you have to declare sentries. No longer do you have to use the Ctrl+D, G code generator. Now you can use generics.</p>
+<p>UpdateControls.Fields</p>
+<ul>
+<li>Independent&lt;T&gt; </li>
+<li>Dependent&lt;T&gt; </li>
+</ul>
+<p>UpdateControls.Collections</p>
+<ul>
+<li>IndependentList&lt;T&gt; </li>
+<li>IndependentDictionary&lt;Key, Value&gt; </li>
+<li>DependentList&lt;T&gt; </li>
+</ul>
+<h3>Independent fields</h3>
+<p>Models contain independent fields. User actions change these fields. Declare an independent field using Independent&lt;T&gt;.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">Agent
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt; _name = <span style="color: blue">new </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt;();
+
+    <span style="color: blue">public string </span>Name
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_name; }
+        <span style="color: blue">set </span>{ _name.Value = <span style="color: blue">value</span>; }
+    }
+}</pre><p>The property exposes the field as the native type. Independent&lt;T&gt; is implicitly convertable to T, so the getter returns it directly. The opposite is not true, however, so the setter needs to assign to the Value property.</p>
+<h3>Independent collections</h3>
+<p>The Independent&lt;T&gt; class is useful only for single-valued fields. Do not try to combine it with a collection class. Instead, use IndependentList&lt;T&gt; or IndependentDictionary&lt;Key, Value&gt;.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">Agency
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">IndependentList</span>&lt;<span style="color: #2b91af">Agent</span>&gt; _agents = <span style="color: blue">new </span><span style="color: #2b91af">IndependentList</span>&lt;<span style="color: #2b91af">Agent</span>&gt;();
+    <span style="color: blue">private </span><span style="color: #2b91af">IndependentDictionary</span>&lt;<span style="color: #2b91af">Case</span>, <span style="color: #2b91af">Agent</span>&gt; _leadByCase = <span style="color: blue">new </span><span style="color: #2b91af">IndependentDictionary</span>&lt;<span style="color: #2b91af">Case</span>,<span style="color: #2b91af">Agent</span>&gt;();
+
+    <span style="color: blue">public </span><span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">Agent</span>&gt; Agents
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_agents; }
+    }
+
+    <span style="color: blue">public void </span>AddAgent(<span style="color: #2b91af">Agent </span>agent)
+    {
+        _agents.Add(agent);
+    }
+
+    <span style="color: blue">public void </span>RemoveAgent(<span style="color: #2b91af">Agent </span>agent)
+    {
+        _agents.Remove(agent);
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">Agent </span>GetLeadForCase(<span style="color: #2b91af">Case </span>c)
+    {
+        <span style="color: blue">return </span>_leadByCase[c];
+    }
+
+    <span style="color: blue">public void </span>SetLeadForCase(<span style="color: #2b91af">Case </span>c, <span style="color: #2b91af">Agent </span>lead)
+    {
+        _leadByCase[c] = lead;
+    }
+}</pre><p>These two classes are used the same as regular List&lt;T&gt; and Dictionary&lt;Key, Value&gt;. The only difference is that they participate in dependency tracking.</p>
+<h3>Dependent fields</h3>
+<p>Whereas a model contains independents, a view model contains dependents. User input does not directly change dependents. Instead, dependents are calculated. Update Controls automatically turns all view model properties into dependents, but you still might want to use Dependent&lt;T&gt; to cache expensive calculations.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">AgentViewModel
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Agent </span>_agent;
+
+    <span style="color: blue">private </span><span style="color: #2b91af">Dependent</span>&lt;<span style="color: blue">int</span>&gt; _totalCasesSolved;
+
+    <span style="color: blue">public </span>AgentViewModel(<span style="color: #2b91af">Agent </span>agent)
+    {
+        _agent = agent;
+
+        _totalCasesSolved = <span style="color: blue">new </span><span style="color: #2b91af">Dependent</span>&lt;<span style="color: blue">int</span>&gt;(() =&gt; _agent.Cases.Count(c =&gt; c.IsSolved));
+    }
+
+    <span style="color: blue">public int </span>TotalCasesSolved
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_totalCasesSolved; }
+    }
+}</pre><p>The constructor takes a lambda expression that calculates the dependent value. It is cached in the field. Dependent&lt;T&gt; is implicitly convertable to T, so the property returns it directly. When the independent is changed, the dependent is recalculated. You cannot set the Value of a dependent.</p>
+<h3>Dependent collections</h3>
+<p>Rather than caching one single value, a view model can also cache a collection of objects. When doing so, use DependentList&lt;T&gt;.</p>
+<pre class="code"><span style="color: blue">class </span><span style="color: #2b91af">AgencyViewModel
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Agency </span>_agency;
+
+    <span style="color: blue">private </span><span style="color: #2b91af">DependentList</span>&lt;<span style="color: #2b91af">AgentViewModel</span>&gt; _agentViewModels;
+
+    <span style="color: blue">public </span>AgencyViewModel(<span style="color: #2b91af">Agency </span>agency)
+    {
+        _agency = agency;
+
+        _agentViewModels = <span style="color: blue">new </span><span style="color: #2b91af">DependentList</span>&lt;<span style="color: #2b91af">AgentViewModel</span>&gt;(() =&gt;
+            <span style="color: blue">from </span>a <span style="color: blue">in </span>_agency.Agents
+            <span style="color: blue">select new </span><span style="color: #2b91af">AgentViewModel</span>(a)
+        );
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">AgentViewModel</span>&gt; AgentViewModels
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_agentViewModels; }
+    }
+}</pre><p>The constructor takes a lambda which produces a collection. Typically, it will do so with a linq expression. The field caches the generated collection, and the property returns it as IEnumerable&lt;T&gt;.</p>
+<p>DependentList&lt;T&gt; uses <a href="advanced/object-recycling.html">object recycling</a> to reuse elements of the collection. If an object was already in the collection and it is returned from the linq query, then the existing object is reused. So if it in turn has dependent fields or collections, those dependents are not recalculated. To support object recycling, the elements of the collection must implement Equals, GetHashCode, and Dispose.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">AgentViewModel </span>: <span style="color: #2b91af">IDisposable
+</span>{
+    ...
+    <span style="color: blue">public override bool </span>Equals(<span style="color: blue">object </span>obj)
+    {
+        <span style="color: blue">if </span>(obj == <span style="color: blue">this</span>)
+            <span style="color: blue">return true</span>;
+        <span style="color: #2b91af">AgentViewModel </span>that = obj <span style="color: blue">as </span><span style="color: #2b91af">AgentViewModel</span>;
+        <span style="color: blue">if </span>(that == <span style="color: blue">null</span>)
+            <span style="color: blue">return false</span>;
+        <span style="color: blue">return this</span>._agent == that._agent;
+    }
+
+    <span style="color: blue">public override int </span>GetHashCode()
+    {
+        <span style="color: blue">return </span>_agent.GetHashCode();
+    }
+
+    <span style="color: blue">public void </span>Dispose()
+    {
+    }
+}</pre><p>The Dispose method will be called for objects removed from the dependent collection, so you can use it to manage any extra resources required to represent the collection in an external system. If you have no such resources, leave the body of Dispose blank.</p>
+<p>These new generics should make it easier to declare independent fields and collections in the model, and dependent fields and collections in the view model. With them, no plug in or generated code is required.</p>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_comments last"><a href="advanced/fields-and-collections.html#comments" title="Jump to the first comment of this posting.">9 comments</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-35" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="advanced/dependent-properties.html" title="Dependent properties">Dependent properties</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sun, 03/06/2011 - 08:44        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Update Controls treats all of your view model properties as dependent behind the scenes. You don’t do any extra work to manage them. But sometimes, you need to take control of dependent properties yourself. To do this, you use the <strong>Dependent</strong> class. Download the <a href="sites/default/files/Dependent_5D5C/ProjectPlan.zip" target="_self">source code</a> for this example.</p>
+<h3>Dependent sentry</h3>
+<p>As an example, we’ll create a critical path calculator. This program takes a set of tasks in a project and calculates when they will complete. The end date of a task is calculated as its start date plus its duration. We express that using a Dependent sentry.</p>
+<pre style="font-family: ; background: white"><font face="Consolas"><font style="font-size: 14.3pt"><span><font color="#0000ff">private</font></span>&#160;<span><font color="#2b91af">DateTime</font></span> _endDate;
+<span><font color="#0000ff">private</font></span>&#160;<span><font color="#2b91af">Dependent</font></span> _depEndDate;
+ 
+<span><font color="#0000ff">public</font></span> Task()
+{
+&#160;&#160;&#160;&#160; _depEndDate = <span><font color="#0000ff">new</font></span>&#160;<span><font color="#2b91af">Dependent</font></span>(() =&gt; _endDate = CalculateEndDate());
+}
+ 
+<span><font color="#0000ff">public</font></span>&#160;<span><font color="#2b91af">DateTime</font></span> EndDate
+{
+&#160;&#160;&#160;&#160; <span><font color="#0000ff">get</font></span>
+&#160;&#160;&#160;&#160; {
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; _depEndDate.OnGet();
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span><font color="#0000ff">return</font></span> _endDate;
+&#160;&#160;&#160;&#160; }
+}
+ 
+<span><font color="#0000ff">private</font></span>&#160;<span><font color="#2b91af">DateTime</font></span> CalculateEndDate()
+{
+&#160;&#160;&#160;&#160; <span><font color="#0000ff">return</font></span> StartDate.Add(Duration);
+}
+</font></font></pre><p>The Dependent sentry manages the EndDate property. When someone accesses EndDate, the sentry is notified. If the end date is out-of-date, it calculates it. StartDate is called a <strong>precedent</strong> of EndDate. Precedents can either be independent or dependent. When a precedent is dependent, we’ve constructed an indirect dependency.</p>
+<h3>Indirect dependencies</h3>
+<p>We can see from the above code that EndDate depends upon StartDate. But in our system, StartDate itself is dependent. If the task has prerequisites, it depends upon the latest end date of those other tasks. If it does not, it depends upon the start date of the project as a whole. We can express this as a Dependent as well.</p>
+<pre style="font-family: ; background: white"><font face="Consolas"><span><font color="#0000ff"><font style="font-size: 14.3pt">private</font></font></span><font style="font-size: 14.3pt">&#160;<span><font color="#0000ff">readonly</font></span>&#160;<span><font color="#2b91af">Project</font></span> _project;
+ 
+<span><font color="#0000ff">private</font></span>&#160;<span><font color="#2b91af">DateTime</font></span> _startDate;
+<span><font color="#0000ff">private</font></span>&#160;<span><font color="#2b91af">Dependent</font></span> _depStartDate;
+ 
+<span><font color="#0000ff">public</font></span> Task(<span><font color="#2b91af">Project</font></span> project)
+{
+&#160;&#160;&#160;&#160; _project = project;
+&#160;&#160;&#160;&#160; _depStartDate = <span><font color="#0000ff">new</font></span>&#160;<span><font color="#2b91af">Dependent</font></span>(() =&gt; _startDate = CalculateStartDate());
+}
+ 
+<span><font color="#0000ff">public</font></span>&#160;<span><font color="#2b91af">DateTime</font></span> StartDate
+{
+&#160;&#160;&#160;&#160; <span><font color="#0000ff">get</font></span>
+&#160;&#160;&#160;&#160; {
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; _depStartDate.OnGet();
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span><font color="#0000ff">return</font></span> _startDate;
+&#160;&#160;&#160;&#160; }
+}
+ 
+<span><font color="#0000ff">private</font></span>&#160;<span><font color="#2b91af">DateTime</font></span> CalculateStartDate()
+{
+&#160;&#160;&#160;&#160; <span><font color="#2b91af">DateTime</font></span>? latest = <span><font color="#0000ff">null</font></span>;
+&#160;&#160;&#160;&#160; <span><font color="#0000ff">foreach</font></span> (<span><font color="#2b91af">Task</font></span> prerequisite <span><font color="#0000ff">in</font></span> Prerequisites)
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span><font color="#0000ff">if</font></span> (latest == <span><font color="#0000ff">null</font></span> || latest &lt; prerequisite.EndDate)
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; latest = prerequisite.EndDate;
+&#160;&#160;&#160;&#160; <span><font color="#0000ff">return</font></span> latest ?? _project.StartDate;
+}
+</font></font></pre><p>The Dependent sentry calculates the start date whenever it is out-of-date. Since CalculateEndDate accesses StartDate by the property (not by the field _startDate), it triggers this update when necessary.</p>
+<h3>Dependency chaining</h3>
+<p><a href="sites/default/files/Dependent_5D5C/image.png"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: right; border-top: 0px; border-right: 0px; padding-top: 0px" title="image" border="0" alt="image" align="right" src="sites/default/files/Dependent_5D5C/image_thumb.png" width="400" height="118" /></a>The start date of a task depends upon the end dates of all of its predecessors. Those end dates in turn depend upon their start dates. These dependencies chain together, linking the end date of the last task all the way back to the start date of the project. When the project start date changes, the entire chain becomes out-of-date and needs to be recalculated.</p>
+<p>If a duration is changed in the middle of the chain, it affects only that task’s end date, and the dates of all tasks that follow. The Dependent sentry is looking at all properties accessed directly and indirectly by the Calculate methods.</p>
+<p>If two or more properties depend upon the same precedent, then that precedent is calculated only once. A naive traversal of the graph to the right would calculate the first task twice. But the Dependent sentry is keeping track of when its precedents change. If they haven’t changed since the last time it was updated, it doesn’t recalculate. Update Controls will calculate the first task only once in order to determine the end date of the last task.</p>
+<h3>Cycles</h3>
+<p><a href="sites/default/files/Dependent_5D5C/image_3.png"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: right; border-top: 0px; border-right: 0px; padding-top: 0px" title="image" border="0" alt="image" align="right" src="sites/default/files/Dependent_5D5C/image_thumb_3.png" width="110" height="123" /></a>It is possible to set up a cycle in this model. You could inadvertently make two tasks prerequisites of each other. If you do, Update Controls will not be able to determine the correct order for calculating the graph. In this situation, you will not get the correct answer. Indeed, there may not be a correct answer; if the tasks both have a non-zero duration, then no dates would satisfy the equations. Update Controls will not search for a solution to a system of equations. Instead, it will just stop calculating when it discovers a dependency.</p>
+<p>Previous versions of Update Controls threw an exception when a dependency was discovered. Unfortunately, this interacted with the user interface. When the exception was thrown, a dialog box appeared. Then, Update Controls tried to refresh the UI behind the dialog box. The dependency tracking system was in a bad state from the cycle, which caused another false cycle to be detected. The information ultimately presented to the developer did not indicate the correct cycle, and simply distracted from the real problem.</p>
+<p>Now Update Controls simply writes “Cycle discovered during update” do the debug output. Check for this in the trace window if you ever suspect that you have created a cycle.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:8eb9d37f-1541-4f29-b6f4-1eea890d4876:7d8975fe-d3fb-4105-a855-a51181669914" class="wlWriterEditableSmartContent">
+<div><a href="sites/default/files/Dependent_5D5C/ProjectPlan.zip" target="_self">ProjectPlan.zip</a></div>
+
+</div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="comment/reply/35.html#comment-form" title="Add a new comment to this page.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-34" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="advanced/how-does-it-work.html" title="How does it work?">How does it work?</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Thu, 03/03/2011 - 16:44        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Update Controls is not magic. It determines what each property depends upon by employing a fairly simple algorithm. From there, it just hooks into data binding using the standard means.</p>
+<h3>Properties and fields</h3>
+<p>In .NET, you have fields and properties. A field stores data. A property is a pair of methods: get and set. Most people confuse them for the same thing, but they are actually quite different.</p>
+<p>We often see properties and fields in one-to-one correspondence. We create a field called _name, then expose that through a property called Name. This pattern is so common, that Microsoft added auto-implemented properties to the C# language. But this is not the only way that fields and properties can work together.</p>
+<p>A property could calculate values based on one or more fields. The fields could be in the same object, or in a related object. More than one property could access the same field. For example, a person having two fields - _firstName and _lastName – could have three properties – FirstName, LastName, and FullName. The fields and properties need not be in one-to-one correspondence.</p>
+<h3>Dependent and Independent</h3>
+<p>At the core of the dependency tracking algorithm are two classes:</p>
+<ul>
+<li><strong>Dependent</strong> keeps track of properties </li>
+<li><strong>Independent</strong> keeps track of fields </li>
+</ul>
+<p><a href="sites/default/files/Howdoesitwork_D16E/image.png"><img style="border-bottom: 0px; border-left: 0px; display: inline; margin-left: 0px; border-top: 0px; margin-right: 0px; border-right: 0px" title="image" border="0" alt="image" align="right" src="sites/default/files/Howdoesitwork_D16E/image_thumb.png" width="244" height="70" /></a>To determine the value of a property, .NET executes its get method. This code is going to access one or more fields. These are the fields that the property depends upon.</p>
+<p>The two classes set up a many-to-many relationship. A Dependent keeps track of every Independent that it accesses, and an Independent keeps track of every Dependent that accesses it.</p>
+<h3>Setup and teardown</h3>
+<p>When a Dependent (like the one in charge of FullName) is first created, it is in a state called <strong>OUT_OF_DATE</strong>. The first time that it is accessed, it sets up the two-way relationships with its Independents. To help with this, it uses a thread-local bulletin board called “Current Dependent”.</p>
+<p><a href="sites/default/files/Howdoesitwork_D16E/image_3.png"><img style="border-bottom: 0px; border-left: 0px; display: inline; border-top: 0px; border-right: 0px" title="image" border="0" alt="image" src="sites/default/files/Howdoesitwork_D16E/image_thumb_3.png" width="640" height="157" /></a> </p>
+<p>At first this bulletin board is empty <strong>(1)</strong>. Before the Dependent calls the property’s get method, it posts itself to the bulletin board. Then it enters a state called <strong>UPDATING</strong>. The bulletin board now contains the Dependent for FullName <strong>(2)</strong>.</p>
+<p>Then it calls the get method. This method might immediately access some fields. Or it might call other methods, that call other methods, that eventually access fields. When it does, the application calls Independent.OnGet(). The Independent writes itself to the bulletin board. After the FullName get method completes, we have the _firstName and _lastName fields on the bulletin board <strong>(3)</strong>.</p>
+<p>After the Dependent calls the get method, it looks at the bulletin board. It sees that its property (FullName) depends upon the listed fields (_firstName and _lastName). So it wires up the two-way relationship between that one Dependent and those two Independents. Now the Dependent is in a state called <strong>UP_TO_DATE</strong>. This completes the setup phase.</p>
+<p>Teardown occurs when an Independent changes. When Independent.OnSet() is called, it talks to every Dependent that has accessed it. For example, _firstName is accessed by both FirstName and FullName. All of these Dependents again become <strong>OUT_OF_DATE</strong>. They sever their relationships with all of their Independents. This is also the trigger that causes PropertyChanged events to fire, which in turn leads to the setup phase happening all over again.</p>
+<h3>Conclusion</h3>
+<p>This ebb and flow of setting up and tearing down relationships between Dependents and Independents is the basis of the dependency tracking algorithm. As you can see, there is no magic. A property simply records all of the fields that it accesses during its get method. When any of those fields change, the property is out-of-date. This is the same kind of dependency tracking that you would have to do yourself, but this all happens in code that you don’t see. That’s what makes it feel like magic.</p>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_comments last"><a href="advanced/how-does-it-work.html#comments" title="Jump to the first comment of this posting.">4 comments</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-33" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="advanced/object-recycling.html" title="Object Recycling">Object Recycling</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Tue, 03/01/2011 - 21:25        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>It is common in Update Controls to use linq to specify a list of view models. For example:</p>
+<pre><span style="color: blue">public</span> <span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">ContactViewModel</span>&gt; <span style="color: #2b91af">Contacts</span>
+{
+    <span style="color: blue">get</span>
+    {
+        <span style="color: blue">return</span>
+            <span style="color: blue">from</span> c <span style="color: blue">in</span> _addressBook.Contacts
+            <span style="color: blue">select</span> <span style="color: blue">new</span> <span style="color: #2b91af">ContactViewModel</span>(c);
+    }
+}</pre><p>As you might imagine, this code runs every time a contact is added or deleted. Each time, it rebuilds the entire list. How is this not a performance problem?</p>
+<h3>The recycle bin</h3>
+<p>Internally, Update Controls uses object recycling. It will reuse objects from one run to the next. It does so by adding objects to a RecycleBin&lt;T&gt;. Then it extracts from that recycle bin as it processes new objects.</p>
+<pre><span style="color: blue">using</span> (var bin = <span style="color: blue">new</span> <span style="color: #2b91af">RecycleBin</span>&lt;<span style="color: #2b91af">ContactViewModel</span>&gt;())
+{
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> oldContact <span style="color: blue">in</span> _contacts)
+        bin.AddObject(oldContact);
+    _contacts.Clear();
+
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> newContact <span style="color: blue">in</span> _viewModel.Contacts)
+        _contacts.Add(bin.Extract(newContact));
+}</pre><p>All of the old objects are added to the recycle bin. Then the original collection is cleared. New objects are extracted through the recycle bin before being added back into the collection. If the object is already in the recycle bin, the old one is returned. If not, the new one is used.</p>
+<h3>Equals and GetHashCode</h3>
+<p>The recycle bin uses the Equals and GetHashCode methods to find existing objects. So for this to have the desired effect, we have to implement these methods in ContactViewModel:</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">override</span> <span style="color: blue">bool</span> <span style="color: #2b91af">Equals</span>(<span style="color: blue">object</span> obj)
+{
+    <span style="color: blue">if</span> (obj == <span style="color: blue">this</span>)
+        <span style="color: blue">return</span> <span style="color: maroon">true</span>;
+    <span style="color: #2b91af">ContactViewModel</span> that = obj <span style="color: blue">as</span> <span style="color: #2b91af">ContactViewModel</span>;
+    <span style="color: blue">if</span> (that == <span style="color: blue">null</span>)
+        <span style="color: blue">return</span> <span style="color: maroon">false</span>;
+    <span style="color: blue">return</span> _contact.Equals(that._contact);
+}
+
+<span style="color: blue">public</span> <span style="color: blue">override</span> <span style="color: blue">int</span> <span style="color: #2b91af">GetHashCode</span>()
+{
+    <span style="color: blue">return</span> _contact.GetHashCode();
+}</pre><p>So even though we create a new list of ContactViewModels on every update, we reuse the old ones for the Contacts that were not added or removed.</p>
+<p>The main advantage of object recycling is that dependent properties are preserved. None of the ContactViewModel properties need to be recalculated on the recycled objects. If ContactViewModel has any children, then those are preserved as well. This can be a significant savings for deep hierarchies.</p>
+<h3>Managing external resources</h3>
+<p>Another advantage of object recycling is that it can be used to manage an external resource. Suppose we want to represent each contact with a 3D object in a DirectX scene graph. We’ll add the following methods to ContactViewModel:</p>
+<pre><span style="color: blue">private</span> <span style="color: #2b91af">Mesh</span> _mesh;
+<span style="color: blue">private</span> <span style="color: #2b91af">SceneGraph</span> _sceneGraph;
+
+<span style="color: blue">public</span> <span style="color: blue">void</span> <span style="color: #2b91af">EnsureInSceneGraph</span>(<span style="color: #2b91af">SceneGraph</span> sceneGraph)
+{
+    <span style="color: blue">if</span> (_mesh == <span style="color: blue">null</span>)
+    {
+        _mesh = <span style="color: blue">new</span> <span style="color: #2b91af">Mesh</span>();
+        _sceneGraph = sceneGraph;
+        _sceneGraph.Add(_mesh);
+    }
+}
+
+<span style="color: blue">public</span> <span style="color: blue">void</span> <span style="color: #2b91af">Dispose</span>()
+{
+    <span style="color: blue">if</span> (_mesh != <span style="color: blue">null</span>)
+    {
+        _sceneGraph.Remove(_mesh);
+    }
+}</pre><p>We call these methods while updating the collection.</p>
+<pre><span style="color: blue">using</span> (var bin = <span style="color: blue">new</span> <span style="color: #2b91af">RecycleBin</span>&lt;<span style="color: #2b91af">ContactViewModel</span>&gt;())
+{
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> oldContact <span style="color: blue">in</span> _contacts)
+        bin.AddObject(oldContact);
+    _contacts.Clear();
+
+    <span style="color: blue">foreach</span> (<span style="color: #2b91af">ContactViewModel</span> newContact <span style="color: blue">in</span> _viewModel.Contacts)
+    {
+        <span style="color: #2b91af">ContactViewModel</span> extracted = bin.Extract(newContact);
+        extracted.EnsureInSceneGraph(_sceneGraph);
+        _contacts.Add(extracted);
+    }
+}</pre><p>As we extract objects from the recycle bin, we ensure that the mesh is in the scene graph. If the object was already there, then nothing happens. If this is a new object, then the mesh is created.</p>
+<p>When we leave the using block, the recycle bin is disposed. This in turn disposes all objects that were not removed from the recycle bin. An object is left over if it used to be in the collection, but it was removed. So we remove the mesh in the Dispose method.</p>
+<p>Update Controls uses object recycling to improve performance and manage external resources. Be sure to implement Equals and GetHashCode to work well with it. And if you need some extra performance, or you need to manage your own external resources, you can use the same technique.</p>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_comments last"><a href="advanced/object-recycling.html#comments" title="Jump to the first comment of this posting.">4 comments</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-31" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="inpc.html" title="Presentation: Data Binding Without INotifyPropertyChanged">Presentation: Data Binding Without INotifyPropertyChanged</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sun, 02/20/2011 - 13:04        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>How would you create this tree control?</p>
+<div id="silverlightControlHost">
+<object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="360" height="400">  		  <param name="source" value="sites/default/files/HierarchicalOptions_0.html" />  		  <param name="onError" value="onSilverlightError" /> 		  <param name="background" value="white" />  		  <param name="minRuntimeVersion" value="4.0.50826.0" />  		  <param name="autoUpgrade" value="true" />  		  <a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=4.0.50826.0" style="text-decoration:none">   			  <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight" style="border-style:none" />  		  </a>  	    </object><p> <iframe style="border-right-width: 0px; width: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; visibility: hidden; border-left-width: 0px" id="_sl_historyFrame"> </iframe> </p></div>
+<p>If you were using a traditional event-driven approach, you might handle the ticking of a check box by:</p>
+<ul>
+<li>Checking all of the child nodes.</li>
+<li>Walking up the tree to update all parent nodes.</li>
+<li>Adding the checked option to an observable collection.</li>
+<li>Adding the price of the checked option to the total price.</li>
+</ul>
+<p>Consider the edge cases. The user just checked the last option in a package. You have to remove the individual options and add the package. You have to subtract the individual option prices and add the package price. Or maybe they unchecked one option in a package. Now you have to do the same steps in reverse. And you have to change the parents from solid check marks to intermediate dashes.</p>
+<p>Event-driven programming is complex and leads to bugs. If you program using dependency instead, then problems like this become much easier.</p>
+<p>Eliminate all PropertyChanged events from your code. Replace them with dependency tracking. Download the <a href="sites/default/files/Presentation-Data-Binding-Without-INotif_127EB/Data-Binding-without-INotifyPropertyChanged.pptx">slides</a>, the <a href="sites/default/files/HierarchicalOptions.zip">option tree demo</a>, and the <a href="sites/default/files/DataBinding.zip">contact list demo</a>.</p>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="comment/reply/31.html#comment-form" title="Add a new comment to this page.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-30" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="tips/data_bind_visual_states.html" title="Data bind visual states">Data bind visual states</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Wed, 01/19/2011 - 16:04        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>The Visual State Manager in WPF and Silverlight is imperative. It has a method called “GoToState”. You invoke this method when you want the visual state to change. Data binding, on the other hand, is declarative. We don’t say <em>when</em> to do something, we just say <em>what</em> it should be. I’d like visual states to be more declarative.</p>
+<p><a href="http://twitter.com/sholder">Shane Holder</a> asked if I had a solution to this problem. He used a “GoToStateAction” in Blend to control the visual state of a window. He wanted the visual state to be the current value of a property in his view model. His property type was an enumeration that matched the names of the visual states.</p>
+<p><a href="sites/default/files/Databindvisualstates_D3BF/image.png"><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; margin-left: 0px; border-left-width: 0px; margin-right: 0px" title="image" border="0" alt="image" align="right" src="sites/default/files/Databindvisualstates_D3BF/image_thumb.png" width="244" height="190" /></a> He set the trigger to a PropertyChangedTrigger and bound it to the enumeration property. He then bound the StateName to the same property. This worked correctly when the property changed, but did not set the visual state on load.</p>
+<p>The problem is in the name: “GoToState<strong>Action”</strong>. This behavior is an action that is invoked on a specific event. It is imperative. You can get this working with more imperative code (eg. code behind, or a second GoToStateAction that triggers on the Window Loaded event). Or you can write a declarative behavior.</p>
+<h3>BindVisualStateBehavior</h3>
+<p>Add the following class to your WPF or Silverlight 4 project:</p>
+<pre class="code"><span style="color: blue">using </span>System.Windows;
+<span style="color: blue">using </span>System.Windows.Interactivity;
+<span style="color: blue">using </span>Microsoft.Expression.Interactivity;
+
+<span style="color: blue">namespace </span>BindingVisualStatesSL4
+{
+    <span style="color: blue">public class </span><span style="color: #2b91af">BindVisualStateBehavior </span>: <span style="color: #2b91af">Behavior</span>&lt;<span style="color: #2b91af">FrameworkElement</span>&gt;
+    {
+        <span style="color: blue">public static </span><span style="color: #2b91af">DependencyProperty </span>StateNameProperty = <span style="color: #2b91af">DependencyProperty</span>.Register(
+            <span style="color: #a31515">&quot;StateName&quot;</span>,
+            <span style="color: blue">typeof</span>(<span style="color: blue">string</span>),
+            <span style="color: blue">typeof</span>(<span style="color: #2b91af">BindVisualStateBehavior</span>),
+            <span style="color: blue">new </span><span style="color: #2b91af">PropertyMetadata</span>(VisualStatePropertyChanged));
+        <span style="color: blue">private bool </span>_initialized = <span style="color: blue">false</span>;
+
+        <span style="color: blue">public string </span>StateName
+        {
+            <span style="color: blue">get </span>{ <span style="color: blue">return </span>(<span style="color: blue">string</span>)GetValue(StateNameProperty); }
+            <span style="color: blue">set </span>{ SetValue(StateNameProperty, <span style="color: blue">value</span>); }
+        }
+
+        <span style="color: blue">public void </span>UpdateVisualState(<span style="color: blue">string </span>visualState)
+        {
+            <span style="color: blue">if </span>(AssociatedObject != <span style="color: blue">null</span>)
+            {
+                <span style="color: #2b91af">FrameworkElement </span>stateTarget;
+                <span style="color: blue">if </span>(<span style="color: #2b91af">VisualStateUtilities</span>.TryFindNearestStatefulControl(AssociatedObject, <span style="color: blue">out </span>stateTarget))
+                {
+                    <span style="color: blue">bool </span>useTransitions = _initialized;
+                    <span style="color: #2b91af">VisualStateUtilities</span>.GoToState(stateTarget, visualState, useTransitions);
+                    _initialized = <span style="color: blue">true</span>;
+                }
+            }
+        }
+
+        <span style="color: blue">private static void </span>VisualStatePropertyChanged(<span style="color: #2b91af">DependencyObject </span>obj, <span style="color: #2b91af">DependencyPropertyChangedEventArgs </span>args)
+        {
+            ((<span style="color: #2b91af">BindVisualStateBehavior</span>)obj).UpdateVisualState((<span style="color: blue">string</span>)args.NewValue);
+        }
+    }
+}</pre><p>Note: this does not work in Silverlight 3 (and hence Windows Phone 7). Behavior properties were not bindable until 4.</p>
+<p>This class uses the following assemblies, so add references if necessary:</p>
+<ul>
+<li>Microsoft.Expression.Interactions </li>
+<li>System.Windows.Interactivity </li>
+</ul>
+<p>That first assembly comes from Blend, so you might not have it if you don’t have Blend installed. But then again, if you are not using Blend, binding visual states declaratively is the least of your problems. Defining those visual states manually in XAML is going to be a chore.</p>
+<p><a href="sites/default/files/Databindvisualstates_D3BF/image_3.png"><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; margin-left: 0px; border-left-width: 0px; margin-right: 0px" title="image" border="0" alt="image" align="right" src="sites/default/files/Databindvisualstates_D3BF/image_thumb_3.png" width="244" height="148" /></a> Once you add this class (and compile), then it will appear in the Blend assets pane. Drag this behavior onto a component on your art board. Then bind the StateName property. You can use either a string or an enumeration. The names of the enumeration values must match the names of your visual states.</p>
+<h3>Compass example</h3>
+<p>Download the <a href="sites/default/files/Databindvisualstates_D3BF/BindingVisualStates.zip">attached source code</a> for an example of this behavior in both WPF and Silverlight 4. The example shows a compass. Select a direction radio button to move the compass needle.</p>
+<div id="silverlightControlHost" style="width:300px; height: 172px;">
+<object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
+    <param name="source" value="/doc/sites/default/files/Databindvisualstates_D3BF/BindingVisualStatesSL4.xap" />
+    <param name="onError" value="onSilverlightError" />
+    <param name="background" value="white" />
+    <param name="minRuntimeVersion" value="4.0.50401.0" />
+    <param name="autoUpgrade" value="true" /><a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=4.0.50401.0" style="text-decoration: none"><img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight" style="border-style: none" /></a><a href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=3.0.40624.0" style="text-decoration: none"></a><iframe id="_sl_historyFrame" style="border: 0px none ; visibility: hidden; height: 0px; width: 0px"></iframe></object></div>
+<p>Both the radio buttons and the visual state are bound to a simple data model. I’m not even using MVVM.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">Compass </span>: <span style="color: #2b91af">INotifyPropertyChanged
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">CompassDirection </span>_direction = <span style="color: #2b91af">CompassDirection</span>.East;
+
+    <span style="color: blue">public </span><span style="color: #2b91af">CompassDirection </span>Direction
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_direction; }
+        <span style="color: blue">set
+        </span>{
+            <span style="color: blue">if </span>(_direction != <span style="color: blue">value</span>)
+            {
+                _direction = <span style="color: blue">value</span>;
+                FirePropertyChanged(<span style="color: #a31515">&quot;Direction&quot;</span>);
+            }
+        }
+    }
+
+    <span style="color: blue">public event </span><span style="color: #2b91af">PropertyChangedEventHandler </span>PropertyChanged;
+
+    <span style="color: blue">private void </span>FirePropertyChanged(<span style="color: blue">string </span>propertyName)
+    {
+        <span style="color: blue">if </span>(PropertyChanged != <span style="color: blue">null</span>)
+            PropertyChanged(<span style="color: blue">this</span>, <span style="color: blue">new </span><span style="color: #2b91af">PropertyChangedEventArgs</span>(propertyName));
+    }
+}</pre><p>I use a value converter to bind the enumeration to the IsChecked property of the radio buttons. I found this technique on <a href="http://stackoverflow.com/questions/397556/wpf-how-to-bind-radiobuttons-to-an-enum">Stack Overflow</a>.</p>
+<h3>Update Controls</h3>
+<p>You might have noticed in the code above that I did not use Update Controls. Instead, I implemented the dreaded INotifyPropertyChanged. While the BindVisualStateBehavior will work with Update Controls, I wanted to demonstrate that it did not depend upon it.</p>
+<p>Update Controls is all about replacing imperative code with declarative code. Just like GoToState, PropertyChanged is imperative. You have to fire the event at just the right time. So in spirit, this behavior is related to Update Controls.</p>
+<p>In practice, however, the behavior is useful even if you don’t use Update Controls. I was originally planning on making it part of the library, but instead I decided to simply post the source code. Please post a comment if you believe I should include it.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:8eb9d37f-1541-4f29-b6f4-1eea890d4876:a9d089f5-f30c-463e-bde5-375f224c3e29" class="wlWriterEditableSmartContent">
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:8eb9d37f-1541-4f29-b6f4-1eea890d4876:a9d089f5-f30c-463e-bde5-375f224c3e29" class="wlWriterSmartContent"></div>
+</div>  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="comment/reply/30.html#comment-form" title="Add a new comment to this page.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div id="node-29" class="node node-teaser node-type-blog"><div class="node-inner">
+
+  
+      <h2 class="title">
+      <a href="tips/view_models_in_f_sharp.html" title="View Models in F#">View Models in F#</a>
+    </h2>
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Tue, 12/14/2010 - 12:01        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>A View Model is a projections of one or more models onto the view. As projections, they should have no mutable state of their own. In C# and other object-oriented languages, mutable state is the default. In F# and other functional languages, it is discouraged. So F# is actually a better language for expressing View Models than is C#.</p>
+<h3>Constructors</h3>
+<p>An F# View Model has less ceremony than its C# counterpart. Here is the constructor of a C# view model that represents a Product from a Customer’s point-of-view:</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">ProductViewModel
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Product </span>_product;
+    <span style="color: blue">private </span><span style="color: #2b91af">Customer </span>_customer;
+
+    <span style="color: blue">public </span>ProductViewModel(<span style="color: #2b91af">Product </span>product, <span style="color: #2b91af">Customer </span>customer)
+    {
+        _product = product;
+        _customer = customer;
+    }
+}</pre><p>The equivalent code in F# is:</p>
+<pre class="code"><span style="color: blue">type </span>ProductViewModel(product: Product, customer: Customer)</pre><p>F# automatically pulls the parameters into context, so we don’t have to store them.</p>
+<h3>Properties</h3>
+<p>A View Model exposes properties for data binding. The values of these properties are calculated based on the models. In C#, a calculated property looks like this:</p>
+<pre class="code"><span style="color: blue">public decimal </span>Price
+{
+    <span style="color: blue">get
+    </span>{
+        <span style="color: blue">return </span><span style="color: #2b91af">Decimal</span>.Round((_product.BasePrice * (_customer.IsPreferred ? 0.9m : 1.0m)), 2);
+    }
+}</pre><p>We have to declare the property type and use two layers of punctuation. In F#, it looks like this:</p>
+<pre class="code"><span style="color: blue">member </span>this.Price =
+    System.Decimal.Round((product.BasePrice * <span style="color: blue">if </span>customer.IsPreferred <span style="color: blue">then </span>0.9m <span style="color: blue">else </span>1.0m), 2)</pre><p>F# infers the type from the expression. Indentation removes the need for much of the punctuation.</p>
+<p>Some properties are bidirectional. When the user sets them, they modify the model. In C#:</p>
+<pre class="code"><span style="color: blue">public string </span>CustomerName
+{
+    <span style="color: blue">get
+    </span>{
+        <span style="color: blue">return </span>_customer.Name;
+    }
+    <span style="color: blue">set
+    </span>{
+        _customer.Name = <span style="color: blue">value</span>;
+    }
+}</pre><p>And in F#:</p>
+<pre class="code"><span style="color: blue">member </span>this.CustomerName
+    <span style="color: blue">with </span>get() = customer.Name
+    <span style="color: blue">and </span>set(value) = customer.Name &lt;- value</pre><p>Here the fact that properties are atypical in F# is starting to show. The “value” parameter is explicitly declared, as opposed to being a built-in keyword in C#.</p>
+<h3>Collections</h3>
+<p>A View Model exposes other View Models. So when we need a list, we should project a collection of Model objects into a collection of View Model objects. In C#, we do this with the Linq “select”.</p>
+<pre class="code"><span style="color: blue">public </span><span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">ProductViewModel</span>&gt; Products
+{
+    <span style="color: blue">get
+    </span>{
+        <span style="color: blue">return from </span>p <span style="color: blue">in </span>_catalog.Products <span style="color: blue">select new </span><span style="color: #2b91af">ProductViewModel</span>(p, _customer);
+    }
+}</pre><p>Since Linq is functional in nature, this projection is succinct. In F#, the equivalent is:</p>
+<pre class="code"><span style="color: blue">member </span>this.Products = Seq.map (<span style="color: blue">fun </span>p <span style="color: blue">-&gt; </span>ProductViewModel(p, customer)) catalog.Products</pre><p>Seq.map is equivalent to “select”. It takes a mapping function and applies it to all elements in the source collection. The type inference of IEnumerable&lt;ProductViewModel&gt; is nice, but otherwise it’s even.</p>
+<h3>Equivalence</h3>
+<p>Whenever you bind both the ItemsSource and the SelectedItem of an items control, you need to ensure that the selected item is equal to one of the items in the collection. When projecting into new View Models, we create new identities. We therefore need to replace identity comparison with value comparison. Here’s how we do that in C#:</p>
+<pre class="code"><span style="color: blue">public override bool </span>Equals(<span style="color: blue">object </span>obj)
+{
+    <span style="color: #2b91af">ProductViewModel </span>that = obj <span style="color: blue">as </span><span style="color: #2b91af">ProductViewModel</span>;
+    <span style="color: blue">if </span>(that == <span style="color: blue">null</span>)
+        <span style="color: blue">return false</span>;
+    <span style="color: blue">return </span>_product == that._product;
+}
+
+<span style="color: blue">public override int </span>GetHashCode()
+{
+    <span style="color: blue">return </span>_product.GetHashCode();
+}</pre><p>We only compare the product because we know that all items in the list are for the same customer. In F#, we have to write this:</p>
+<pre class="code"><span style="color: blue">member </span>this.Product = product
+<span style="color: blue">override </span>this.Equals(obj) =
+    <span style="color: blue">match </span>obj <span style="color: blue">with
+</span><span style="color: blue">        </span>| :? ProductViewModel <span style="color: blue">as </span>that <span style="color: blue">-&gt; </span>that.Product = product
+        | _ <span style="color: blue">-&gt; false
+override </span>this.GetHashCode() = product.GetHashCode()</pre><p>Since “product” is in the scope of the closure, it is not an actual member of the View Model. That’s why we can’t access “that.product” directly. Instead, we define a member “Product” as an alias to the parameter. We need to do this anyway, since the code that uses ProductViewModel need to know the actual Product of the selected item, but it might surprise you at first.</p>
+<p>I actually expected F# to do much better at this part. Since the class has no mutable values, I expected that it would assume that two objects with the same parameters are equal. Other functional languages have a feature called “memoization” that treats all closures having the same parameters as equal, even identical.</p>
+<h3>Commands</h3>
+<p>Update Controls gives you the MakeCommand class, which generates an ICommand from a couple of functions. To use this, you have to add the following references to your ViewModels project:</p>
+<ul>
+<li>UpdateControls </li>
+<li>UpdateControls.XAML </li>
+<li>PresentationCore </li>
+</ul>
+<p>Like Linq, MakeCommand is functional in nature. Here is how it is used in C#:</p>
+<pre class="code"><span style="color: blue">public </span><span style="color: #2b91af">ICommand </span>PlaceOrder
+{
+    <span style="color: blue">get
+    </span>{
+        <span style="color: blue">return </span><span style="color: #2b91af">MakeCommand
+            </span>.When(() =&gt; _navigation.SelectedProduct != <span style="color: blue">null</span>)
+            .Do(() =&gt; _customer.PlaceOrder(_navigation.SelectedProduct));
+    }
+}</pre><p>The F# syntax is nearly identical:</p>
+<pre class="code"><span style="color: blue">member </span>this.PlaceOrder =
+    MakeCommand
+        .When(<span style="color: blue">fun </span>() <span style="color: blue">-&gt; </span>navigation.SelectedProduct &lt;&gt; <span style="color: blue">null</span>)
+        .Do(<span style="color: blue">fun </span>() <span style="color: blue">-&gt; </span>customer.PlaceOrder(navigation.SelectedProduct))</pre><p>The main thing to recognize here is that C# is more forgiving; lambda expressions that return values (i.e. Func&lt;T&gt;) can be used as actions. F# does not allow this. So be sure that your method returns void. Alternatively, you could do something with that value, like assigning it to a navigation model property.</p>
+<h3>F# as View Model layer</h3>
+<p>Even though there are some places where F# is simply on par with C#, I believe the strengths of F# are compelling enough to recommend using it in the View Model layer. All of the modern XAML-based user interface technologies (WPF, <a href="http://blogs.msdn.com/b/dsyme/archive/2010/05/27/f-on-silverlight-4.aspx">Silverlight 4</a>, <a href="http://blogs.msdn.com/b/dsyme/archive/2010/08/20/f-windows-phone-7-silverlight-templates-now-on-visual-studio-gallery.aspx">Windows Phone 7</a>) support F#. The syntax may be a little unfamiliar, but perhaps these examples will help get you started. Download the code and try it for yourself.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:8eb9d37f-1541-4f29-b6f4-1eea890d4876:e05fa34f-e70a-49b9-8c87-cc67313ab559" class="wlWriterEditableSmartContent">
+<div><a href="sites/default/files/ViewModelsinF_8FD4/FunctionalMVVM_3.zip" target="_self">FunctionalMVVM.zip</a></div>
+
+</div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="comment/reply/29.html#comment-form" title="Add a new comment to this page.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+<div class="item-list"><ul class="pager"><li class="pager-first first"><a href="blog.html" title="Go to first page" class="active">« first</a></li>
+<li class="pager-previous"><a href="blog.html" title="Go to previous page" class="active">‹ previous</a></li>
+<li class="pager-item"><a href="blog.html" title="Go to page 1" class="active">1</a></li>
+<li class="pager-current">2</li>
+<li class="pager-item"><a href="blog4658.html?page=2" title="Go to page 3" class="active">3</a></li>
+<li class="pager-item"><a href="blog9ba9.html?page=3" title="Go to page 4" class="active">4</a></li>
+<li class="pager-item"><a href="blogfdb0.html?page=4" title="Go to page 5" class="active">5</a></li>
+<li class="pager-next"><a href="blog4658.html?page=2" title="Go to next page" class="active">next ›</a></li>
+<li class="pager-last last"><a href="blogfdb0.html?page=4" title="Go to last page" class="active">last »</a></li>
+</ul></div>        </div>
+
+                  <div class="feed-icons"><a href="blog/feed" class="feed-icon"><img src="misc/feed.png" alt="Syndicate content" title="RSS - blogs" width="16" height="16" /></a></div>
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="examples.html">Examples</a></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="rss.xml" class="feed-icon"><img src="misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/blog?destination=blog%3Fpage%3D1"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-7cd10774f27266f01e88c638a4260a73" value="form-7cd10774f27266f01e88c638a4260a73"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/blog?page=1 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:53:13 GMT -->
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/examples/multi-threading by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Multi-threading | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="../mvvm-and-linq-to-sql.html" />
+<link rel="up" href="../examples.html" />
+<link rel="next" href="twolists.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-examples-multi-threading section-examples">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">Multi-threading</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-4" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Sat, 10/10/2009 - 12:27        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Multithreaded programming doesn't have to be hard. You just need to learn a few patterns.</p>
+<p>Here's a common problem. How do you notify the UI thread that something has changed on a background thread? The INotifyPropertyChanged contract requires that the PropertyChanged event be fired on the UI thread. There are <a href="http://leecampbell.blogspot.com/2009/02/responsive-wpf-user-interfaces-part-3.html">ways</a> of marshalling that event from the background to the foreground, but wouldn't it be nice if you didn't have to?</p>
+<p><a href="../../index.html">Update Controls</a> takes care of this problem for you. You make sure your code is thread-safe, and Update Controls will make sure that dependents are updated, no matter what thread they are on.</p>
+<p><strong>A thread-safe model</strong><br />For Update Controls to work properly -- and indeed for your entire application to work properly -- you need your data model to be thread safe. That means that anything that can change is protected with a lock. If it can change (and you are using Update Controls), then it should have an <a href="../../documentation/classDocumentation/cs/UpdateControls.Independent.html">Independent</a> sentry. Just be sure to call OnGet and OnSet inside the lock.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> Playlist
+{
+    <span style="color: blue">private</span> <span style="color: blue">int</span> _id;
+    <span style="color: blue">private</span> <span style="color: blue">string</span> _name;
+
+    <span style="color: blue">public</span> Playlist(<span style="color: blue">int</span> id)
+    {
+        _id = id;
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">int</span> ID
+    {
+        <span style="color: blue">get</span> { <span style="color: blue">return</span> _id; }
+    }
+
+    <span style="color: blue">#region</span> Independent properties
+    <span style="color: green">// Generated by Update Controls --------------------------------</span>
+    <span style="color: blue">private</span> Independent _indName = <span style="color: blue">new</span> Independent();
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> Name
+    {
+        <span style="color: blue">get</span>
+        {
+            <span style="color: blue">lock</span> (<span style="color: blue">this</span>)
+            {
+                _indName.OnGet();
+                <span style="color: blue">return</span> _name;
+            }
+        }
+        <span style="color: blue">set</span>
+        {
+            <span style="color: blue">lock</span> (<span style="color: blue">this</span>)
+            {
+                _indName.OnSet();
+                _name = value;
+            }
+        }
+    }
+    <span style="color: green">// End generated code --------------------------------</span>
+    <span style="color: blue">#endregion</span>
+}</pre><p><br />When dealing with collections, we need to be a little careful. If you return an IEnumerable that traverses a collection, that IEnumerable will leave the lock. This will cause problems, as another thread can come in and modify the collection while you are traversing it. To be safe, we need to create a copy of the collection within the lock.<br /></p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> MusicLibrary
+{
+    <span style="color: blue">private</span> List&lt;Playlist&gt; _playlists = <span style="color: blue">new</span> List&lt;Playlist&gt;();
+
+    <span style="color: blue">#region</span> Independent properties
+    <span style="color: green">// Generated by Update Controls --------------------------------</span>
+    <span style="color: blue">private</span> Independent _indPlaylists = <span style="color: blue">new</span> Independent();
+
+    <span style="color: blue">public</span> Playlist GetPlaylist(<span style="color: blue">int</span> playlistID)
+    {
+        <span style="color: blue">lock</span> (<span style="color: blue">this</span>)
+        {
+            <span style="color: green">// This method changes the list.</span>
+            _indPlaylists.OnSet();
+
+            <span style="color: green">// See if we already have this one.</span>
+            Playlist playlist = _playlists.Where(p =&gt; p.ID == playlistID).FirstOrDefault();
+            <span style="color: blue">if</span> (playlist != <span style="color: blue">null</span>)
+                <span style="color: blue">return</span> playlist;
+
+            <span style="color: green">// If not, create it.</span>
+            playlist = <span style="color: blue">new</span> Playlist(playlistID);
+            _playlists.Add(playlist);
+            <span style="color: blue">return</span> playlist;
+        }
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">void</span> DeletePlaylist(Playlist playlist)
+    {
+        <span style="color: blue">lock</span> (<span style="color: blue">this</span>)
+        {
+            _indPlaylists.OnSet();
+            _playlists.Remove(playlist);
+        }
+    }
+
+    <span style="color: blue">public</span> IEnumerable&lt;Playlist&gt; Playlists
+    {
+        <span style="color: blue">get</span>
+        {
+            <span style="color: blue">lock</span> (<span style="color: blue">this</span>)
+            {
+                _indPlaylists.OnGet();
+                <span style="color: green">// Return a copy of the list so that it can be accessed in a</span>
+                <span style="color: green">// thread-safe manner.</span>
+                <span style="color: blue">return</span> <span style="color: blue">new</span> List&lt;Playlist&gt;(_playlists);
+            }
+        }
+    }
+    <span style="color: green">// End generated code --------------------------------</span>
+    <span style="color: blue">#endregion</span>
+}</pre><p>With this, your model is safe to access from multiple threads. So let's create one.</p>
+<p><strong>Create a thread to communicate with external systems</strong><br />The UI thread is for the user. If you use it to communicate with external systems, it might hang. Then the user will have to decide whether to "Continue Waiting" or "Switch To...". Switch to what, a Mac? But seriously, it's better if you spawn a new thread to do all of your communication with external systems.</p>
+<p>Commuter communicates with iTunes. So I created a separate thread to synchronize between iTunes and my data model. It wakes up every 10 seconds and refreshes the playlists.</p>
+<pre><span style="color: blue">public</span> <span style="color: blue">class</span> ITunesSynchronizationService
+{
+    <span style="color: blue">private</span> MusicLibrary _musicLibrary;
+    <span style="color: blue">private</span> Thread _thread;
+    <span style="color: blue">private</span> ManualResetEvent _stop;
+    <span style="color: blue">private</span> <span style="color: blue">bool</span> _first = <span style="color: maroon">true</span>;
+
+    <span style="color: blue">private</span> <span style="color: blue">string</span> _lastError = <span style="color: blue">string</span>.Empty;
+    <span style="color: blue">private</span> Independent _indLastError = <span style="color: blue">new</span> Independent();
+
+    <span style="color: blue">public</span> ITunesSynchronizationService(MusicLibrary musicLibrary)
+    {
+        _musicLibrary = musicLibrary;
+        _thread = <span style="color: blue">new</span> Thread(ThreadProc);
+        _thread.Name = <span style="color: maroon">"iTunes synchronization service"</span>;
+        _stop = <span style="color: blue">new</span> ManualResetEvent(<span style="color: maroon">false</span>);
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">void</span> Start()
+    {
+        _thread.Start();
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">void</span> Stop()
+    {
+        _stop.Set();
+
+        <span style="color: green">// Give it 30 seconds to shut down.</span>
+        _thread.Join(<span style="color: maroon">30000</span>);
+    }
+
+    <span style="color: blue">public</span> <span style="color: blue">string</span> LastError
+    {
+        <span style="color: blue">get</span>
+        {
+            <span style="color: blue">lock</span> (<span style="color: blue">this</span>)
+            {
+                _indLastError.OnGet();
+                <span style="color: blue">return</span> _lastError;
+            }
+        }
+
+        <span style="color: blue">private</span> <span style="color: blue">set</span>
+        {
+            <span style="color: blue">lock</span> (<span style="color: blue">this</span>)
+            {
+                _indLastError.OnSet();
+                _lastError = value;
+            }
+        }
+    }
+
+    <span style="color: blue">private</span> <span style="color: blue">void</span> ThreadProc()
+    {
+        <span style="color: blue">while</span> (ShouldContinue())
+        {
+            <span style="color: blue">try</span>
+            {
+                <span style="color: green">// Connect to iTunes.</span>
+                iTunesApp itApp = <span style="color: blue">new</span> iTunesAppClass();
+
+                <span style="color: green">// List all of the playlists.</span>
+                List&lt;Playlist&gt; oldPlaylists = _musicLibrary.Playlists.ToList();
+                <span style="color: blue">foreach</span> (IITUserPlaylist itPlaylist <span style="color: blue">in</span> itApp.LibrarySource.Playlists.OfType&lt;IITUserPlaylist&gt;())
+                {
+                    <span style="color: blue">string</span> name = itPlaylist.Name;
+                    Playlist playlist = _musicLibrary.GetPlaylist(itPlaylist.playlistID);
+                    <span style="color: blue">if</span> (name != <span style="color: blue">null</span> &amp;&amp; playlist.Name != name)
+                        playlist.Name = name;
+                    oldPlaylists.Remove(playlist);
+                }
+
+                <span style="color: green">// Delete all that are no longer in iTunes.</span>
+                <span style="color: blue">foreach</span> (Playlist playlist <span style="color: blue">in</span> oldPlaylists)
+                    _musicLibrary.DeletePlaylist(playlist);
+
+                LastError = <span style="color: blue">string</span>.Empty;
+            }
+            <span style="color: blue">catch</span> (Exception ex)
+            {
+                LastError = ex.Message;
+            }
+        }
+    }
+    <span style="color: blue">private</span> <span style="color: blue">bool</span> ShouldContinue()
+    {
+        <span style="color: green">// Don't wait the first time.</span>
+        <span style="color: blue">if</span> (_first)
+        {
+            _first = <span style="color: maroon">false</span>;
+            <span style="color: blue">return</span> <span style="color: maroon">true</span>;
+        }
+
+        <span style="color: green">// Wake up every 10 seconds, or when the thread should stop.</span>
+        <span style="color: blue">return</span> !_stop.WaitOne(<span style="color: maroon">10000</span>);
+    }
+}</pre><p>Notice the LastError property. This is a thread-safe way for the service to communicate its status with the user. This property is bound to a TextBlock on the UI.</p>
+<p>The iTunes synchronization service makes changes directly to the data model. Because the data model is thread-safe, the UI thread and the background thread can share this resource. Update Controls will notify the UI thread whenever the background thread changes the data model.</p>
+<p><strong>Try it out</strong><br /><a title="commuter.zip" href="http://adventuresinsoftware.com/blog/wp-content/uploads/2009/06/commuter.zip">Download the code</a>. When you run Commuter, it will launch iTunes. Even as iTunes launches, the Commuter user interface is responsive. If you are fast enough, you can open the Playlist drop-down before it is populated. But even if COM is faster than the mouse, you can try a few experiments.</p>
+<p>Select a playlist in Commuter. Then switch to iTunes and rename that playlist. Within 10 seconds you'll see the selected playlist's name change.</p>
+<p>Bring iTunes to the front, but leave Commuter visible underneath it. Place your mouse on the drop-down. Press Ctrl+N to create a new playlist, then click the mouse to bring Commuter to the front and open the drop-down. Within 10 seconds, "untitled playlist" will appear in the list.</p>
+<p>Multi-threaded programming still requires some care, but Update Controls can at least take care of updating the UI when the background thread changes the data model.</p>
+  <div id="book-navigation-11" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="../mvvm-and-linq-to-sql.html" class="page-previous" title="Go to previous page">‹ Linq to SQL</a>
+                    <a href="../examples.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="twolists.html" class="page-next" title="Go to next page">Two lists ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/4.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-600"></a>
+<div class="comment comment-published odd first comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="multi-threading.html#comment-600" class="active">Just to clarify...</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Fri, 03/18/2011 - 17:58.  </div>
+
+  <div class="content">
+    <p>You're not saying that a data model has to be thread-safe in order to use Update Controls. You're saying that IF a program has multiple threads that depend on or change the data model, then the data model must be thread safe. Right? (Personally I avoid any multithreading that involves manual locking, it's way too easy to make a mistake.) And the same rule presumably applies to the navigation model (but if the navigation model is only used by the UI thread, maybe it doesn't have to be thread-safe.)</p>
+<p>It might be useful to provide a different version of Independent&lt;T&gt; to support thread safety via locks. Its constructor would accept a lock:</p>
+<pre>
+        private object _lock;
+
+        public IndependentMT(T initialValue, object lockObject)
+        {
+            _value = initialValue;
+            _lock = lockObject;
+        }
+        public T Value
+        {
+            get {
+                lock(_lock) { _independentSentry.OnGet(); return _value; }
+            }
+            set
+            {
+                lock(_lock) {
+                    if (!object.Equals(value, _value))
+                    {
+                        _independentSentry.OnSet();
+                        _value = value;
+                    }
+                }
+            }
+        }
+</pre><p>(Independent&lt;T&gt; itself could be extended to support lock-based thread safety, but this would add extra overhead since there'd be a reference to a lock object that might not be used, and the Value property would have to test whether it needs locking on every call.)</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/4/600.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+<div class="indented"><a id="comment-601"></a>
+<div class="comment comment-published even last comment-by-author"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="multi-threading.html#comment-601" class="active">Thread safety and Independent</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by MichaelLPerry on Sat, 03/19/2011 - 12:43.  </div>
+
+  <div class="content">
+    <p>You are correct; you only need to write a thread-safe data model if the program will access it from more than one thread. As long as you lock around the OnGet and OnSet, then Update Controls is thread-safe too.</p>
+<p>I'd rather not put the lock inside the Independent, even if it is a different version. Threading is very much a concern of your application. Update Controls can't know where the boundaries should be. If you've ever used the thread-safe collections in Java, then you've probably run into this situation. Java has a thread-safe Queue, for example, but you often find that you need to do more inside the lock than just add or remove.</p>
+<p>I agree that you should avoid lock-based concurrency, but if you need it, your app should be in complete control of it.</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/4/601.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+</div>  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../examples.html">Examples</a><ul class="menu"><li class="leaf first"><a href="menus.html">Menus</a></li>
+<li class="collapsed"><a href="treeview/non_recursive.html">TreeView</a></li>
+<li class="leaf"><a href="icommand.html">ICommand</a></li>
+<li class="leaf"><a href="linq.html">Linq</a></li>
+<li class="leaf"><a href="../mvvm-and-linq-to-sql.html">Linq to SQL</a></li>
+<li class="leaf active-trail"><a href="multi-threading.html" class="active">Multi-threading</a></li>
+<li class="leaf"><a href="twolists.html">Two lists</a></li>
+<li class="leaf"><a href="vmworkshop/wpf.html">VM Workshop</a></li>
+<li class="leaf"><a href="awesome.html">Awesome application</a></li>
+<li class="leaf"><a href="wp7_odata.html">Windows Phone 7 and OData</a></li>
+<li class="leaf last"><a href="mvc-without-eventing.html">MVC without eventing</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/examples/multi-threading?destination=node%2F4"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-4ee27b4d4996ffe2563b483dc7dd7dc5" value="form-4ee27b4d4996ffe2563b483dc7dd7dc5"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/examples/multi-threading by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:32 GMT -->
+</html>

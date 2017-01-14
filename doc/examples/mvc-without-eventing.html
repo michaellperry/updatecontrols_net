@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/examples/mvc-without-eventing by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>MVC without eventing | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="wp7_odata.html" />
+<link rel="up" href="../examples.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-examples-mvc-without-eventing section-examples">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">MVC without eventing</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-26" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Tue, 09/21/2010 - 11:43        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>Jonathan Rasmusson, The Agile Warrior, posted a <a href="http://agilewarrior.wordpress.com/2010/09/18/silverlight-model-view-controller-mvc-example/">Silverlight MVC example</a> that clearly demonstrates how eventing can get out of hand. He concludes:</p>
+<blockquote><p>Phew! That’s a lot of work to update one textbox based on the contents of another…</p>
+</blockquote>
+<p><a href="../sites/default/files/3bad9d4108b2_8450/image.png"><img style="border-right-width: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; margin-left: 0px; border-left-width: 0px; margin-right: 0px" title="image" border="0" alt="image" align="right" src="../sites/default/files/3bad9d4108b2_8450/image_thumb.png" width="427" height="273" /></a>It would be less work to put this logic in the View, but Model/View separation is his goal. In order to achieve that, you need to wire up a bunch of events.</p>
+<p>Or do you?</p>
+<p>Consider how you would solve this problem with a spreadsheet. You would enter a formula in the Calculated Taxes cell. You don’t store the value in the cell. You don’t notify anybody that the value has changed. It just changes. Can we do this in code, and still retain Model/View separation?</p>
+<p>Of course, the answer is yes … if you use Update Controls.</p>
+<p>I’m going to modify Jonathan’s example code so you can see how much code you <em>don’t</em> have to write. Go to his blog to get the starting point. Then add a reference to UpdateControls.Light.dll and follow along. If you get stuck, download the modified source files here.</p>
+<div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:8eb9d37f-1541-4f29-b6f4-1eea890d4876:a6c12aa2-2d27-4534-9d82-ddcacbfd5fc5" class="wlWriterEditableSmartContent">
+<div><a href="../sites/default/files/3bad9d4108b2_8450/UpdateControlsSilverLightMVC.zip" target="_self">UpdateControls-SilverLight-MVC.zip</a></div>
+
+</div>
+<h3>The Model</h3>
+<p>Remove the event declaration from the model. In addition, remove the setter from the calculated Taxes property. This property should be read-only, since its value depends upon Salary.</p>
+<pre class="code"><span style="color: blue">public interface </span><span style="color: #2b91af">ICalculatorModel
+</span>{
+    <span style="color: blue">double </span>Salary { <span style="color: blue">get</span>; <span style="color: blue">set</span>; }
+    <span style="color: blue">double </span>Taxes { <span style="color: blue">get</span>; <span style="color: green">/*set;*/ </span>}
+
+    <span style="color: green">/*event EventHandler&lt;CalculatorEventArgs&gt; TaxesChanged;*/
+</span>}</pre><p>Make the same changes in the CalculatorModel class. Move the tax calculation down to the Taxes getter and get rid of the field. Add an Independent sentry and call OnGet() and OnSet() whenever Salary is modified or accessed.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">CalculatorModel </span>: <span style="color: #2b91af">ICalculatorModel
+</span>{
+    <span style="color: blue">private double </span>salary;
+    <strong><span style="color: blue">private </span><span style="color: #2b91af">Independent </span>_indSalary = <span style="color: blue">new </span><span style="color: #2b91af">Independent</span>();</strong>
+    <span style="color: green">/*private double taxes;*/
+    </span><span style="color: blue">public readonly double </span>TAX_RATE = 0.3d;
+
+    <span style="color: blue">public double </span>Salary
+    {
+        <span style="color: blue">get </span>{ <strong>_indSalary.OnGet();</strong> <span style="color: blue">return </span>salary; }
+        <span style="color: blue">set
+        </span>{
+            <span style="color: blue">if </span>(<span style="color: blue">value </span>== <span style="color: blue">this</span>.salary) <span style="color: blue">return</span>;
+            <strong>_indSalary.OnSet();</strong>
+            salary = <span style="color: blue">value</span>;
+            <span style="color: green">/*Taxes = salary*TAX_RATE;*/
+        </span>}
+    }
+
+    <span style="color: blue">public double </span>Taxes
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span><span style="color: green">/*taxes*/ </span>Salary*TAX_RATE; }
+        <span style="color: green">/*
+        set
+        {
+            if (value == this.taxes) return;
+            taxes = value;
+            OnTaxesChanged(new CalculatorEventArgs(this));
+        }
+        */
+    </span>}
+
+    <span style="color: green">/*
+    public event EventHandler&lt;CalculatorEventArgs&gt; TaxesChanged;
+
+    protected void OnTaxesChanged(CalculatorEventArgs e)
+    {
+        if (TaxesChanged != null)
+            TaxesChanged(this, e); // fire event
+    }
+    */
+</span>}</pre><h3>The View</h3>
+<p>The view is going to use data binding. Delete all of the code in the code-behind except for the constructor. Then add Binding markup to the XAML:</p>
+<pre class="code"><span style="color: blue">public partial class </span><span style="color: #2b91af">CalculatorView </span>: <span style="color: #2b91af">Page
+</span>{
+    <span style="color: green">/*
+    private ICalculatorModel model;
+    private ICalculatorController controller;
+     * */
+
+    </span><span style="color: blue">public </span>CalculatorView()
+    {
+        InitializeComponent();
+    }
+
+    <span style="color: green">/*
+    public void SetModel(ICalculatorModel calculatorModel)
+    {
+        model = calculatorModel;
+        SalaryTextBox.TextChanged += SalaryTextBoxChanged;
+        model.TaxesChanged += ModelTaxesChanged;
+    }
+
+    private void ModelTaxesChanged(object sender, CalculatorEventArgs e)
+    {
+        TaxesTextBox.Text = e.Taxes.ToString();
+    }
+
+    private void SalaryTextBoxChanged(object sender, TextChangedEventArgs e)
+    {
+        controller.SetSalary(Double.Parse(SalaryTextBox.Text));
+    }
+
+    public void SetController(ICalculatorController calculatorController)
+    {
+        controller = calculatorController;
+    }
+    */
+</span>}</pre><pre class="code"><span style="color: blue">&lt;</span><span style="color: #a31515">navigation</span><span style="color: blue">:</span><span style="color: #a31515">Page </span><span style="color: red">x</span><span style="color: blue">:</span><span style="color: red">Class</span><span style="color: blue">=&quot;MVC1.View.CalculatorView&quot; 
+           </span><span style="color: red">xmlns</span><span style="color: blue">=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
+           </span><span style="color: red">xmlns</span><span style="color: blue">:</span><span style="color: red">x</span><span style="color: blue">=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; 
+           </span><span style="color: red">xmlns</span><span style="color: blue">:</span><span style="color: red">d</span><span style="color: blue">=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
+           </span><span style="color: red">xmlns</span><span style="color: blue">:</span><span style="color: red">mc</span><span style="color: blue">=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+           </span><span style="color: red">mc</span><span style="color: blue">:</span><span style="color: red">Ignorable</span><span style="color: blue">=&quot;d&quot;
+           </span><span style="color: red">xmlns</span><span style="color: blue">:</span><span style="color: red">navigation</span><span style="color: blue">=&quot;clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation&quot;
+           </span><span style="color: red">d</span><span style="color: blue">:</span><span style="color: red">DesignWidth</span><span style="color: blue">=&quot;640&quot; </span><span style="color: red">d</span><span style="color: blue">:</span><span style="color: red">DesignHeight</span><span style="color: blue">=&quot;480&quot;
+           </span><span style="color: red">Title</span><span style="color: blue">=&quot;CalculatorView Page&quot;&gt;
+    &lt;</span><span style="color: #a31515">Grid </span><span style="color: red">x</span><span style="color: blue">:</span><span style="color: red">Name</span><span style="color: blue">=&quot;LayoutRoot&quot;&gt;
+        &lt;</span><span style="color: #a31515">ListBox </span><span style="color: red">Grid.Row</span><span style="color: blue">=&quot;1&quot;&gt;
+            &lt;</span><span style="color: #a31515">TextBlock </span><span style="color: red">Text</span><span style="color: blue">=&quot;Enter salary:&quot; /&gt;
+            &lt;</span><span style="color: #a31515">TextBox </span><span style="color: red">Name</span><span style="color: blue">=&quot;SalaryTextBox&quot; </span><span style="color: red">Width</span><span style="color: blue">=&quot;100&quot; </span><strong><span style="color: red">Text</span><span style="color: blue">=&quot;{</span><span style="color: #a31515">Binding </span><span style="color: red">Salary, Mode=TwoWay</span></strong><span style="color: blue"><strong>}&quot;</strong> /&gt;
+            &lt;</span><span style="color: #a31515">TextBlock </span><span style="color: red">Text</span><span style="color: blue">=&quot;Calculated Taxes:&quot; /&gt;
+            &lt;</span><span style="color: #a31515">TextBox </span><span style="color: red">Name</span><span style="color: blue">=&quot;TaxesTextBox&quot; </span><span style="color: red">Width</span><span style="color: blue">=&quot;100&quot; </span><strong><span style="color: red">Text</span><span style="color: blue">=&quot;{</span><span style="color: #a31515">Binding </span><span style="color: red">Taxes</span></strong><span style="color: blue"><strong>}&quot;</strong> /&gt;
+        &lt;/</span><span style="color: #a31515">ListBox</span><span style="color: blue">&gt;
+    &lt;/</span><span style="color: #a31515">Grid</span><span style="color: blue">&gt;
+&lt;/</span><span style="color: #a31515">navigation</span><span style="color: blue">:</span><span style="color: #a31515">Page</span><span style="color: blue">&gt;
+
+</span></pre><h3>The Controller</h3>
+<p>The controller gives the model to the view, and then gets out of the way. Let’s modify the interface to reflect that responsibility.</p>
+<pre class="code"><span style="color: blue">public interface </span><span style="color: #2b91af">ICalculatorController
+</span>{
+    <span style="color: green">/*
+    void SetSalary(double salary);
+    void SetTaxes(double taxes);
+    */
+    </span><strong><span style="color: blue">void </span>Bind();
+</strong>}</pre><p>As it binds, it needs to wrap that model so Update Controls can discover dependencies for its properties.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">CalculatorController </span>: <span style="color: #2b91af">ICalculatorController
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">CalculatorView </span>view;
+    <span style="color: blue">private </span><span style="color: #2b91af">ICalculatorModel </span>model;
+
+    <span style="color: blue">public </span>CalculatorController(<span style="color: #2b91af">CalculatorView </span>view, <span style="color: #2b91af">ICalculatorModel </span>model)
+    {
+        <span style="color: blue">this</span>.view = view;
+        <span style="color: blue">this</span>.model = model;
+
+        <span style="color: green">/*
+        view.SetModel(model);
+        view.SetController(this);
+        */
+    </span>}
+
+    <span style="color: green">/*
+    public void SetSalary(double salary)
+    {
+        model.Salary = salary;
+    }
+
+    public void SetTaxes(double taxes)
+    {
+        model.Taxes = taxes;
+    }
+    */
+
+<strong>    </strong></span><strong><span style="color: blue">public void </span>Bind()
+    {
+        view.DataContext = <span style="color: #2b91af">ForView</span>.Wrap(model);
+    }
+</strong>}</pre><p>Now call the Bind method.</p>
+<pre class="code"><span style="color: blue">public partial class </span><span style="color: #2b91af">MainPage </span>: <span style="color: #2b91af">UserControl
+</span>{
+    <span style="color: blue">public </span>MainPage()
+    {
+        InitializeComponent();
+        <span style="color: #2b91af">ICalculatorModel </span>model = <span style="color: blue">new </span><span style="color: #2b91af">CalculatorModel</span>();
+        <span style="color: #2b91af">ICalculatorController </span>controller = <span style="color: blue">new </span><span style="color: #2b91af">CalculatorController</span>(view, model);
+        <strong>controller.Bind();</strong>
+    }
+}</pre><p>The application still works, but we’ve deleted all of the eventing code.</p>
+<h3>Update on every keystroke</h3>
+<p>WPF lets you set UpdateSourceTrigger=PropertyChanged in order to update on every keystroke. Silverlight doesn’t have that feature, yet. So to make up for it, we need a little code behind.</p>
+<pre class="code"><span style="color: blue">&lt;</span><span style="color: #a31515">TextBox </span><span style="color: red">Name</span><span style="color: blue">=&quot;SalaryTextBox&quot; </span><span style="color: red">Width</span><span style="color: blue">=&quot;100&quot; </span><span style="color: red">Text</span><span style="color: blue">=&quot;{</span><span style="color: #a31515">Binding </span><span style="color: red">Salary</span><span style="color: blue">, </span><span style="color: red">Mode</span><span style="color: blue">=TwoWay}&quot; </span><span style="color: red"><strong>TextChanged</strong></span><span style="color: blue"><strong>=&quot;SalaryTextBoxChanged&quot;</strong> /&gt;
+
+</span></pre><pre class="code"><span style="color: blue">private void </span>SalaryTextBoxChanged(<span style="color: blue">object </span>sender, <span style="color: #2b91af">TextChangedEventArgs </span>e)
+{
+    ((<span style="color: #2b91af">TextBox</span>)sender).GetBindingExpression(<span style="color: #2b91af">TextBox</span>.TextProperty).UpdateSource();
+}</pre><p>Now it works exactly like Jonathan’s example. </p>
+<p>Model/View separation is essential to making software easy to maintain. But If you have to add a bunch of event handlers in order to achieve that separation, you end up paying far to high a cost. Update Controls discovers dependencies for you so you don’t have to fire events. It helps you to stay truly agile.</p>
+  <div id="book-navigation-11" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="wp7_odata.html" class="page-previous" title="Go to previous page">‹ Windows Phone 7 and OData</a>
+                    <a href="../examples.html" class="page-up" title="Go to parent page">up</a>
+                </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/26.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+  <div id="comments">
+          <h2 id="comments-title">Comments</h2>
+        <a id="comment-579"></a>
+<div class="comment comment-published odd first last comment-by-anon"><div class="comment-inner clear-block">
+
+      <h3 class="title">
+      <a href="mvc-without-eventing.html#comment-579" class="active">Good stuff!</a>          </h3>
+  
+  
+  
+  <div class="submitted">
+    Submitted by Anonymous on Wed, 09/22/2010 - 08:59.  </div>
+
+  <div class="content">
+    <p>Hey Michael,</p>
+<p>Just quickly browsed your example and I must say, this looks like a much clear implementation of MVC.</p>
+<p>I love how you've gotten rid of most of the eventing.<br />
+Bind is the next thing I want to try (looks like it really cleans things up).</p>
+<p>I am going to go over this more closely on the weekend to see how this all hooks together.</p>
+<p>Great example. Thanks for sharing. </p>
+<p>Jonathan Rasmusson<br />
+agilewarrior.wordpress.com</p>
+      </div>
+
+      <div class="links">
+      <ul class="links"><li class="comment_reply first last"><a href="../comment/reply/26/579.html">reply</a></li>
+</ul>    </div>
+  
+</div></div> <!-- /comment-inner, /comment -->
+  </div>
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../basics.html">The Basics</a></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../examples.html">Examples</a><ul class="menu"><li class="leaf first"><a href="menus.html">Menus</a></li>
+<li class="collapsed"><a href="treeview/non_recursive.html">TreeView</a></li>
+<li class="leaf"><a href="icommand.html">ICommand</a></li>
+<li class="leaf"><a href="linq.html">Linq</a></li>
+<li class="leaf"><a href="../mvvm-and-linq-to-sql.html">Linq to SQL</a></li>
+<li class="leaf"><a href="multi-threading.html">Multi-threading</a></li>
+<li class="leaf"><a href="twolists.html">Two lists</a></li>
+<li class="leaf"><a href="vmworkshop/wpf.html">VM Workshop</a></li>
+<li class="leaf"><a href="awesome.html">Awesome application</a></li>
+<li class="leaf"><a href="wp7_odata.html">Windows Phone 7 and OData</a></li>
+<li class="leaf last active-trail"><a href="mvc-without-eventing.html" class="active">MVC without eventing</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="../basics/make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="../basics/make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/examples/mvc-without-eventing?destination=node%2F26"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-5a1d497922ec1567c08e3d85066d7349" value="form-5a1d497922ec1567c08e3d85066d7349"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/examples/mvc-without-eventing by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:54:38 GMT -->
+</html>

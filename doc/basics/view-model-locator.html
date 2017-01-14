@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+
+
+<!-- Mirrored from updatecontrols.net/doc/basics/view-model-locator by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:50:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>MVVM | Update Controls .NET</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../blogapi/wlwmanifest.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../blogapi/rsd" />
+<link rel="prev" href="independent-list.html" />
+<link rel="up" href="../basics.html" />
+<link rel="next" href="view-model-locator-base.html" />
+<link rel="shortcut icon" href="../http_/updatecontrols.net/favicon.html" type="image/x-icon" />
+  <link type="text/css" rel="stylesheet" media="all" href="../modules/book/book4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/node/node4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/defaults4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/system/system-menus4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/user/user4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/modules/views/css/views4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../modules/comment/comment4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/html-elements4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/tabs4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/messages4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/block-editing4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/zen/zen/wireframes4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/layout4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="all" href="../sites/all/themes/updatecontrols/updatecontrols4b43.css?r" />
+<link type="text/css" rel="stylesheet" media="print" href="../sites/all/themes/updatecontrols/print4b43.css?r" />
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" media="all" href="/doc/sites/all/themes/zen/zen/ie.css?r" />
+<![endif]-->
+  <script type="text/javascript" src="../misc/jquery4b43.js?r"></script>
+<script type="text/javascript" src="../misc/drupal4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/doc/", "googleanalytics": { "trackOutgoing": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip" } });
+//--><!]]>
+</script>
+</head>
+<body class="not-front not-logged-in node-type-blog one-sidebar sidebar-left page-basics-view-model-locator section-basics">
+
+  <div id="page"><div id="page-inner">
+
+    <a name="top" id="navigation-top"></a>
+          <div id="skip-to-nav"><a href="#navigation">Skip to Navigation</a></div>
+    
+    <div id="header"><div id="header-inner" class="clear-block">
+
+              <div id="logo-title">
+
+                      <div id="logo"><a href="../index.html" title="Home" rel="home"><img src="../images/logosmall.jpg" alt="Home" id="logo-image" /></a></div>
+          
+                                    <div id="site-name"><strong>
+                <a href="../index.html" title="Home" rel="home">
+                Update Controls .NET                </a>
+              </strong></div>
+                      
+          
+        </div> <!-- /#logo-title -->
+      
+      
+    </div></div> <!-- /#header-inner, /#header -->
+
+    <div id="main"><div id="main-inner" class="clear-block with-navbar">
+
+      <div id="content"><div id="content-inner">
+
+        
+        
+                  <div id="content-header">
+            <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../blog.html">Blogs</a> › <a href="../blog/1.html">MichaelLPerry&#039;s blog</a> › </div>                          <h1 class="title">MVVM</h1>
+                                                          </div> <!-- /#content-header -->
+        
+        <div id="content-area">
+          <div id="node-42" class="node node-type-blog"><div class="node-inner">
+
+  
+  
+  
+      <div class="meta">
+              <div class="submitted">
+          Submitted by MichaelLPerry on Tue, 10/02/2012 - 17:17        </div>
+      
+          </div>
+  
+  <div class="content">
+    <p>A common pattern in XAML applications is Model-View-ViewModel (or MVVM). Update Controls supports this pattern.</p>
+<p>To quick-start your application, add the UpdateControls.App package using NuGet. If you don’t yet have NuGet installed, you can get it from <a href="http://nuget.org/">nuget.org</a>. This package brings in the core UpdateControls package, and sets up the following structure:</p>
+<ul>
+<li>Models
+<ul>
+<li>data models </li>
+<li>selection models </li>
+</ul>
+</li>
+<li>ViewModels
+<ul>
+<li>top-level view models </li>
+<li>headers </li>
+<li>view model locator </li>
+</ul>
+</li>
+</ul>
+<h3>Models</h3>
+<p>Data models are objects that you persist in your application. They will be saved to the database or local storage. These model objects represent the real-world concepts that your application is about.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">Item
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt; _name = <span style="color: blue">new </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt;();
+
+    <span style="color: blue">public string </span>Name
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_name; }
+        <span style="color: blue">set </span>{ _name.Value = <span style="color: blue">value</span>; }
+    }
+}</pre><p>Selection models record the user’s point-of-view as they navigate through the system. These hold references to the model objects that the user selects in lists, and opens in secondary windows. They also hold any temporary data, like entries into text boxes, that haven’t been saved to the model, yet.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">Selection
+</span>{
+    <span style="color: blue">private </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: #2b91af">Item</span>&gt; _selectedItem = <span style="color: blue">new </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: #2b91af">Item</span>&gt;();
+
+    <span style="color: blue">public </span><span style="color: #2b91af">Item </span>SelectedItem
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_selectedItem; }
+        <span style="color: blue">set </span>{ _selectedItem.Value = <span style="color: blue">value</span>; }
+    }
+}</pre><p>Both data models and selection models use Independent&lt;T&gt; and IndependentList&lt;T&gt; fields. This lets Update Controls track dependencies upon model objects.</p>
+<h3>View Models</h3>
+<p>View models are simple classes that hold references to models. They expose properties for the purpose of data binding. These properties are implemented as pass-through methods, getting and setting data from the models.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">ItemViewModel
+</span>{
+    <span style="color: blue">private readonly </span><span style="color: #2b91af">Item </span>_item;
+
+    <span style="color: blue">public </span>ItemViewModel(<span style="color: #2b91af">Item </span>Item)
+    {
+        _item = Item;
+    }
+
+    <span style="color: blue">public string </span>Name
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_item.Name; }
+        <span style="color: blue">set </span>{ _item.Name = <span style="color: blue">value</span>; }
+    }
+}</pre><p>The pass-through methods don’t have to be direct one-to-one accessors. In fact, they rarely are. It is far more common to alter the values on the way in and out. Here are some common types of alterations:</p>
+<ul>
+<li>Return a default value if it hasn’t been set in the model. </li>
+<li>Combine two or more model properties to display an aggregate. </li>
+<li>Project child model objects into child view models. </li>
+</ul>
+<p>That last one is very important. View models don’t return models. They return other view models. You never want your view to data bind directly against a model object. It should always have a view model in between.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">MainViewModel
+</span>{
+    <span style="color: blue">private readonly </span><span style="color: #2b91af">Document </span>_document;
+    <span style="color: blue">private readonly </span><span style="color: #2b91af">Selection </span>_selection;
+
+    <span style="color: blue">public </span>MainViewModel(<span style="color: #2b91af">Document </span>document, <span style="color: #2b91af">Selection </span>selection)
+    {
+        _document = document;
+        _selection = selection;
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">IEnumerable</span>&lt;<span style="color: #2b91af">ItemHeader</span>&gt; Items
+    {
+        <span style="color: blue">get
+        </span>{
+            <span style="color: blue">return
+                from </span>item <span style="color: blue">in </span>_document.Items
+                <span style="color: blue">select new </span><span style="color: #2b91af">ItemHeader</span>(item);
+        }
+    }
+}</pre><p>In addition to the top-level view models, you will often have headers. These are small view models created for the purpose of populating a list. The properties of a header are usually read-only, so you don’t create setters for them.</p>
+<pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">ItemHeader
+</span>{
+    <span style="color: blue">private readonly </span><span style="color: #2b91af">Item </span>_item;
+
+    <span style="color: blue">public </span>ItemHeader(<span style="color: #2b91af">Item </span>Item)
+    {
+        _item = Item;
+    }
+
+    <span style="color: blue">public </span><span style="color: #2b91af">Item </span>Item
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_item; }
+    }
+
+    <span style="color: blue">public string </span>Name
+    {
+        <span style="color: blue">get </span>{ <span style="color: blue">return </span>_item.Name ?? <span style="color: #a31515">&quot;&lt;New Item&gt;&quot;</span>; }
+    }
+
+    <span style="color: blue">public override bool </span>Equals(<span style="color: blue">object </span>obj)
+    {
+        <span style="color: blue">if </span>(obj == <span style="color: blue">this</span>)
+            <span style="color: blue">return true</span>;
+        <span style="color: #2b91af">ItemHeader </span>that = obj <span style="color: blue">as </span><span style="color: #2b91af">ItemHeader</span>;
+        <span style="color: blue">if </span>(that == <span style="color: blue">null</span>)
+            <span style="color: blue">return false</span>;
+        <span style="color: blue">return </span><span style="color: #2b91af">Object</span>.Equals(<span style="color: blue">this</span>._item, that._item);
+    }
+
+    <span style="color: blue">public override int </span>GetHashCode()
+    {
+        <span style="color: blue">return </span>_item.GetHashCode();
+    }
+}</pre><p>A header always has to implement Equals and GetHashCode. These methods should compare two headers to see if they represent the same object. This allows Update Controls to preserve the selection and scroll position of a list even as the items in the list are changing. It also assists with binding the SelectedItem property. The SelectedItem should be equal to one element in the ItemsSource.</p>
+  <div id="book-navigation-43" class="book-navigation">
+    
+        <div class="page-links clear-block">
+              <a href="independent-list.html" class="page-previous" title="Go to previous page">‹ IndependentList&lt;T&gt;</a>
+                    <a href="../basics.html" class="page-up" title="Go to parent page">up</a>
+                    <a href="view-model-locator-base.html" class="page-next" title="Go to next page">ViewModelLocatorBase ›</a>
+          </div>
+    
+  </div>
+  </div>
+
+  <ul class="links inline"><li class="blog_usernames_blog first"><a href="../blog/1.html" title="Read MichaelLPerry&#039;s latest blog entries.">MichaelLPerry&#039;s blog</a></li>
+<li class="comment_add last"><a href="../comment/reply/42.html#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>
+</div></div> <!-- /node-inner, /node -->
+        </div>
+
+        
+        
+      </div></div> <!-- /#content-inner, /#content -->
+
+              <div id="navbar"><div id="navbar-inner" class="clear-block region region-navbar">
+
+          <a name="navigation" id="navigation"></a>
+
+          
+                      <div id="primary">
+              <ul class="links"><li class="menu-146 first"><a href="../../cs/index-2.html" title="">WPF</a></li>
+<li class="menu-147"><a href="../../cs/silverlight.html" title="">Silverlight</a></li>
+<li class="menu-148"><a href="../../cs/winforms.html" title="">Winforms</a></li>
+<li class="menu-149"><a href="../../cs/download.html" title="">Download</a></li>
+<li class="menu-150"><a href="../index.html" title="">Documentation</a></li>
+<li class="menu-151"><a href="../../cs/videos.html" title="">Videos</a></li>
+<li class="menu-152 last"><a href="../../cs/contact.html" title="">Contact Us</a></li>
+</ul>            </div> <!-- /#primary -->
+          
+          
+          
+        </div></div> <!-- /#navbar-inner, /#navbar -->
+      
+              <div id="sidebar-left"><div id="sidebar-left-inner" class="region region-left">
+          <div id="block-book-0" class="block block-book region-odd odd region-count-1 count-1"><div class="block-inner">
+
+      <h2 class="title">Sections</h2>
+  
+  <div class="content">
+    <div id="book-block-menu-43" class="book-block-menu">
+  <ul class="menu"><li class="expanded first last active-trail"><a href="../basics.html">The Basics</a><ul class="menu"><li class="leaf first"><a href="independent.html">Independent&lt;T&gt;</a></li>
+<li class="leaf"><a href="independent-list.html">IndependentList&lt;T&gt;</a></li>
+<li class="leaf active-trail"><a href="view-model-locator.html" class="active">MVVM</a></li>
+<li class="leaf"><a href="view-model-locator-base.html">ViewModelLocatorBase</a></li>
+<li class="leaf"><a href="make-command.html">MakeCommand</a></li>
+<li class="leaf"><a href="for-view-wrap.html">ForView.Wrap()</a></li>
+<li class="leaf last"><a href="for-view-unwrap.html">ForView.Unwrap()</a></li>
+</ul></li>
+</ul></div>
+<div id="book-block-menu-11" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../examples.html">Examples</a></li>
+</ul></div>
+<div id="book-block-menu-12" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../tips.html">Tips</a></li>
+</ul></div>
+<div id="book-block-menu-32" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../advanced.html">Advanced Topics</a></li>
+</ul></div>
+<div id="book-block-menu-24" class="book-block-menu">
+  <ul class="menu"><li class="collapsed first last"><a href="../node/24.html">Other Articles</a></li>
+</ul></div>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-node-0" class="block block-node region-even even region-count-2 count-2"><div class="block-inner">
+
+      <h2 class="title">Subscribe</h2>
+  
+  <div class="content">
+    <a href="../rss.xml" class="feed-icon"><img src="../misc/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-comment-0" class="block block-comment region-odd odd region-count-3 count-3"><div class="block-inner">
+
+      <h2 class="title">Recent comments</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="../mvvm-and-linq-to-sql.html#comment-687">No longer preferred</a><br />3 years 13 weeks ago</li>
+<li><a href="../mvvm-and-linq-to-sql.html#comment-684">Is this still the preferred way?</a><br />3 years 19 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-668" class="active">Wrong. When replacing the</a><br />3 years 44 weeks ago</li>
+<li><a href="../node/39.html#comment-667">Very nice</a><br />3 years 46 weeks ago</li>
+<li><a href="../node/39.html#comment-666">Example Application</a><br />3 years 47 weeks ago</li>
+<li><a href="make-command.html#comment-665">Responsibilities</a><br />4 years 3 days ago</li>
+<li><a href="make-command.html#comment-664">Menus</a><br />4 years 3 days ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-659" class="active">The reason that this is a</a><br />4 years 17 weeks ago</li>
+<li><a href="../tips/common_mistakes_observablecollection.html#comment-658" class="active">You need to explain why these</a><br />4 years 17 weeks ago</li>
+<li class="last"><a href="../validation.html#comment-657">RE: I like your approach, but ...</a><br />4 years 21 weeks ago</li>
+</ul></div>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+<div id="block-user-0" class="block block-user region-even even region-count-4 count-4"><div class="block-inner">
+
+      <h2 class="title">User login</h2>
+  
+  <div class="content">
+    <form action="http://updatecontrols.net/doc/basics/view-model-locator?destination=node%2F42"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required" />
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul><li class="first last"><a href="../user/password.html" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-d8cf7d3bf814ce795c10b4c0e49be23f" value="form-d8cf7d3bf814ce795c10b4c0e49be23f"  />
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+        </div></div> <!-- /#sidebar-left-inner, /#sidebar-left -->
+      
+      
+    </div></div> <!-- /#main-inner, /#main -->
+
+          <div id="footer"><div id="footer-inner" class="region region-footer">
+
+        
+        <div id="block-system-0" class="block block-system region-odd odd region-count-1 count-5"><div class="block-inner">
+
+  
+  <div class="content">
+    <a href="http://drupal.org/"><img src="../misc/powered-blue-80x15.png" alt="Powered by Drupal, an open source content management system" title="Powered by Drupal, an open source content management system" width="80" height="15" /></a>  </div>
+
+  
+</div></div> <!-- /block-inner, /block -->
+
+      </div></div> <!-- /#footer-inner, /#footer -->
+    
+  </div></div> <!-- /#page-inner, /#page -->
+
+  
+  <script type="text/javascript" src="../sites/all/modules/google_analytics/googleanalytics4b43.js?r"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+try{var pageTracker = _gat._getTracker("UA-389401-4");pageTracker._trackPageview();} catch(err) {}
+//--><!]]>
+</script>
+
+</body>
+
+<!-- Mirrored from updatecontrols.net/doc/basics/view-model-locator by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Jan 2017 12:50:59 GMT -->
+</html>
